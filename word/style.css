@@ -30,6 +30,22 @@
     
     }
     
+    .contact:hover{
+        
+        background-color: rgb(44, 44, 44);
+        border-color: rgb(44, 44, 44);
+        font-weight: 100;
+        color:white;
+        padding: 15px 50px 15px 50px;
+        text-align:center;
+        text-decoration:none;
+        display: inline-block;
+        font-size:16px;
+        border-radius:3rem;
+        box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+    
+    }
+
     .contacte:hover{
         
         background-color: rgb(44, 44, 44);
@@ -42,6 +58,7 @@
         display: inline-block;
         font-size:16px;
         border-radius:3rem;
+        box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
     
     }
     
@@ -541,6 +558,24 @@
             display: inline-block;
             font-size:16px;
             border-radius:3rem;
+            box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+            
+        
+        }
+
+        .contact:hover{
+        
+            background-color: rgb(44, 44, 44);
+            border-color: rgb(44, 44, 44);
+            font-weight: 100;
+            color:white;
+            padding: 15px 50px 15px 50px;
+            text-align:center;
+            text-decoration:none;
+            display: inline-block;
+            font-size:16px;
+            border-radius:3rem;
+            box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
         
         }
         
@@ -1040,6 +1075,23 @@
                 display: inline-block;
                 font-size:16px;
                 border-radius:3rem;
+                box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+            
+            }
+
+            .contact:hover{
+        
+                background-color: rgb(44, 44, 44);
+                border-color: rgb(44, 44, 44);
+                font-weight: 100;
+                color:white;
+                padding: 15px 50px 15px 50px;
+                text-align:center;
+                text-decoration:none;
+                display: inline-block;
+                font-size:16px;
+                border-radius:3rem;
+                box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
             
             }
             
@@ -1539,6 +1591,23 @@
                     display: inline-block;
                     font-size:16px;
                     border-radius:3rem;
+                    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+                
+                }
+
+                .contact:hover{
+        
+                    background-color: rgb(44, 44, 44);
+                    border-color: rgb(44, 44, 44);
+                    font-weight: 100;
+                    color:white;
+                    padding: 15px 50px 15px 50px;
+                    text-align:center;
+                    text-decoration:none;
+                    display: inline-block;
+                    font-size:16px;
+                    border-radius:3rem;
+                    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
                 
                 }
                 
