@@ -205,7 +205,7 @@
     }
     
     .apropos p {
-        margin-top: 13%;
+        margin-top: 6%;
         margin-bottom: 4%;
         font-size: 23px;
         font-weight: 100;
@@ -694,12 +694,17 @@
         }
         
         .apropos h1 {
-            font-size: 60px;
+            font-size: 45px;
             color: #302c2c;
+        }
+    
+        .apropos h2 {
+            font-size: 65px;
+            color: grey;
         }
         
         .apropos p {
-            margin-top: 23%;
+            margin-top: 6%;
             margin-bottom: 4%;
             font-size: 23px;
             font-weight: 100;
@@ -1188,12 +1193,17 @@
             }
             
             .apropos h1 {
-                font-size: 60px;
+                font-size: 45px;
                 color: #302c2c;
+            }
+        
+            .apropos h2 {
+                font-size: 65px;
+                color: grey;
             }
             
             .apropos p {
-                margin-top: 23%;
+                margin-top: 6%;
                 margin-bottom: 4%;
                 font-size: 23px;
                 font-weight: 100;
@@ -1681,12 +1691,17 @@
                 }
                 
                 .apropos h1 {
-                    font-size: 60px;
+                    font-size: 45px;
                     color: #302c2c;
+                }
+            
+                .apropos h2 {
+                    font-size: 65px;
+                    color: grey;
                 }
                 
                 .apropos p {
-                    margin-top: 23%;
+                    margin-top: 6%;
                     margin-bottom: 4%;
                     font-size: 23px;
                     font-weight: 100;
