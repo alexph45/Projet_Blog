@@ -1963,6 +1963,46 @@ label {
               }
             
             }
+
+            .footer-basic {
+                background-color: #2d2d2d; /* Couleur de fond */
+                color: #f1f1f1; /* Couleur du texte */
+                padding: 20px 0;
+                text-align: center;
+                font-family: 'Arial', sans-serif;
+            }
+            
+            .footer-basic footer p {
+                font-size: 14px;
+                margin: 0;
+                color: #aaa; /* Texte grisé */
+            }
+            
+            .footer-basic .social-links {
+                margin: 15px 0;
+                display: flex;
+                justify-content: center;
+                gap: 15px; /* Espacement entre les icônes */
+            }
+            
+            .footer-basic .social-links a img {
+                width: 50px; /* Taille uniforme pour toutes les icônes */
+                height: 50px;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                filter: none; /* Pas de niveaux de gris */
+                opacity: 0.9; /* Légère transparence */
+            }
+            
+            .footer-basic .social-links a img:hover {
+                transform: scale(1.2); /* Zoom sur survol */
+                opacity: 1; /* Pleine opacité */
+            }
+            
+            html {
+                scroll-behavior: smooth;
+            }
+            
+            
         
     
 
