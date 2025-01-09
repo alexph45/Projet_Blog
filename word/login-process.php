@@ -2,6 +2,9 @@
 // Inclure le fichier de connexion à la base de données
 require_once 'db.php';
 
+// Démarrer une session pour gérer les messages flash
+session_start();
+
 // Vérifier si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
@@ -9,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validation des champs
     if (empty($email) || empty($password)) {
-        echo "Veuillez remplir tous les champs.";
+        $_SESSION['error'] = "Veuillez remplir tous les champs.";
+        header('Location: connexion.php');
         exit;
     }
 
@@ -22,19 +26,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         // Vérifier si le mot de passe correspond
         if (password_verify($password, $user['mot_de_passe'])) {
-            echo "Connexion réussie. Bienvenue, " . htmlspecialchars($user['prenom']) . "!";
-            // Démarrez une session ou redirigez l'utilisateur vers une autre page
-            session_start();
+            // Connexion réussie, rediriger vers l'index
             $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['user_name'] = $user['prenom'];  // Optionnel, ajouter un nom d'utilisateur pour l'afficher ailleurs
+            $_SESSION['success'] = "Connexion réussie. Bienvenue, " . htmlspecialchars($user['prenom']) . "!";
             header('Location: index.html');
             exit;
         } else {
-            echo "Mot de passe incorrect.";
+            $_SESSION['error'] = "Mot de passe incorrect.";
+            header('Location: connexion.php');
+            exit;
         }
     } else {
-        echo "Aucun utilisateur trouvé avec cet e-mail.";
+        $_SESSION['error'] = "Aucun utilisateur trouvé avec cet e-mail.";
+        header('Location: connexion.php');
+        exit;
     }
 } else {
-    echo "Méthode de requête non autorisée.";
+    $_SESSION['error'] = "Méthode de requête non autorisée.";
+    header('Location: connexion.php');
+    exit;
 }
 ?>

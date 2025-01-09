@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,10 +15,23 @@
     <div class="connexion-container">
         <h1>Connexion</h1>
 
-        <!-- Message de succès -->
-        <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+        <!-- Affichage des messages d'erreur -->
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="error-message">
+                <?php
+                    echo htmlspecialchars($_SESSION['error']);
+                    unset($_SESSION['error']); // Effacer le message après affichage
+                ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Affichage des messages de succès -->
+        <?php if (isset($_SESSION['success'])): ?>
             <div class="success-message">
-                Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.
+                <?php
+                    echo htmlspecialchars($_SESSION['success']);
+                    unset($_SESSION['success']); // Effacer le message après affichage
+                ?>
             </div>
         <?php endif; ?>
 
