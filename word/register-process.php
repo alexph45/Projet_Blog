@@ -1,4 +1,6 @@
 <?php
+session_start(); // Démarrer la session
+
 // Inclure le fichier de connexion à la base de données
 require_once 'db.php';
 
@@ -42,8 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Exécuter la requête
         $stmt->execute();
 
-        // Rediriger l'utilisateur vers une page de connexion avec un message de succès
-        header("Location: connexion.php?success=1");
+        // Démarrer la session et enregistrer les informations utilisateur
+        $_SESSION['user_email'] = $email;
+        $_SESSION['user_id'] = $pdo->lastInsertId(); // Enregistrer l'ID de l'utilisateur
+
+        // Rediriger l'utilisateur vers une page protégée ou d'accueil
+        header("Location: index.html"); // Par exemple, une page de bienvenue
         exit;
     } catch (PDOException $e) {
         // Gérer les erreurs, notamment les e-mails dupliqués
