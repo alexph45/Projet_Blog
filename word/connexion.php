@@ -45,7 +45,7 @@ session_start();
             <button type="submit" class="connexion-btn">Se connecter</button>
         </form>
 
-        <p>Pas encore membre ? <a href="inscription.html">S'inscrire</a></p>
+        <br>
         <button onclick="window.location.href='index.html'" class="retour-btn">Retour vers la page d'accueil</button>
     </div>
 
