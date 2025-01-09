@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_name'] = $user['prenom'];  // Optionnel, ajouter un nom d'utilisateur pour l'afficher ailleurs
             $_SESSION['success'] = "Connexion réussie. Bienvenue, " . htmlspecialchars($user['prenom']) . "!";
-            header('Location: index.html');
+            header('Location: index.php');
             exit;
         } else {
             $_SESSION['error'] = "Mot de passe incorrect.";

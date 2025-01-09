@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $pdo->lastInsertId(); // Enregistrer l'ID de l'utilisateur
 
         // Rediriger l'utilisateur vers une page protégée ou d'accueil
-        header("Location: index.html"); // Par exemple, une page de bienvenue
+        header("Location: index.php"); // Par exemple, une page de bienvenue
         exit;
     } catch (PDOException $e) {
         // Gérer les erreurs, notamment les e-mails dupliqués

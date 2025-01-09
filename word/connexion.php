@@ -55,7 +55,7 @@ session_start();
             <p>Pas encore membre ? <a href="inscription.html">S'inscrire</a></p>
         <?php endif; ?>
 
-        <button onclick="window.location.href='index.html'" class="retour-btn">Retour vers la page d'accueil</button>
+        <button onclick="window.location.href='index.php'" class="retour-btn">Retour vers la page d'accueil</button>
     </div>
 
 </body>
