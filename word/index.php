@@ -20,18 +20,85 @@
             </div>
 
             <div class="menu">
-                <?php session_start(); ?>
-                <a class="nav" href="#projet">PROJETS</a>
-                <a class="nav" href="#apropos">A PROPOS</a>
-                <a class="nav" href="#blog">BLOG</a>
-                <?php if (isset($_SESSION['user_id'])): ?>
-                    <a class="nav" href="logout.php">DÉCONNEXION</a>
-                <?php else: ?>
-                    <a class="nav" href="connexion.php">CONNEXION</a>
-                <?php endif; ?>
-                <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
-            </div>
-            
+    <?php session_start(); ?>
+    <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS</a>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <div id="dropdown-menu" class="dropdown-menu">
+            <a href="ajouter_projet.php">Ajouter un Projet</a>
+            <a href="ajouter_article.php">Ajouter un Article</a>
+        </div>
+    <?php endif; ?>
+    <a class="nav" href="#apropos">A PROPOS</a>
+    <a class="nav" href="#blog">BLOG</a>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <a class="nav" href="logout.php">DÉCONNEXION</a>
+    <?php else: ?>
+        <a class="nav" href="connexion.php">CONNEXION</a>
+    <?php endif; ?>
+    <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
+</div>
+
+<style>
+/* Style du menu */
+.menu {
+    position: relative;
+}
+
+/* Menu déroulant caché par défaut */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Juste en dessous de "PROJETS" */
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* Style des liens dans le menu déroulant */
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+</style>
+
+<script>
+// Fonction pour afficher/masquer le menu déroulant
+function toggleDropdown(event) {
+    const menu = document.getElementById('dropdown-menu');
+
+    // Si le menu est déjà affiché, le masquer
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+
+    // Permettre au clic de continuer son comportement par défaut
+    // uniquement si le menu n'est pas visible
+    if (menu.style.display === 'block') {
+        event.preventDefault(); // Bloque le défilement vers l'ancre
+    }
+}
+
+
+// Fermer le menu déroulant si on clique ailleurs sur la page
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('dropdown-menu');
+    const isClickInside = menu.contains(event.target) || event.target.matches('.nav[href="#projet"]');
+    if (!isClickInside) {
+        menu.style.display = 'none';
+    }
+});
+</script>
 
 
         </navbar>
