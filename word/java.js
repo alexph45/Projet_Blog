@@ -33,26 +33,3 @@ function togglePopup() {
     const overlay = document.getElementById('popup-overlay');
     overlay.style.display = overlay.style.display === 'none' ? 'block' : 'none';
 }
-
-// Carrousel
-const slides = document.querySelectorAll('.carousel-slide');
-let currentIndex = 0;
-
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-    });
-}
-
-document.getElementById('prev-btn').addEventListener('click', function () {
-    currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
-    showSlide(currentIndex);
-});
-
-document.getElementById('next-btn').addEventListener('click', function () {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-});
-
-// Initial display
-showSlide(currentIndex);
