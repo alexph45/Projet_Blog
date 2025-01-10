@@ -47,28 +47,57 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <div class="menu">
-                <a class="nav" href="#projet">PROJETS</a>
-                <a class="nav" href="#apropos">A PROPOS</a>
-                <a class="nav" href="#blog">BLOG</a>
 
-                <?php if ($_SESSION['user_role'] == 'admin'): ?>
-                    <!-- Si l'utilisateur est connecté -->
-                    <a class="nav" href="profil.php"><?php echo $_SESSION['user']['nom']; ?></a> <!-- Affiche son nom ou un lien vers son profil -->
-                    <a class="nav" href="deconnexion.php">DECONNEXION</a> <!-- Lien pour se déconnecter -->
-                <?php else: ?>
-                    <!-- Si l'utilisateur n'est pas connecté -->
-                    <a class="nav" href="connexion.php">CONNEXION</a>
-                <?php endif; ?>
+                            <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS</a>
+                    <?php if ($_SESSION['user_role'] == 'admin'): ?>
+                        <div id="dropdown-menu" class="dropdown-menu">
+                            <a href="ajouter_projet.php">Ajouter un Projet</a>
+                            <a href="ajouter_article.php">Ajouter un Article</a>
+                            <a href="modifier_article.php">Modifier un Article</a>
+                            <a href="modifier_projet.php">Modifier un Projet</a>
+                        </div>
+                    <?php endif; ?>
+                    <a class="nav" href="#apropos">A PROPOS</a>
+                    <a class="nav" href="#blog">BLOG</a>
+                    <?php if ($_SESSION['user_role'] == 'admin'): ?>
+                        <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
+                    <?php else: ?>
+                        <a class="nav" href="connexion.php">CONNEXION</a>
+                    <?php endif; ?>
+                    <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
+                </div>
 
-                <?php if ($_SESSION['user_role'] == 'admin'): ?>
-                    <div class="admin-menu">
-                        <a href="add_project.php">Ajouter un projet</a>
-                        <a href="add_article.php">Ajouter un article</a>
-                    </div>
-                <?php endif; ?>
 
-                <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
-            </div>
+                <script>
+                // Fonction pour afficher/masquer le menu déroulant
+                function toggleDropdown(event) {
+                    const menu = document.getElementById('dropdown-menu');
+
+                    // Si le menu est déjà affiché, le masquer
+                    if (menu.style.display === 'block') {
+                        menu.style.display = 'none';
+                    } else {
+                        menu.style.display = 'block';
+                    }
+
+                    // Permettre au clic de continuer son comportement par défaut
+                    // uniquement si le menu n'est pas visible
+                    if (menu.style.display === 'block') {
+                        event.preventDefault(); // Bloque le défilement vers l'ancre
+                    }
+                }
+
+
+                // Fermer le menu déroulant si on clique ailleurs sur la page
+                document.addEventListener('click', function(event) {
+                    const menu = document.getElementById('dropdown-menu');
+                    const isClickInside = menu.contains(event.target) || event.target.matches('.nav[href="#projet"]');
+                    if (!isClickInside) {
+                        menu.style.display = 'none';
+                    }
+                });
+                </script>
+
 
 
         </navbar>
@@ -169,12 +198,7 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
 
-        <?php if ($isAdmin): ?>
-            <div class="actions">
-                <a href="edit_project.php?id=<?= $projet['projet_id'] ?>">Modifier</a>
-                <a href="delete_project.php?id=<?= $projet['projet_id'] ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?')">Supprimer</a>
-            </div>
-        <?php endif; ?>
+
 
     <?php endforeach; ?>
 </div>
