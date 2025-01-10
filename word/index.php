@@ -120,7 +120,8 @@ require_once 'filtres.php'
 
 <div class="projets">
     <?php foreach ($projets as $projet): ?>
-        <div class="projet" data-categories="<?= htmlspecialchars($projet['categories']); ?>">
+        <div class="projet" data-categories="<?= htmlspecialchars($projet['categories'] ?? ''); ?>">
+
             <img src="<?= htmlspecialchars($projet['image_url']); ?>" alt="<?= htmlspecialchars($projet['titre']); ?>">
             <div class="categorie">
                 <p><?= htmlspecialchars($projet['categories'] ?? 'Pas de catégorie'); ?></p>
