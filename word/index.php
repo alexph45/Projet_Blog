@@ -1,24 +1,8 @@
 <?php
 
-// Inclure le fichier de connexion
+// Inclure le fichier de connexion et de filtres
 require_once 'connect.php';
-
-// Requête pour récupérer les projets et leurs catégories
-$sql = "
-    SELECT 
-        p.id AS projet_id, 
-        p.titre, 
-        p.description, 
-        p.annee, 
-        p.image_url, 
-        GROUP_CONCAT(c.nom SEPARATOR ' / ') AS categories
-    FROM projets p
-    LEFT JOIN projets_categories pc ON p.id = pc.projet_id
-    LEFT JOIN categories c ON pc.categorie_id = c.id
-    GROUP BY p.id
-";
-$stmt = $pdo->query($sql);
-$projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+require_once 'filtres.php'
 ?>
 <html>
     <head>
@@ -122,13 +106,17 @@ $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </section1>
 
         <sectionprojet>
-
+        
         <div class="filtre">
-    <a id="togg4" href="#" data-category="all">Tous</a>
-    <a id="togg1" href="#" data-category="Mobile">Mobile</a>
-    <a id="togg2" href="#" data-category="Web">Web</a>
-    <a id="togg3" href="#" data-category="Interaction">Interaction</a>
+    <a href="#" data-category="all">Tous</a>
+    <?php foreach ($categories as $category): ?>
+        <a href="#" data-category="<?= htmlspecialchars($category['nom']); ?>">
+            <?= htmlspecialchars($category['nom']); ?>
+        </a>
+    <?php endforeach; ?>
 </div>
+
+
 
 <div class="projets">
     <?php foreach ($projets as $projet): ?>
