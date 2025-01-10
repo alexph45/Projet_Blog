@@ -4,7 +4,7 @@
         <title>Lewis Nathaniel</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-        
+        <link rel="stylesheet" type="text/css" href="style3.css">
     </head>
 
     <body>
@@ -38,37 +38,6 @@
     <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
 </div>
 
-<style>
-/* Style du menu */
-.menu {
-    position: relative;
-}
-
-/* Menu déroulant caché par défaut */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%; /* Juste en dessous de "PROJETS" */
-    left: 0;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    z-index: 1000;
-}
-
-/* Style des liens dans le menu déroulant */
-.dropdown-menu a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #333;
-}
-
-.dropdown-menu a:hover {
-    background-color: #f0f0f0;
-}
-</style>
 
 <script>
 // Fonction pour afficher/masquer le menu déroulant

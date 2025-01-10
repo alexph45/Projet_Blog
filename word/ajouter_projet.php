@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Connexion à la base de données
-$dsn = 'mysql:host=localhost;dbname=blog;charset=utf8mb4';
+$dsn = 'mysql:host=localhost;dbname=blog1;charset=utf8mb4';
 $username = 'root'; // Remplacez par votre utilisateur MySQL
 $password = ''; // Remplacez par votre mot de passe MySQL
 
@@ -28,9 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titre = htmlspecialchars($_POST['titre']);
     $description = htmlspecialchars($_POST['description']);
     $date_creation = date('Y-m-d');
-    $url = htmlspecialchars($_POST['url']);
     $annee = htmlspecialchars($_POST['annee']);
-    $id_categorie = (int)$_POST['id_categorie'];
     $image_path = '';
 
     // Vérifier si une image a été envoyée
@@ -86,13 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Validation des champs
-    if (!empty($titre) && !empty($description) && !empty($url) && !empty($annee) && !empty($id_categorie) && !empty($image_path)) {
+    if (!empty($titre) && !empty($description) && !empty($annee) && !empty($image_path)) {
         try {
+            // Insertion dans la base de données
             $stmt = $pdo->prepare(
-                'INSERT INTO projets (titre, description, image, date_creation, url, année, id_categorie) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)'
+                'INSERT INTO projets (titre, description, image_url, date_creation, annee) 
+                VALUES (?, ?, ?, ?, ?)'
             );
-            $stmt->execute([$titre, $description, $image_path, $date_creation, $url, $annee, $id_categorie]);
+            $stmt->execute([$titre, $description, $image_path, $date_creation, $annee]);
             $message = "Le projet a été ajouté avec succès!";
             $success = true;
         } catch (PDOException $e) {
@@ -110,120 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un Projet</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 50%;
-            margin: 50px auto;
-            background-color: #ffffff;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        input[type="text"],
-        textarea,
-        input[type="file"],
-        select {
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-            border-color: #ff7e67;
-            outline: none;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .btn-submit {
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            margin-top: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: linear-gradient(135deg, #ff6071 0%, #ff6584 100%);
-        }
-
-        .btn-return {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .btn-return:hover {
-            background-color: #0056b3;
-        }
-
-        .message {
-            margin-top: 20px;
-            font-size: 16px;
-            text-align: center;
-            color: green;
-            font-weight: bold;
-        }
-
-        .error {
-            color: red;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style4.css">
 </head>
 <body>
     <div class="container">
@@ -239,23 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="description">Description :</label>
                 <textarea id="description" name="description" required></textarea>
 
-                <label for="url">URL :</label>
-                <input type="text" id="url" name="url" required>
-
                 <label for="annee">Année :</label>
                 <input type="text" id="annee" name="annee" required>
-
-                <label for="id_categorie">Catégorie :</label>
-                <select id="id_categorie" name="id_categorie" required>
-                    <option value="" disabled selected>Choisissez une catégorie</option>
-                    <?php
-                    // Récupération des catégories depuis la base
-                    $categories = $pdo->query('SELECT id_categorie, nom FROM categories')->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($categories as $categorie) {
-                        echo "<option value='{$categorie['id_categorie']}'>{$categorie['nom']}</option>";
-                    }
-                    ?>
-                </select>
 
                 <label for="image">Image (obligatoire) :</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
@@ -266,6 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <script>
+        // JavaScript pour vérifier si l'image est présente
         const form = document.getElementById('projectForm');
         
         form.addEventListener('submit', function(event) {

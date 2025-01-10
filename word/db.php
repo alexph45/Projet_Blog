@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost'; // Serveur de base de données
-$dbname = 'blog'; // Nom de la base de données
+$dbname = 'blog1'; // Nom de la base de données
 $username = 'root'; // Nom d'utilisateur (par défaut : root)
 $password = ''; // Mot de passe (par défaut vide pour XAMPP)
 
