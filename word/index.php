@@ -26,6 +26,7 @@
         <div id="dropdown-menu" class="dropdown-menu">
             <a href="ajouter_projet.php">Ajouter un Projet</a>
             <a href="ajouter_article.php">Ajouter un Article</a>
+            <a href="modifier_article.php">Modifier un Article</a>
         </div>
     <?php endif; ?>
     <a class="nav" href="#apropos">A PROPOS</a>
