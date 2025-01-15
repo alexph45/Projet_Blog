@@ -291,6 +291,17 @@
         font-weight: 100;
     
     }
+
+    .carousel-item {
+        display: none; /* Cache tous les items */
+    }
+    
+    .carousel-item.item-0 {
+        display: block; /* Affiche uniquement le premier item */
+    }
+    
+
+    
     
     /* Quatrième section - Blog*/ 
 
