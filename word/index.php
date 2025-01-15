@@ -25,12 +25,77 @@ require_once 'filtres.php'
             </div>
 
             <div class="menu">
-                <a class="nav" href="#">PROJETS</a>
-                <a class="nav" href="#">A PROPOS</a>
-                <a class="nav" href="#">BLOG</a>
-                <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
+            <?php
+// Requête pour obtenir le nombre de nouvelles suggestions (par exemple, suggestions non lues)
+$query = "SELECT COUNT(*) AS nouveaux_projets FROM projets WHERE statut = 'nouveau'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$nouveaux_projets = $row['nouveaux_projets'];
+?>
 
-            </div>
+            <?php session_start(); ?>
+    <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS</a>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <div id="dropdown-menu" class="dropdown-menu">
+            <a href="ajouter_projet.php">Ajouter un Projet</a>
+            <a href="ajouter_article.php">Ajouter un Article</a>
+            <a href="modifier_projet.php">Modifier un Projet</a>
+            <a href="modifier_article.php">Modifier un Article</a>
+        </div>
+    <?php endif; ?>
+    <a class="nav" href="#apropos">A PROPOS</a>
+    <a class="nav" href="#blog">BLOG</a>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <a class="nav" href="logout.php">DÉCONNEXION</a>
+    <?php else: ?>
+        <a class="nav" href="connexion.php">CONNEXION</a>
+    <?php endif; ?>
+    <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
+    <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS
+    <?php if ($nouveaux_projets > 0): ?>
+        <span class="badge"><?= $nouveaux_projets; ?></span>
+    <?php endif; ?>
+</a>
+
+</a>
+
+</div>
+
+
+
+<script>
+// Fonction pour afficher/masquer le menu déroulant
+function toggleDropdown(event) {
+    const menu = document.getElementById('dropdown-menu');
+
+    // Si le menu est déjà affiché, le masquer
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+
+    // Permettre au clic de continuer son comportement par défaut
+    // uniquement si le menu n'est pas visible
+    if (menu.style.display === 'block') {
+        event.preventDefault(); // Bloque le défilement vers l'ancre
+    }
+}
+
+
+// Fermer le menu déroulant si on clique ailleurs sur la page
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('dropdown-menu');
+    const isClickInside = menu.contains(event.target) || event.target.matches('.nav[href="#projet"]');
+    if (!isClickInside) {
+        menu.style.display = 'none';
+    }
+});
+</script>
+
+
+        </navbar>
+
 
 
         </navbar>
@@ -255,15 +320,7 @@ require_once 'filtres.php'
                     <a class="lire" href="#">LIRE</a>
                 </div>
             </div>
-
-
         </sectionblog>
-
-        
-
-
-
-
         <div class="footer-basic">
             <footer>
                 
@@ -273,9 +330,6 @@ require_once 'filtres.php'
                 
             </footer>
         </div>
-
-
-      
         <script>
     document.addEventListener('DOMContentLoaded', function() {
         const filterLinks = document.querySelectorAll('.filtre a');
