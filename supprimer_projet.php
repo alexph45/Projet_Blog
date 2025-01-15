@@ -20,35 +20,38 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// Traitement du formulaire
+// Message de confirmation ou d'erreur
 $message = '';
 $success = false;
 
+// Récupérer tous les projets pour la liste déroulante
+try {
+    $stmt = $pdo->query('SELECT id, titre FROM projets ORDER BY titre ASC');
+    $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erreur lors de la récupération des projets : " . $e->getMessage());
+}
+
+// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];  // Récupère l'ID du projet à supprimer
+    if (isset($_POST['id']) && !empty($_POST['id'])) {
+        $id = $_POST['id']; // Récupérer l'ID du projet sélectionné
 
-    // Validation de l'ID
-    if (!empty($id) && filter_var($id, FILTER_VALIDATE_INT) !== false) {
         try {
-            // Vérification si le projet existe
-            $stmt = $pdo->prepare('SELECT id FROM projets WHERE id = ?');
+            // Supprimer le projet sélectionné
+            $stmt = $pdo->prepare('DELETE FROM projets WHERE id = ?');
             $stmt->execute([$id]);
-            $projet = $stmt->fetch();
+            $message = "Le projet a été supprimé avec succès!";
+            $success = true;
 
-            if ($projet) { // Si le projet existe
-                // Supprimer le projet par ID
-                $stmt = $pdo->prepare('DELETE FROM projets WHERE id = ?');
-                $stmt->execute([$id]);
-                $message = "Le projet a été supprimé avec succès!";
-                $success = true;
-            } else {
-                $message = "Aucun projet trouvé avec cet ID.";
-            }
+            // Mettre à jour la liste après suppression
+            $stmt = $pdo->query('SELECT id, titre FROM projets ORDER BY titre ASC');
+            $projets = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             $message = "Erreur lors de la suppression du projet : " . $e->getMessage();
         }
     } else {
-        $message = "L'ID du projet doit être un nombre valide.";
+        $message = "Veuillez sélectionner un projet à supprimer.";
     }
 }
 ?>
@@ -64,20 +67,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1>Supprimer un Projet</h1>
+
         <?php if ($success): ?>
-            <p class="message"><?= $message ?></p>
-            <!-- Bouton de retour au menu -->
+            <p class="message"><?= htmlspecialchars($message) ?></p>
             <a href="index.php" class="btn-return">Retour au menu</a>
         <?php else: ?>
+            <!-- Formulaire pour sélectionner un projet -->
             <form method="POST" action="">
-                <label for="id">ID du projet à supprimer :</label>
-                <input type="number" id="id" name="id" required>
+                <label for="id">Sélectionnez un projet :</label>
+                <select id="id" name="id" required>
+                    <option value="">-- Choisissez un projet --</option>
+                    <?php foreach ($projets as $projet): ?>
+                        <option value="<?= htmlspecialchars($projet['id']) ?>">
+                            <?= htmlspecialchars($projet['titre']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
 
                 <button type="submit" class="btn-submit">Supprimer</button>
-                <a href="index.php" class="btn-return">Retour au menu</a>
+                <a href="index.php" class="btn-return">Annuler</a>
             </form>
+
             <?php if ($message): ?>
-                <p class="error-message"><?= $message ?></p>
+                <p class="error-message"><?= htmlspecialchars($message) ?></p>
             <?php endif; ?>
         <?php endif; ?>
     </div>
