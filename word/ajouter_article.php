@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="file" id="image" name="image" accept="image/*" required>
 
                 <button type="submit" class="btn-submit">Ajouter</button>
+                <a href="index.php" class="btn-return">Retour au menu</a>
             </form>
         <?php endif; ?>
     </div>

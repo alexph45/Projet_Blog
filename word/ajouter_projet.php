@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" co    ntent="width=device-width, initial-scale=1.0">
     <title>Ajouter un Projet</title>
     <link rel="stylesheet" href="style4.css">
 </head>
@@ -116,7 +116,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1>Ajouter un Projet</h1>
         <?php if ($success): ?>
             <p class="message"><?= $message ?></p>
-            <a href="index.php" class="btn-return">Retour au menu</a>
         <?php else: ?>
             <form method="POST" action="" enctype="multipart/form-data" id="projectForm">
                 <label for="titre">Titre du Projet :</label>
@@ -132,8 +131,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="file" id="image" name="image" accept="image/*" required>
 
                 <button type="submit" class="btn-submit">Ajouter</button>
+                <a href="index.php" class="btn-return">Retour au menu</a>
             </form>
         <?php endif; ?>
+        <!-- Bouton de retour au menu toujours visible -->
+      
     </div>
 
     <script>
@@ -148,5 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         });
     </script>
+
+
 </body>
 </html>
