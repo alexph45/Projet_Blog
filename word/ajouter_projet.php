@@ -125,7 +125,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <textarea id="description" name="description" required></textarea>
 
                 <label for="annee">Année :</label>
-                <input type="text" id="annee" name="annee" required>
+            <input type="number" id="annee" name="annee" required min="1900" max="<?= date('Y') ?>" step="1" placeholder="Ex : 2025">
+
 
                 <label for="image">Image (obligatoire) :</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
