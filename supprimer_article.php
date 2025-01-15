@@ -20,15 +20,23 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// Traitement du formulaire
+// Message de confirmation ou d'erreur
 $message = '';
 $success = false;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id_article = $_POST['id_article'];  // Récupère l'ID de l'article à supprimer
+// Récupération des articles pour la liste déroulante
+try {
+    $stmt = $pdo->query('SELECT id_article, titre FROM articles ORDER BY titre ASC');
+    $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Erreur lors de la récupération des articles : " . $e->getMessage());
+}
 
-    // Validation de l'ID
-    if (!empty($id_article) && filter_var($id_article, FILTER_VALIDATE_INT) !== false) {
+// Traitement du formulaire
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['id_article']) && !empty($_POST['id_article'])) {
+        $id_article = $_POST['id_article']; // Récupérer l'ID de l'article sélectionné
+
         try {
             // Vérification si l'article existe
             $stmt = $pdo->prepare('SELECT id_article FROM articles WHERE id_article = ?');
@@ -36,11 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $article = $stmt->fetch();
 
             if ($article) {
-                // Supprimer l'article par ID
+                // Supprimer l'article
                 $stmt = $pdo->prepare('DELETE FROM articles WHERE id_article = ?');
                 $stmt->execute([$id_article]);
                 $message = "L'article a été supprimé avec succès!";
                 $success = true;
+
+                // Mettre à jour la liste après suppression
+                $stmt = $pdo->query('SELECT id_article, titre FROM articles ORDER BY titre ASC');
+                $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
             } else {
                 $message = "Aucun article trouvé avec cet ID.";
             }
@@ -48,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = "Erreur lors de la suppression de l'article : " . $e->getMessage();
         }
     } else {
-        $message = "L'ID de l'article doit être un nombre valide.";
+        $message = "Veuillez sélectionner un article à supprimer.";
     }
 }
 ?>
@@ -64,20 +76,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1>Supprimer un Article</h1>
+
         <?php if ($success): ?>
-            <p class="message"><?= $message ?></p>
-            <!-- Bouton de retour au menu -->
+            <p class="message"><?= htmlspecialchars($message) ?></p>
             <a href="index.php" class="btn-return">Retour au menu</a>
         <?php else: ?>
+            <!-- Formulaire pour sélectionner un article -->
             <form method="POST" action="">
-                <label for="id_article">ID de l'Article à supprimer :</label>
-                <input type="number" id="id_article" name="id_article" required>
+                <label for="id_article">Sélectionnez un article :</label>
+                <select id="id_article" name="id_article" required>
+                    <option value="">-- Choisissez un article --</option>
+                    <?php foreach ($articles as $article): ?>
+                        <option value="<?= htmlspecialchars($article['id_article']) ?>">
+                            <?= htmlspecialchars($article['titre']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
 
                 <button type="submit" class="btn-submit">Supprimer</button>
-                <a href="index.php" class="btn-return">Retour au menu</a>
+                <a href="index.php" class="btn-return">Annuler</a>
             </form>
+
             <?php if ($message): ?>
-                <p class="error-message"><?= $message ?></p>
+                <p class="error-message"><?= htmlspecialchars($message) ?></p>
             <?php endif; ?>
         <?php endif; ?>
     </div>
