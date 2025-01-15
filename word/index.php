@@ -33,29 +33,34 @@ require_once 'filtres.php';
             </div>
 
             <div class="menu">
-
-                            <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS</a>
-                    <?php if ($_SESSION['user_role'] == 'admin'): ?>
-                        <div id="dropdown-menu" class="dropdown-menu">
-                            <a href="ajouter_projet.php">Ajouter un Projet</a>
-                            <a href="suggestion.php">Suggestions de Projet</a>
-                            <a href="modifier_projet.php">Modifier un Projet</a>
-                            <a href="supprimer_projet.php">Supprimer un Projet</a>
-                            <a href="ajouter_article.php">Ajouter un Article</a>
-                            <a href="modifier_article.php">Modifier un Article</a>
-                        </div>
-                    <?php endif; ?>
-                    <a class="nav" href="#apropos">A PROPOS</a>
-                    <a class="nav" href="#blog">BLOG</a>
-                    <?php if ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user'): ?>
-                        <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
-                    <?php else: ?>
-                        <a class="nav" href="connexion.php"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
-                    <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
-                    </svg></a>
-                    <?php endif; ?>
-                    <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
+    <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS</a>
+    
+            <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <a href="ajouter_projet.php">Ajouter un Projet</a>
+                    <a href="suggestion.php">Suggestions de Projet</a>
+                    <a href="modifier_projet.php">Modifier un Projet</a>
+                    <a href="supprimer_projet.php">Supprimer un Projet</a>
+                    <a href="ajouter_article.php">Ajouter un Article</a>
+                    <a href="modifier_article.php">Modifier un Article</a>
                 </div>
+            <?php endif; ?>
+            
+            <a class="nav" href="#apropos">A PROPOS</a>
+            <a class="nav" href="#blog">BLOG</a>
+            
+            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
+                <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
+            <?php else: ?>
+                <a class="nav" href="connexion.php">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+                        <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
+                    </svg>
+                </a>
+            <?php endif; ?>
+            
+            <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
+        </div>
 
 
                 <script>
@@ -190,7 +195,7 @@ require_once 'filtres.php';
                     </div>
                 <?php endforeach; ?>
 
-                <?php if ( $_SESSION['user_role'] == 'user'): ?>
+                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'user'): ?>
                     <a href="suggestion_utilisateur.php">Demander une suggestion de projet</a>
                     <?php endif; ?>
 
