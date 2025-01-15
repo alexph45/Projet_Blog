@@ -32,12 +32,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     try {
-        // Préparer une requête pour insérer l'utilisateur dans la base de données
-        $stmt = $pdo->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe) VALUES (:nom, :prenom, :email, :mot_de_passe)");
+        // Préparer une requête pour insérer l'utilisateur dans la base de données avec le rôle "user"
+        $stmt = $pdo->prepare("
+            INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role) 
+            VALUES (:nom, :prenom, :email, :mot_de_passe, :role)
+        ");
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':mot_de_passe', $hashedPassword);
+
+        // Assigner le rôle "user" par défaut
+        $role = 'user';
+        $stmt->bindParam(':role', $role);
 
         // Exécuter la requête
         $stmt->execute();
