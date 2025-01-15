@@ -120,7 +120,7 @@ if (isset($_GET['id'])) {
                 <textarea id="description" name="description" required><?= htmlspecialchars($projet['description']) ?></textarea>
 
                 <label for="annee">Année :</label>
-                <input type="number" id="annee" name="annee" value="<?= htmlspecialchars($projet['annee']) ?>" required>
+<input type="number" id="annee" name="annee" value="<?= htmlspecialchars($projet['annee']) ?>" required min="1900" max="<?= date('Y') ?>">
 
                 <label for="image_url">Image (URL) :</label>
                 <input type="file" id="image_url" name="image_url" accept="image/*">
