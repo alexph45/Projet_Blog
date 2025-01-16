@@ -8,7 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="assets/css/style1.css">
+
 </head>
 <body>
 
@@ -20,7 +21,7 @@ session_start();
             <div class="error-message">
                 <?php
                     echo htmlspecialchars($_SESSION['error']);
-                    unset($_SESSION['error']); // Effacer le message après affichage
+                    unset($_SESSION['error']); // Effacer le message après affichagev
                 ?>
             </div>
         <?php endif; ?>
@@ -45,8 +46,8 @@ session_start();
             <button type="submit" class="connexion-btn">Se connecter</button>
         </form>
 
-        <br>
-        <button onclick="window.location.href='index.html'" class="retour-btn">Retour vers la page d'accueil</button>
+        <p>Pas encore membre ? <a href="inscription.html">S'inscrire</a></p>
+        <button onclick="window.location.href='index.php'" class="retour-btn">Retour vers la page d'accueil</button>
     </div>
 
 </body>

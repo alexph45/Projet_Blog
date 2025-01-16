@@ -1,6 +1,6 @@
 <?php
 // Inclure le fichier de connexion à la base de données
-require_once 'db.php';
+require_once 'connect.php';
 
 // Démarrer une session pour gérer les messages flash
 session_start();
@@ -30,8 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_name'] = $user['prenom'];  // Optionnel, ajouter un nom d'utilisateur pour l'afficher ailleurs
+            $_SESSION['user_role'] = $user['role'];
             $_SESSION['success'] = "Connexion réussie. Bienvenue, " . htmlspecialchars($user['prenom']) . "!";
-            header('Location: index.html');
+            header('Location: index.php');
             exit;
         } else {
             $_SESSION['error'] = "Mot de passe incorrect.";

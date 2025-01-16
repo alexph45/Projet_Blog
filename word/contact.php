@@ -1,6 +1,6 @@
 <?php
 // Inclusion du fichier de connexion
-require 'db.php';
+require 'connect.php';
 
 // Vérification si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,4 +30,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
