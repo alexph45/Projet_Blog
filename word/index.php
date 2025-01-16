@@ -41,24 +41,52 @@
 </div>
 <?php
 if (isset($_SESSION['success'])) {
-    echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['success']) . '</div>';
+    echo '<div id="alert-message" class="alert alert-success">' . htmlspecialchars($_SESSION['success']) . '</div>';
     // Supprimer le message après affichage pour éviter qu'il reste après rechargement
     unset($_SESSION['success']);
 }
 ?>
 <style>
-    .alert {
+.alert {
     padding: 10px;
     margin: 10px 0;
     border: 1px solid transparent;
     border-radius: 5px;
+    opacity: 0; /* Début transparent */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animation douce */
+    transform: translateY(-20px); /* Glisse de haut */
 }
 .alert-success {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
+.alert.show {
+    opacity: 1; /* Devient visible */
+    transform: translateY(0); /* Position normale */
+}
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const alertBox = document.getElementById('alert-message');
+    if (alertBox) {
+        // Faire apparaître l'alerte avec une classe "show"
+        setTimeout(() => {
+            alertBox.classList.add('show');
+        }, 100); // Attendre 100 ms avant d'afficher
+
+        // Faire disparaître l'alerte après 10 secondes
+        setTimeout(() => {
+            alertBox.classList.remove('show'); // Réduit la visibilité
+            setTimeout(() => {
+                alertBox.remove(); // Supprime complètement
+            }, 500); // Temps pour la transition de disparition
+        }, 5000); // 5 secondes avant disparition
+    }
+});
+</script>
+
 
 <script>
 // Fonction pour afficher/masquer le menu déroulant
