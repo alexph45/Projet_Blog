@@ -17,7 +17,23 @@ require_once 'filtres.php';
         <title>Lewis Nathaniel</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/style.css">
-        
+        <style>
+#new-suggestion-notification {
+    background-color: #4CAF50; /* Couleur de fond (verte pour succès) */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none; /* Par défaut, cachée */
+    border-bottom: 2px solid #2e7d32; /* Ajout d'une bordure pour plus de style */
+}
+</style>
+
     </head>
 
     <body>
@@ -61,7 +77,45 @@ require_once 'filtres.php';
             
             <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
         </div>
+        
+        <?php
 
+
+            // Récupère la dernière suggestion ajoutée
+            $sql = "SELECT id_suggestion, titre, description, date_creation FROM suggestion ORDER BY date_creation DESC LIMIT 1";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $last_suggestion = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Si la suggestion existe et que la date est plus récente que la dernière vérification (par exemple session ou un flag)
+            $last_check_time = $_SESSION['last_check_time'] ?? '1970-01-01 00:00:00';  // Utilise la session ou une autre méthode pour stocker la dernière vérification
+            if ($last_suggestion && $last_suggestion['date_creation'] > $last_check_time) {
+                $_SESSION['last_check_time'] = $last_suggestion['date_creation'];  // Met à jour la dernière vérification
+                $new_suggestion = true;
+            } else {
+                $new_suggestion = false;
+            }
+            ?>
+
+        
+        <div id="new-suggestion-notification" style="display: none;">
+            <p><strong>Nouvelle suggestion ajoutée !</strong></p>
+        </div>
+
+            <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                        <?php if ($new_suggestion): ?>
+                            // Si une nouvelle suggestion est détectée
+                            document.getElementById("new-suggestion-notification").style.display = "block";
+                            
+                            // Cache la notification après quelques secondes (par exemple 5 secondes)
+                            setTimeout(function() {
+                                document.getElementById("new-suggestion-notification").style.display = "none";
+                            }, 5000);
+                        <?php endif; ?>
+                    });
+
+            </script>
 
                 <script>
                 // Fonction pour afficher/masquer le menu déroulant
