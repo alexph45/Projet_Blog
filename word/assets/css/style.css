@@ -2027,16 +2027,22 @@ label {
             
             }
         
-    /* Style du menu */
+/* Style du menu */
 .menu {
-    position: relative;
+    display: flex; /* Alignement horizontal des liens */
+    gap: 20px; /* Espacement entre les éléments du menu */
+}
+
+/* Chaque menu parent doit gérer son propre positionnement */
+.nav {
+    position: relative; /* Positionnement relatif pour chaque lien */
 }
 
 /* Menu déroulant caché par défaut */
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%; /* Juste en dessous de "PROJETS" */
+    top: 100%; /* Positionne le menu directement sous le lien parent */
     left: 0;
     background-color: #ffffff;
     border: 1px solid #ccc;
@@ -2045,17 +2051,24 @@ label {
     z-index: 1000;
 }
 
+/* Affiche le menu déroulant uniquement lorsque le lien est survolé */
+.nav:hover .dropdown-menu {
+    display: block;
+}
+
 /* Style des liens dans le menu déroulant */
 .dropdown-menu a {
     display: block;
     padding: 10px;
-    text-decoration: none;
-    color: #333;
+    text-decoration: none; /* Enlève le soulignement des liens */
+    color: #333; /* Définit une couleur neutre pour les liens */
 }
 
 .dropdown-menu a:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Change la couleur de fond au survol */
+    color: #000; /* Change la couleur du texte au survol (optionnel) */
 }
+
 
 
 
