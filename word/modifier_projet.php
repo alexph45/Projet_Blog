@@ -110,7 +110,7 @@ if (isset($_GET['id'])) {
         </ul>
 
         <?php if (isset($projet)): ?>
-            <!-- Formulaire de modification -->
+            
             <h2>Modifier le projet</h2>
             <form method="POST" action="" enctype="multipart/form-data">
                 <label for="titre">Titre du Projet :</label>

@@ -39,7 +39,26 @@
     <?php endif; ?>
     <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
 </div>
-
+<?php
+if (isset($_SESSION['success'])) {
+    echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['success']) . '</div>';
+    // Supprimer le message après affichage pour éviter qu'il reste après rechargement
+    unset($_SESSION['success']);
+}
+?>
+<style>
+    .alert {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+</style>
 
 <script>
 // Fonction pour afficher/masquer le menu déroulant
