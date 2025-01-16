@@ -723,7 +723,7 @@ label {
     
     
     .banniere{
-        background-image: url("assets/images/section-back.svg");
+        background-image: url("../images/section-back.svg");
         background-color: rgba(0, 0, 0, 0.801);
         color:white;
         height: 100px;
@@ -759,8 +759,39 @@ label {
         font-weight: 100;
     
     }
+
+
+    .carousel-item {
+        display: none; /* Cache tous les items */
+    }
+    
+    .carousel-item.item-0 {
+        display: block; /* Affiche uniquement le premier item */
+    }
+    
+
+
     
     /* Quatrième section - Blog*/ 
+
+
+    .dates {
+        position:absolute;
+        background: rgb(59, 59, 59);
+        color: #fff;
+        padding: 30px 35px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        margin-left:1%;
+      }
+
+      span {
+        font-size: 18px;
+        display: block;
+      }
+    
+    
     .title {
         text-align: center;
         padding-top: 15%;
@@ -1215,7 +1246,7 @@ label {
         
         
         .banniere{
-            background-image: url("assets/images/section-back.svg");
+            background-image: url("../images/section-back.svg");
             background-color: rgba(0, 0, 0, 0.801);
             color:white;
             height: 100px;
@@ -1249,10 +1280,41 @@ label {
             color:grey;
             font-size: 18px;
             font-weight: 100;
-        
+    
+        }
+
+        .carousel-item {
+            display: none; /* Cache tous les items */
         }
         
+        .carousel-item.item-0 {
+            display: block; /* Affiche uniquement le premier item */
+        }
+        
+
+
+
         /* Quatrième section - Blog*/ 
+
+
+        .dates {
+            position:absolute;
+            background: rgb(59, 59, 59);
+            color: #fff;
+            padding: 30px 35px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+            margin-left:1%;
+          }
+    
+          span {
+            font-size: 18px;
+            display: block;
+          }
+    
+
+
         .title {
             text-align: center;
             padding-top: 15%;
@@ -1337,6 +1399,7 @@ label {
             justify-content: left;
         
         }
+        
         
         
         /* Footer */
