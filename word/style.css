@@ -30,6 +30,22 @@ navbar {
 
 }
 
+.contact:hover{
+        
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(44, 44, 44);
+    font-weight: 100;
+    color:white;
+    padding: 15px 50px 15px 50px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    border-radius:3rem;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+
+}
+
 .contacte:hover{
     
     background-color: rgb(44, 44, 44);
@@ -42,6 +58,7 @@ navbar {
     display: inline-block;
     font-size:16px;
     border-radius:3rem;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
 
 }
 
@@ -54,11 +71,12 @@ navbar {
 }
 
 .nav:hover {
-
+    
     text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
 
 }
-
 
 
 .menu {
@@ -197,6 +215,11 @@ sectionapropos {
     color: #302c2c;
 }
 
+.apropos h2 {
+    font-size: 65px;
+    color: grey;
+}
+
 .apropos p {
     margin-top: 23%;
     margin-bottom: 4%;
@@ -269,6 +292,24 @@ sectionapropos {
 }
 
 /* Quatrième section - Blog*/ 
+
+.dates {
+    position:absolute;
+    background: rgb(59, 59, 59);
+    color: #fff;
+    padding: 30px 35px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    margin-left:1%;
+  }
+
+  span {
+    font-size: 18px;
+    display: block;
+  }
+
+
 .title {
     text-align: center;
     padding-top: 15%;
@@ -356,7 +397,7 @@ sectionapropos {
 
 
 /* Footer */
-
+    
 .footer-basic {
     margin-top: 5%;
     padding:1.3% 0;
@@ -374,7 +415,6 @@ sectionapropos {
     margin-bottom:0;
     color: grey;
   }
-
 
 
 /* Dernière section - Popup */
@@ -761,6 +801,23 @@ label {
     }
     
     /* Quatrième section - Blog*/ 
+
+    .dates {
+        position:absolute;
+        background: rgb(59, 59, 59);
+        color: #fff;
+        padding: 30px 35px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+        margin-left:1.3%;
+      }
+
+      span {
+        font-size: 18px;
+        display: block;
+      }
+
     .title {
         text-align: center;
         padding-top: 15%;
@@ -942,9 +999,7 @@ label {
         border-radius: 5px;
     }
     
-    .information {
-        
-    }
+    
     
     form {
         padding-top: 6%;
@@ -1968,15 +2023,7 @@ label {
 
 
 
-            .badge {
-                background-color: red;
-                color: white;
-                font-size: 12px;
-                padding: 5px;
-                border-radius: 50%;
-                margin-left: 5px;
-            }
-            
+    
     
 
  

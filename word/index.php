@@ -1,14 +1,22 @@
 <?php
 
-// Inclure le fichier de connexion et de filtres
+// Inclure le fichier de connexion
 require_once 'connect.php';
-require_once 'filtres.php'
+require_once 'filtres.php';
+session_start(); // Démarre la session
+
+
+// Vérifier si l'utilisateur est connecté 
+
+
+// Requête pour récupérer les projets et leurs catégories
+require_once 'filtres.php';
 ?>
 <html>
     <head>
         <title>Lewis Nathaniel</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="assets/css/style.css">
         
     </head>
 
@@ -25,76 +33,65 @@ require_once 'filtres.php'
             </div>
 
             <div class="menu">
-            <?php
-// Requête pour obtenir le nombre de nouvelles suggestions (par exemple, suggestions non lues)
-$query = "SELECT COUNT(*) AS nouveaux_projets FROM projets WHERE statut = 'nouveau'";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
-$nouveaux_projets = $row['nouveaux_projets'];
-?>
-
-            <?php session_start(); ?>
     <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS</a>
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <div id="dropdown-menu" class="dropdown-menu">
-            <a href="ajouter_projet.php">Ajouter un Projet</a>
-            <a href="ajouter_article.php">Ajouter un Article</a>
-            <a href="modifier_projet.php">Modifier un Projet</a>
-            <a href="modifier_article.php">Modifier un Article</a>
+    
+            <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <a href="ajouter_projet.php">Ajouter un Projet</a>
+                    <a href="suggestion.php">Suggestions de Projet</a>
+                    <a href="modifier_projet.php">Modifier un Projet</a>
+                    <a href="supprimer_projet.php">Supprimer un Projet</a>
+                    <a href="ajouter_article.php">Ajouter un Article</a>
+                    <a href="modifier_article.php">Modifier un Article</a>
+                </div>
+            <?php endif; ?>
+            
+            <a class="nav" href="#apropos">A PROPOS</a>
+            <a class="nav" href="#blog">BLOG</a>
+            
+            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
+                <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
+            <?php else: ?>
+                <a class="nav" href="connexion.php">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+                        <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
+                    </svg>
+                </a>
+            <?php endif; ?>
+            
+            <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
         </div>
-    <?php endif; ?>
-    <a class="nav" href="#apropos">A PROPOS</a>
-    <a class="nav" href="#blog">BLOG</a>
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <a class="nav" href="logout.php">DÉCONNEXION</a>
-    <?php else: ?>
-        <a class="nav" href="connexion.php">CONNEXION</a>
-    <?php endif; ?>
-    <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
-    <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS
-    <?php if ($nouveaux_projets > 0): ?>
-        <span class="badge"><?= $nouveaux_projets; ?></span>
-    <?php endif; ?>
-</a>
-
-</a>
-
-</div>
 
 
+                <script>
+                // Fonction pour afficher/masquer le menu déroulant
+                function toggleDropdown(event) {
+                    const menu = document.getElementById('dropdown-menu');
 
-<script>
-// Fonction pour afficher/masquer le menu déroulant
-function toggleDropdown(event) {
-    const menu = document.getElementById('dropdown-menu');
+                    // Si le menu est déjà affiché, le masquer
+                    if (menu.style.display === 'block') {
+                        menu.style.display = 'none';
+                    } else {
+                        menu.style.display = 'block';
+                    }
 
-    // Si le menu est déjà affiché, le masquer
-    if (menu.style.display === 'block') {
-        menu.style.display = 'none';
-    } else {
-        menu.style.display = 'block';
-    }
-
-    // Permettre au clic de continuer son comportement par défaut
-    // uniquement si le menu n'est pas visible
-    if (menu.style.display === 'block') {
-        event.preventDefault(); // Bloque le défilement vers l'ancre
-    }
-}
-
-
-// Fermer le menu déroulant si on clique ailleurs sur la page
-document.addEventListener('click', function(event) {
-    const menu = document.getElementById('dropdown-menu');
-    const isClickInside = menu.contains(event.target) || event.target.matches('.nav[href="#projet"]');
-    if (!isClickInside) {
-        menu.style.display = 'none';
-    }
-});
-</script>
+                    // Permettre au clic de continuer son comportement par défaut
+                    // uniquement si le menu n'est pas visible
+                    if (menu.style.display === 'block') {
+                        event.preventDefault(); // Bloque le défilement vers l'ancre
+                    }
+                }
 
 
-        </navbar>
+                // Fermer le menu déroulant si on clique ailleurs sur la page
+                document.addEventListener('click', function(event) {
+                    const menu = document.getElementById('dropdown-menu');
+                    const isClickInside = menu.contains(event.target) || event.target.matches('.nav[href="#projet"]');
+                    if (!isClickInside) {
+                        menu.style.display = 'none';
+                    }
+                });
+                </script>
 
 
 
@@ -105,23 +102,23 @@ document.addEventListener('click', function(event) {
 
         <section1>
 
-            <div class="presentation">
+        <div class="presentation">
 
                 <p id="t1">Hello, je suis...</p>
                 <h1 id="t2">Lewis Nathaniel</h1>
                 <h1 id="t3">UI & UX</h1>
 
                 <div class="link">
-                    <img src="https://1000logos.net/wp-content/uploads/2020/11/Behance-Logo-2020.jpg" alt="Logo de Behance" width="50" height="50">
-                    <img src="https://cdn.freebiesupply.com/logos/large/2x/dribbble-5-logo-png-transparent.png" width="50" height="50">
-                    <img src="https://1000logos.net/wp-content/uploads/2020/11/Behance-Logo-2020.jpg" alt="Logo de Behance" width="50" height="50">
-                    <img src="https://cdn.freebiesupply.com/logos/large/2x/dribbble-5-logo-png-transparent.png" width="50" height="50">
-                    <img src="https://1000logos.net/wp-content/uploads/2020/11/Behance-Logo-2020.jpg" alt="Logo de Behance" width="50" height="50">
-                    <img src="https://cdn.freebiesupply.com/logos/large/2x/dribbble-5-logo-png-transparent.png" width="50" height="50">
+                    <a href="https://www.behance.net/"> <img src="https://1000logos.net/wp-content/uploads/2020/11/Behance-Logo-2020.jpg" alt="Logo de Behance" width="50" height="50"></a>
+                  <a href ="https://dribbble.com/"><img src="https://cdn.freebiesupply.com/logos/large/2x/dribbble-5-logo-png-transparent.png" width="50" height="50"></a>
+                    <a href="https://fr.linkedin.com/"> <img src="assets/images/icons/linkedin.png" alt="Logo de Behance" width="50" height="50"></a>
+                    <a href="https://www.facebook.com/?locale=fr_FR"><img src="assets/images/icons/facebook.png" width="50" height="50"></a>
+                    <a href="https://www.instagram.com/"><img src="assets/images/icons/Instagram_icon.png" alt="Logo de Behance" width="50" height="50"></a>
+                    <a href="https://x.com/home"><img src="assets/images/icons/X.png" width="50" height="50"></a>
                 </div>
 
 
-                <a class="contact" onclick="togglePopup()" href="#">CONTACT</a>
+            <a class="contact" onclick="togglePopup()" href="#">CONTACT</a>
                 <div id="popup-overlay">
                 
                     <div class="popup-content">
@@ -129,27 +126,28 @@ document.addEventListener('click', function(event) {
                         <h1>CONTACT</h1>
                         <h2>APPELEZ-MOI OU ENVOYEZ-MOI UN MAIL</h2>
                         <div class="information">
-                        <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
-                          </svg> 01 02 03 04 05</p>
-                          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
-                          </svg> designer@ui43.com</p>
-                          </div>
+                            <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                            </svg> 01 02 03 04 05</p>
+                            <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                            </svg> designer@ui43.com</p>
+                            </div>
 
-                          <form>
-                          <label for="name">Adresse e-mail</label>
-                          <input type="text" id="name"  name="user_name">
-
-                          <label for="bio">Contenu</label>
-                        <textarea id="bio"  name="user_bio"></textarea>
-
-                          </form>
-                          
-                        <a href="#" class="contact">ENVOYER</a>
+                            <form id="contact-form" action="contact.php" method="POST">
+                                    <label for="email">Adresse e-mail</label>
+                                    <input type="email" id="email" name="email" required />
+                    
+                                    <label for="content">Contenu</label>
+                                    <textarea id="content" name="content" required></textarea>
+                    
+                                    <button type="submit" class="contact">ENVOYER</button>
+                                </form>
+                            
                         </div>
+
                         <div>
-                            <img src="assets/images/popup-1.jpg">
+                            <img src="assets/images/popup-1.jpg" alt="Contact Image" />
                         </div>
 
 
@@ -171,37 +169,37 @@ document.addEventListener('click', function(event) {
         </section1>
 
         <sectionprojet>
-        
-        <div class="filtre">
-    <a href="#" data-category="all">Tous</a>
-    <?php foreach ($categories as $category): ?>
-        <a href="#" data-category="<?= htmlspecialchars($category['nom']); ?>">
-            <?= htmlspecialchars($category['nom']); ?>
-        </a>
-    <?php endforeach; ?>
-</div>
 
-
-
-<div class="projets">
-    <?php foreach ($projets as $projet): ?>
-        <div class="projet" data-categories="<?= htmlspecialchars($projet['categories'] ?? ''); ?>">
-
-            <img src="<?= htmlspecialchars($projet['image_url']); ?>" alt="<?= htmlspecialchars($projet['titre']); ?>">
-            <div class="categorie">
-                <p><?= htmlspecialchars($projet['categories'] ?? 'Pas de catégorie'); ?></p>
-                <div class="infos">
-                    <div class="titre">
-                        <h1><?= htmlspecialchars($projet['titre']); ?></h1>
-                    </div>
-                    <div class="date">
-                        <h1><?= htmlspecialchars($projet['annee']); ?></h1>
-                    </div>
-                </div>
+                    <div class="filtre">
+                <a id="togg4" href="#" data-category="all">Tous</a>
+                <a id="togg1" href="#" data-category="Mobile">Mobile</a>
+                <a id="togg2" href="#" data-category="Web">Web</a>
+                <a id="togg3" href="#" data-category="Interaction">Interaction</a>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+
+            <div class="projets">
+                <?php foreach ($projets as $projet): ?>
+                    <div class="projet" data-categories="<?= htmlspecialchars($projet['categories']); ?>">
+                        <img src="<?= htmlspecialchars($projet['image_url']); ?>" alt="<?= htmlspecialchars($projet['titre']); ?>">
+                        <div class="categorie">
+                            <p><?= htmlspecialchars($projet['categories'] ?? 'Pas de catégorie'); ?></p>
+                            <div class="infos">
+                                <div class="titre">
+                                    <h1><?= htmlspecialchars($projet['titre']); ?></h1>
+                                </div>
+                                <div class="date">
+                                    <h1><?= htmlspecialchars($projet['annee']); ?></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+
+                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'user'): ?>
+                    <a href="suggestion_utilisateur.php">Demander une suggestion de projet</a>
+                    <?php endif; ?>
+
+            </div>
 
         
         </sectionprojet>
@@ -283,7 +281,12 @@ document.addEventListener('click', function(event) {
             </div>
 
             <div class="articles">
+
                 <div class="article">
+                    <div class="dates">
+                        <span>15</span>
+                        <span>JAN</span>
+                    </div>
                     <img src="assets/images/blog/airbnb-2384737_1920.jpg">
                     <h1>TOP 10 TRENDS FOR 2023</h1>
                     <p> Lorem ipsum dolor sit amet, consectetur 
@@ -297,6 +300,10 @@ document.addEventListener('click', function(event) {
                 </div>
 
                 <div class="article">
+                    <div class="dates">
+                        <span>15</span>
+                        <span>JAN</span>
+                    </div>
                     <img src="assets/images/blog/office-820390_1920.jpg">
                     <h1>WEBSITE INSPIRATION</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur 
@@ -309,6 +316,10 @@ document.addEventListener('click', function(event) {
                 </div>
 
                 <div class="article">
+                    <div class="dates">
+                        <span>15</span>
+                        <span>JAN</span>
+                    </div>
                     <img src="assets/images/blog/technology-3164715_1920.jpg">
                     <h1>CHANGES IN SOCIAL MEDIA</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur 
@@ -320,7 +331,15 @@ document.addEventListener('click', function(event) {
                     <a class="lire" href="#">LIRE</a>
                 </div>
             </div>
+
+
         </sectionblog>
+
+        
+
+
+
+
         <div class="footer-basic">
             <footer>
                 
@@ -330,6 +349,9 @@ document.addEventListener('click', function(event) {
                 
             </footer>
         </div>
+
+
+      
         <script>
     document.addEventListener('DOMContentLoaded', function() {
         const filterLinks = document.querySelectorAll('.filtre a');

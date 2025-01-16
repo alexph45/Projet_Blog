@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_name'] = $user['prenom'];  // Optionnel, ajouter un nom d'utilisateur pour l'afficher ailleurs
+            $_SESSION['user_role'] = $user['role'];
             $_SESSION['success'] = "Connexion réussie. Bienvenue, " . htmlspecialchars($user['prenom']) . "!";
             header('Location: index.php');
             exit;

@@ -1,6 +1,4 @@
 <?php
-session_start(); // Démarrer la session
-
 // Inclure le fichier de connexion à la base de données
 require_once 'connect.php';
 
@@ -34,22 +32,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     try {
-        // Préparer une requête pour insérer l'utilisateur dans la base de données
-        $stmt = $pdo->prepare("INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe) VALUES (:nom, :prenom, :email, :mot_de_passe)");
+        // Préparer une requête pour insérer l'utilisateur dans la base de données avec le rôle "user"
+        $stmt = $pdo->prepare("
+            INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, role) 
+            VALUES (:nom, :prenom, :email, :mot_de_passe, :role)
+        ");
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':mot_de_passe', $hashedPassword);
 
+        // Assigner le rôle "user" par défaut
+        $role = 'user';
+        $stmt->bindParam(':role', $role);
+
         // Exécuter la requête
         $stmt->execute();
 
-        // Démarrer la session et enregistrer les informations utilisateur
-        $_SESSION['user_email'] = $email;
-        $_SESSION['user_id'] = $pdo->lastInsertId(); // Enregistrer l'ID de l'utilisateur
-
-        // Rediriger l'utilisateur vers une page protégée ou d'accueil
-        header("Location: index.php"); // Par exemple, une page de bienvenue
+        // Rediriger l'utilisateur vers une page de connexion avec un message de succès
+        header("Location: connexion.php?success=1");
         exit;
     } catch (PDOException $e) {
         // Gérer les erreurs, notamment les e-mails dupliqués

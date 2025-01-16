@@ -8,7 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="assets/css/style1.css">
+
 </head>
 <body>
 
@@ -20,7 +21,7 @@ session_start();
             <div class="error-message">
                 <?php
                     echo htmlspecialchars($_SESSION['error']);
-                    unset($_SESSION['error']); // Effacer le message après affichage
+                    unset($_SESSION['error']); // Effacer le message après affichagev
                 ?>
             </div>
         <?php endif; ?>
@@ -35,26 +36,17 @@ session_start();
             </div>
         <?php endif; ?>
 
-        <!-- Si l'utilisateur est connecté, afficher le bouton de déconnexion -->
-        <?php if (isset($_SESSION['user'])): ?>
-            <p>Bienvenue, <?php echo htmlspecialchars($_SESSION['user']); ?> !</p>
-            <form action="logout.php" method="POST">
-                <button type="submit" class="connexion-btn">Se déconnecter</button>
-            </form>
-        <?php else: ?>
-            <!-- Sinon afficher le formulaire de connexion -->
-            <form action="login-process.php" method="POST">
-                <label for="email">Adresse e-mail</label>
-                <input type="email" id="email" name="email" required>
+        <form action="login-process.php" method="POST">
+            <label for="email">Adresse e-mail</label>
+            <input type="email" id="email" name="email" required>
 
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required>
 
-                <button type="submit" class="connexion-btn">Se connecter</button>
-            </form>
-            <p>Pas encore membre ? <a href="inscription.html">S'inscrire</a></p>
-        <?php endif; ?>
+            <button type="submit" class="connexion-btn">Se connecter</button>
+        </form>
 
+        <p>Pas encore membre ? <a href="inscription.html">S'inscrire</a></p>
         <button onclick="window.location.href='index.php'" class="retour-btn">Retour vers la page d'accueil</button>
     </div>
 
