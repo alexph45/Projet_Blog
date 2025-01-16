@@ -6,7 +6,6 @@ session_start();
 require_once 'connect.php';
 
 // Traitement du formulaire
-// Traitement du formulaire
 $message = '';
 $success = false;
 
@@ -17,8 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $annee = htmlspecialchars($_POST['annee']);
     $image_path = '';
 
+    // Vérification et validation de l'année
+    if (!empty($annee)) {
+        if (!preg_match('/^\d{4}$/', $annee) || $annee < 1900 || $annee > date('Y')) {
+            $message = "Veuillez entrer une année valide (format : AAAA, entre 1900 et l'année actuelle).";
+            $success = false;
+        }
+    } else {
+        $message = "L'année est obligatoire.";
+        $success = false;
+    }
+
     // Vérifier si une image a été envoyée
-    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    if (empty($message) && isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $upload_dir = 'uploads/';
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 0777, true);
@@ -30,11 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Redimensionnement de l'image
         list($width, $height, $type) = getimagesize($_FILES['image']['tmp_name']);
 
-        // Définir les dimensions de l'image
         $new_width = 370;
         $new_height = 300;
 
-        // Créer une nouvelle image en fonction du type de l'image
         if ($type == IMAGETYPE_JPEG) {
             $src = imagecreatefromjpeg($_FILES['image']['tmp_name']);
         } elseif ($type == IMAGETYPE_PNG) {
@@ -46,13 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        // Créer une nouvelle image vide avec les nouvelles dimensions
         $dst = imagecreatetruecolor($new_width, $new_height);
-
-        // Redimensionner l'image
         imagecopyresampled($dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
 
-        // Sauvegarder l'image redimensionnée
         if ($type == IMAGETYPE_JPEG) {
             imagejpeg($dst, $image_path);
         } elseif ($type == IMAGETYPE_PNG) {
@@ -61,18 +65,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             imagegif($dst, $image_path);
         }
 
-        // Libérer la mémoire
         imagedestroy($src);
         imagedestroy($dst);
 
-    } else {
+    } else if (empty($message)) {
         $message = "L'image est obligatoire.";
     }
 
-    // Validation des champs
-    if (!empty($titre) && !empty($description) && !empty($annee) && !empty($image_path)) {
+    if (empty($message) && !empty($titre) && !empty($description) && !empty($image_path)) {
         try {
-            // Insertion dans la base de données
             $stmt = $pdo->prepare(
                 'INSERT INTO projets (titre, description, image_url, date_creation, annee) 
                 VALUES (?, ?, ?, ?, ?)'
@@ -83,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (PDOException $e) {
             $message = "Erreur lors de l'ajout du projet : " . $e->getMessage();
         }
-    } else {
+    } else if (empty($message)) {
         $message = "Veuillez remplir tous les champs.";
     }
 }
@@ -117,23 +118,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="image">Image (obligatoire) :</label>
                 <input type="file" id="image" name="image" accept="image/*" required>
 
+                <label>Choisir des catégories :</label><br>
+                        <?php
+                        $stmt_categories = $pdo->query("SELECT id, nom FROM categories");
+                        $categories = $stmt_categories->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach ($categories as $categorie) {
+                            ?>
+                            <input type="checkbox" name="categories[]" value="<?= htmlspecialchars($categorie['id']) ?>"> <?= htmlspecialchars($categorie['nom']) ?><br>
+                            <?php
+                        }
+                        ?>
+
                 <button type="submit" class="btn-submit">Ajouter</button>
                 <button onclick="window.location.href='index.php'" class="btn-return">Retour vers la page d'accueil</button>
             </form>
+            <?php if (!empty($message)): ?>
+                <p class="error-message"><?= $message ?></p>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
-
-    <script>
-        // JavaScript pour vérifier si l'image est présente
-        const form = document.getElementById('projectForm');
-        
-        form.addEventListener('submit', function(event) {
-            const imageInput = document.getElementById('image');
-            if (!imageInput.files.length) {
-                alert("L'image est obligatoire.");
-                event.preventDefault();
-            }
-        });
-    </script>
+    <script src="assets/js/validation.js"></script>
 </body>
 </html>

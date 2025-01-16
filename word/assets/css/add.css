@@ -88,16 +88,17 @@ textarea {
     background-color: #0056b3;
 }
 
-.message {
-    margin-top: 20px;
-    font-size: 16px;
-    text-align: center;
-    color: green;
+.error-message {
+    color: red;
     font-weight: bold;
+    margin-top: 10px;
 }
 
-.error {
-    color: red;
+.message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
 }
 
 @keyframes fadeIn {

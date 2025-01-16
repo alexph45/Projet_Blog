@@ -33,21 +33,27 @@ require_once 'filtres.php';
             </div>
 
             <div class="menu">
-    <a class="nav" href="#projet" onclick="toggleDropdown(event)">PROJETS</a>
-    
-            <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
-                <div id="dropdown-menu" class="dropdown-menu">
-                    <a href="ajouter_projet.php">Ajouter un Projet</a>
-                    <a href="suggestion.php">Suggestions de Projet</a>
-                    <a href="modifier_projet.php">Modifier un Projet</a>
-                    <a href="supprimer_projet.php">Supprimer un Projet</a>
-                    <a href="ajouter_article.php">Ajouter un Article</a>
-                    <a href="modifier_article.php">Modifier un Article</a>
-                </div>
-            <?php endif; ?>
+            <a class="nav" href="#projet" onclick="toggleDropdown(event, 'dropdown-projet')">PROJETS</a>
+                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                    <div id="dropdown-projet" class="dropdown-menu">
+                        <a href="ajouter_projet.php">Ajouter un Projet</a>
+                        <a href="suggestion.php">Suggestions de Projet</a>
+                        <a href="modifier_projet.php">Modifier un Projet</a>
+                        <a href="supprimer_projet.php">Supprimer un Projet</a>
+                    </div>
+                <?php endif; ?>
             
             <a class="nav" href="#apropos">A PROPOS</a>
-            <a class="nav" href="#blog">BLOG</a>
+
+            <a class="nav" href="#blog" onclick="toggleDropdown(event, 'dropdown-blog')">BLOG</a>
+                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                    <div id="dropdown-blog" class="dropdown-menu">
+                        <a href="ajouter_article.php">Ajouter un Article</a>
+                        <a href="modifier_article.php">Modifier un Article</a>
+                        <a href="supprimer_article.php">Supprimer un Article</a>
+                    </div>
+                <?php endif; ?>
+
             
             <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
                 <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
@@ -63,41 +69,7 @@ require_once 'filtres.php';
         </div>
 
 
-                <script>
-                // Fonction pour afficher/masquer le menu déroulant
-                function toggleDropdown(event) {
-                    const menu = document.getElementById('dropdown-menu');
-
-                    // Si le menu est déjà affiché, le masquer
-                    if (menu.style.display === 'block') {
-                        menu.style.display = 'none';
-                    } else {
-                        menu.style.display = 'block';
-                    }
-
-                    // Permettre au clic de continuer son comportement par défaut
-                    // uniquement si le menu n'est pas visible
-                    if (menu.style.display === 'block') {
-                        event.preventDefault(); // Bloque le défilement vers l'ancre
-                    }
-                }
-
-
-                // Fermer le menu déroulant si on clique ailleurs sur la page
-                document.addEventListener('click', function(event) {
-                    const menu = document.getElementById('dropdown-menu');
-                    const isClickInside = menu.contains(event.target) || event.target.matches('.nav[href="#projet"]');
-                    if (!isClickInside) {
-                        menu.style.display = 'none';
-                    }
-                });
-                </script>
-
-
-
         </navbar>
-
-
 
 
         <section1>
@@ -350,33 +322,6 @@ require_once 'filtres.php';
             </footer>
         </div>
 
-
-      
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const filterLinks = document.querySelectorAll('.filtre a');
-        const projects = document.querySelectorAll('.projet');
-        
-        filterLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const category = link.getAttribute('data-category');
-                
-                projects.forEach(project => {
-                    const projectCategories = project.getAttribute('data-categories').split(' / ');
-                    
-                    if (category === 'all' || projectCategories.includes(category)) {
-                        project.style.display = 'block';
-                    } else {
-                        project.style.display = 'none';
-                    }
-                });
-            });
-        });
-    });
-</script>
-
-
-    <script src="java.js"></script>
+    <script src="assets/js/java.js"></script>
     </body>
 </html>

@@ -33,8 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validation de l'année côté serveur
     $current_year = date('Y');
-    if (!filter_var($annee, FILTER_VALIDATE_INT) || $annee < 1900 || $annee > $current_year) {
-        $message = "L'année doit être un nombre compris entre 1900 et $current_year.";
+    if (!filter_var($annee, FILTER_VALIDATE_INT) || $annee < 1950 || $annee > $current_year) {
+        $message = "L'année doit être un nombre compris entre 1950 et $current_year.";
     } else {
         // Vérification si une image a été envoyée
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
