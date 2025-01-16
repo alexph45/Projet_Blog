@@ -11,6 +11,8 @@ session_start(); // Démarre la session
 
 // Requête pour récupérer les projets et leurs catégories
 require_once 'filtres.php';
+
+
 ?>
 <html>
     <head>
@@ -81,41 +83,57 @@ require_once 'filtres.php';
         <?php
 
 
-            // Récupère la dernière suggestion ajoutée
-            $sql = "SELECT id_suggestion, titre, description, date_creation FROM suggestion ORDER BY date_creation DESC LIMIT 1";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            $last_suggestion = $stmt->fetch(PDO::FETCH_ASSOC);
+// Vérifier si l'utilisateur est admin
+$is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin';
 
-            // Si la suggestion existe et que la date est plus récente que la dernière vérification (par exemple session ou un flag)
-            $last_check_time = $_SESSION['last_check_time'] ?? '1970-01-01 00:00:00';  // Utilise la session ou une autre méthode pour stocker la dernière vérification
-            if ($last_suggestion && $last_suggestion['date_creation'] > $last_check_time) {
-                $_SESSION['last_check_time'] = $last_suggestion['date_creation'];  // Met à jour la dernière vérification
-                $new_suggestion = true;
-            } else {
-                $new_suggestion = false;
-            }
-            ?>
+$new_suggestion = false; // Initialisation
 
-        
-        <div id="new-suggestion-notification" style="display: none;">
-            <p><strong>Nouvelle suggestion ajoutée !</strong></p>
-        </div>
+if ($is_admin) {
+    // Connexion à la base de données
+    // $pdo = new PDO("mysql:host=localhost;dbname=ma_base", "username", "password");
 
-            <script>
-                                    document.addEventListener("DOMContentLoaded", function() {
-                        <?php if ($new_suggestion): ?>
-                            // Si une nouvelle suggestion est détectée
-                            document.getElementById("new-suggestion-notification").style.display = "block";
-                            
-                            // Cache la notification après quelques secondes (par exemple 5 secondes)
-                            setTimeout(function() {
-                                document.getElementById("new-suggestion-notification").style.display = "none";
-                            }, 5000);
-                        <?php endif; ?>
-                    });
+    // Initialiser la dernière vérification si nécessaire
+    if (!isset($_SESSION['last_check_time'])) {
+        $_SESSION['last_check_time'] = '1970-01-01 00:00:00'; // Valeur par défaut
+    }
 
-            </script>
+    // Récupérer la dernière suggestion
+    $sql = "SELECT * FROM suggestion ORDER BY date_creation DESC LIMIT 1;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $last_suggestion = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($last_suggestion) {
+        $last_check_time = date('Y-m-d H:i:s', strtotime($_SESSION['last_check_time']));
+
+
+        // Comparaison des dates
+        if ($last_suggestion['date_creation'] > $last_check_time) {
+            $_SESSION['last_check_time'] = $last_suggestion['date_creation']; // Mettre à jour
+            $new_suggestion = true;
+         
+        } 
+    } 
+}
+?>
+<div id="new-suggestion-notification" style="display: none;">
+    <p><strong>Nouvelle suggestion ajoutée !</strong></p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    <?php if ($new_suggestion): ?>
+        document.getElementById("new-suggestion-notification").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("new-suggestion-notification").style.display = "none";
+        }, 5000);
+    <?php else: ?>
+        console.log("Pas de nouvelle suggestion.");
+    <?php endif; ?>
+});
+</script>
+
+
 
                 <script>
                 // Fonction pour afficher/masquer le menu déroulant
@@ -224,12 +242,14 @@ require_once 'filtres.php';
 
         <sectionprojet>
 
-                    <div class="filtre">
-                <a id="togg4" href="#" data-category="all">Tous</a>
-                <a id="togg1" href="#" data-category="Mobile">Mobile</a>
-                <a id="togg2" href="#" data-category="Web">Web</a>
-                <a id="togg3" href="#" data-category="Interaction">Interaction</a>
-            </div>
+        <div class="filtre">
+    <a href="#" data-category="all">Tous</a>
+    <?php foreach ($categories as $category): ?>
+        <a href="#" data-category="<?= htmlspecialchars($category['nom']); ?>">
+            <?= htmlspecialchars($category['nom']); ?>
+        </a>
+    <?php endforeach; ?>
+</div>
 
             <div class="projets">
                 <?php foreach ($projets as $projet): ?>
