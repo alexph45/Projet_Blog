@@ -257,7 +257,7 @@ sectionapropos {
     color: black;
     padding: 3%;
     font-style: normal;
-    font-size: 23px;
+    font-size: 15px;
     font-weight: 500;
 }
 
@@ -266,6 +266,11 @@ sectionapropos {
     font-size: 18px;
     font-weight: 100;
 
+}
+
+p.avis {
+    color: grey;
+    font-size:15px;
 }
 
 /* Quatrième section - Blog*/ 
@@ -2058,7 +2063,6 @@ label {
 
 .nav  a {
     color: black;
-    text-decoration: none;
 }
 
 /* Menu déroulant caché par défaut */

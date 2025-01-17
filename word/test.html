@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumettre un Témoignage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Soumettre un Témoignage</h1>
+<p>Merci de partager votre expérience. Votre témoignage sera examiné avant d'être publié.</p>
+
+<form id="testimonialForm" action="/soumettre-temoignage" method="POST" enctype="multipart/form-data">
+  <label for="nomAuteur">Nom :</label>
+  <input type="text" id="nomAuteur" name="nomAuteur" placeholder="Votre nom" required>
+
+  <label for="entrepriseAuteur">Entreprise (optionnel) :</label>
+  <input type="text" id="entrepriseAuteur" name="entrepriseAuteur" placeholder="Nom de votre entreprise">
+
+  <label for="texteTemoignage">Témoignage :</label>
+  <textarea id="texteTemoignage" name="texteTemoignage" rows="5" placeholder="Écrivez votre témoignage ici..." required></textarea>
+
+  <label for="photoAuteur">Photo de profil (optionnel) :</label>
+  <input type="file" id="photoAuteur" name="photoAuteur" accept="image/*">
+
+  <button type="submit">Envoyer le témoignage</button>
+</form>
+
+</body>
+</html>

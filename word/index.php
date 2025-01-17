@@ -248,17 +248,15 @@ document.addEventListener('click', function (event) {
            <li class="carousel-item item-0" aria-hidden="false">
            <div class="banniere">
 
-<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque eu enim eget luctus. Sed augue felis, 
-    facilisis et elementum vitae, aliquam sit amet ante. Sed iaculis eros sem, elementum consequat est consequat eu. Quisque 
-    aliquet a ipsum nec tincidunt. Nulla vitae rhoncus leo. Praesent dui sapien, bibendum quis tempus dictum.</p>
+<p> Un service impeccable et une écoute attentive à mes besoins. Mon site internet est désormais rapide, moderne et parfaitement adapté à mes attentes. Merci pour ce travail de qualité !</p>
 
 <div class="profilauteur">
     <img src="assets/images/lena.jpg" width="125px" height="125px">
 </div>
 
-<div class="auteur"
-    <h1> Lena M. Brooks </h1>
-    <h2>Marketing House</h2>
+<div class="auteur">
+    <h1> Sophie Martin</h1>
+    <h2>CréaDesign Studio</h2>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
       </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -270,6 +268,7 @@ document.addEventListener('click', function (event) {
       </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
       </svg>
+      <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
 </div>
 
 </div>
@@ -277,17 +276,15 @@ document.addEventListener('click', function (event) {
            <li class="carousel-item item-1" aria-hidden="true">
            <div class="banniere">
 
-<p>  dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque eu enim eget luctus. Sed augue felis, 
-    facilisis et elementum vitae, aliquam sit amet ante. Sed iaculis eros sem, elementum consequat est consequat eu. Quisque 
-    aliquet a ipsum nec tincidunt. Nulla vitae rhoncus leo. Praesent dui sapien, bibendum quis tempus dictum.</p>
+<p>  L'équipe a été très réactive et a su transformer mes idées en un site professionnel et fonctionnel. Quelques améliorations pourraient être apportées, mais dans l'ensemble, je suis satisfait</p>
 
 <div class="profilauteur">
     <img src="https://studio-amelie-marzouk.com/wp-content/uploads/2023/07/AmelieMarzouk-Ariane-Cronel-37_pp-scaled.jpg" width="125px" height="125px">
 </div>
 
-<div class="auteur"
-    <h1> Lena M. Brooks </h1>
-    <h2>Marketing House</h2>
+<div class="auteur">
+    <h1> Julien Durand</h1>
+    <h2>Innovatech</h2>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
       </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -297,6 +294,7 @@ document.addEventListener('click', function (event) {
       </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
       </svg> 
+      <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
 </div>
 
 </div>
@@ -304,16 +302,14 @@ document.addEventListener('click', function (event) {
            <li class="carousel-item item-2" aria-hidden="true">
            <div class="banniere">
 
-<p> s pellentesque eu enim eget luctus. Sed augue felis, 
-    facilisis et elementum vitae, aliquam sit amet ante. Sed iaculis eros sem, elementum consequat est consequat eu. Quisque 
-    aliquet a ipsum nec tincidunt. Nulla vitae rhoncus leo. Praesent dui sapien, bibendum quis tempus dictum.</p>
+<p>J'ai apprécié leur engagement, mais le processus de communication pourrait être amélioré. Le résultat final est correct, mais ce n'était pas à la hauteur de mes espérances.</p>
 
 <div class="profilauteur">
     <img src="https://media.licdn.com/dms/image/v2/D4E03AQF05K6YjbdkBg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1731924206011?e=2147483647&v=beta&t=1xbRlKdDcvkcdLstpgQquhz8K7VTghuvpnJII-6CJ58" width="125px" height="125px">
 </div>
 
-<div class="auteur"
-    <h1> Lena M. Brooks </h1>
+<div class="auteur">
+    <h1> Amélie Leblanc </h1>
     <h2>Marketing House</h2>
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
@@ -321,11 +317,8 @@ document.addEventListener('click', function (event) {
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
       </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16">
-        <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
-      </svg>
+      </svg> 
+      <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
 </div>
 
 </div>
@@ -336,10 +329,7 @@ document.addEventListener('click', function (event) {
         
         
 
-            <div class="auteurtemoignage">
-
-
-            </div>
+            
 
 
 
