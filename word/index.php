@@ -242,98 +242,55 @@ document.addEventListener('click', function (event) {
 
         </sectionapropos>
 
-        <sectiontemoignage>
+        <?php try {
+            $host = 'localhost';
+            $dbname = 'blog';
+            $user = 'root'; // Définition explicite de l'utilisateur
+            $password = ''; 
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        
-           <li class="carousel-item item-0" aria-hidden="false">
-           <div class="banniere">
+    // Récupérer les témoignages validés
+    $sql = "SELECT nom_auteur, entreprise_auteur, texte, note, chemin_image FROM temoignages WHERE statut = 'valide' ORDER BY date_creation DESC";
+    $stmt = $pdo->query($sql);
+    $temoignages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-<p> Un service impeccable et une écoute attentive à mes besoins. Mon site internet est désormais rapide, moderne et parfaitement adapté à mes attentes. Merci pour ce travail de qualité !</p>
+} catch (PDOException $e) {
+    die("Erreur : " . $e->getMessage());
+}
+?>
 
-<div class="profilauteur">
-    <img src="assets/images/lena.jpg" width="125px" height="125px">
-</div>
+<sectiontemoignage>
+    <ul>
+        <?php if (!empty($temoignages)): ?>
+            <?php foreach ($temoignages as $index => $temoignage): ?>
+                <li class="carousel-item item-<?= $index ?>" aria-hidden="false">
+                    <div class="banniere">
+                        <p><?= htmlspecialchars($temoignage['texte']) ?></p>
 
-<div class="auteur">
-    <h1> Sophie Martin</h1>
-    <h2>CréaDesign Studio</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg>
-      <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
-</div>
+                        <div class="profilauteur">
+                            <img src="<?= htmlspecialchars($temoignage['chemin_image'] ?: 'assets/images/default-profile.jpg') ?>" width="125px" height="125px" alt="Photo de l'auteur">
+                        </div>
 
-</div>
-           </li>
-           <li class="carousel-item item-1" aria-hidden="true">
-           <div class="banniere">
+                        <div class="auteur">
+                            <h1><?= htmlspecialchars($temoignage['nom_auteur']) ?></h1>
+                            <h2><?= htmlspecialchars($temoignage['entreprise_auteur'] ?: '-') ?></h2>
 
-<p>  L'équipe a été très réactive et a su transformer mes idées en un site professionnel et fonctionnel. Quelques améliorations pourraient être apportées, mais dans l'ensemble, je suis satisfait</p>
-
-<div class="profilauteur">
-    <img src="https://studio-amelie-marzouk.com/wp-content/uploads/2023/07/AmelieMarzouk-Ariane-Cronel-37_pp-scaled.jpg" width="125px" height="125px">
-</div>
-
-<div class="auteur">
-    <h1> Julien Durand</h1>
-    <h2>Innovatech</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> 
-      <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
-</div>
-
-</div>
-           </li>
-           <li class="carousel-item item-2" aria-hidden="true">
-           <div class="banniere">
-
-<p>J'ai apprécié leur engagement, mais le processus de communication pourrait être amélioré. Le résultat final est correct, mais ce n'était pas à la hauteur de mes espérances.</p>
-
-<div class="profilauteur">
-    <img src="https://media.licdn.com/dms/image/v2/D4E03AQF05K6YjbdkBg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1731924206011?e=2147483647&v=beta&t=1xbRlKdDcvkcdLstpgQquhz8K7VTghuvpnJII-6CJ58" width="125px" height="125px">
-</div>
-
-<div class="auteur">
-    <h1> Amélie Leblanc </h1>
-    <h2>Marketing House</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-      </svg> 
-      <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
-</div>
-
-</div>
-           </li>
-</ul>
-
-
-        
-        
-
-            
-
-
-
-        </sectiontemoignage>
+                            <?php for ($i = 0; $i < (int) $temoignage['note']; $i++): ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            <?php endfor; ?>
+                            <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Aucun témoignage disponible pour le moment.</p>
+        <?php endif; ?>
+    </ul>
+</sectiontemoignage>
 
 
         <sectionblog>
