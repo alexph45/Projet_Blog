@@ -19,8 +19,8 @@ if (isset($_GET['id_suggestion'])) {
         echo "<p><strong>Année :</strong> " . htmlspecialchars($suggestion['annee']) . "</p>";
         echo "<p><strong>Date de création :</strong> " . htmlspecialchars($suggestion['date_creation']) . "</p>";
         echo "<p><strong>Image :</strong><br><img src='" . htmlspecialchars($suggestion['image_url']) . "' alt='Image' style='max-width:300px;'></p>";
-        
-        // Formulaire pour accepter la suggestion avec des checkboxes
+
+        // Formulaire pour accepter la suggestion avec une liste déroulante
         echo "<h2>Accepter cette suggestion</h2>";
         echo "<form action='accepter_suggestion.php' method='POST'>";
         echo "<label>Choisir des catégories :</label><br>";
@@ -28,15 +28,17 @@ if (isset($_GET['id_suggestion'])) {
         // Récupérer toutes les catégories
         $stmt_categories = $pdo->query("SELECT id, nom FROM categories");
         $categories = $stmt_categories->fetchAll(PDO::FETCH_ASSOC);
-        
-        // Afficher chaque catégorie comme une checkbox
+
+        // Créer une liste déroulante
+        echo "<select id='categories-select' name='categories[]' multiple size='3' style='width: 100%;'>";
         foreach ($categories as $categorie) {
-            echo "<input type='checkbox' name='categories[]' value='" . htmlspecialchars($categorie['id']) . "'> " . htmlspecialchars($categorie['nom']) . "<br>";
+            echo "<option value='" . htmlspecialchars($categorie['id']) . "'>" . htmlspecialchars($categorie['nom']) . "</option>";
         }
+        echo "</select>";
 
         // Ajouter un champ caché pour l'ID de la suggestion
         echo "<input type='hidden' name='id_suggestion' value='" . htmlspecialchars($suggestion['id_suggestion']) . "'>";
-        echo "<button type='submit'>Accepter et ajouter aux catégories sélectionnées</button>";
+        echo "<br><button type='submit' style='margin-top: 10px;'>Accepter et ajouter aux catégories sélectionnées</button>";
         echo "</form>";
 
         // Bouton pour refuser la suggestion
@@ -46,6 +48,20 @@ if (isset($_GET['id_suggestion'])) {
         echo "<button type='submit'>Refuser</button>";
         echo "</form>";
 
+        // Script JavaScript pour gérer la sélection
+        echo "<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const select = document.getElementById('categories-select');
+            select.addEventListener('mousedown', function(e) {
+                e.preventDefault(); // Empêche le comportement par défaut du clic
+                const option = e.target;
+                if (option.tagName === 'OPTION') {
+                    // Inverse l'état de sélection de l'option
+                    option.selected = !option.selected;
+                }
+            });
+        });
+        </script>";
     } else {
         echo "<p>Suggestion non trouvée.</p>";
         echo "<a href='suggestions.php'>Retour à la liste</a>";

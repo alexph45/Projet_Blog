@@ -117,21 +117,25 @@ if ($is_admin) {
 }
 ?>
 <div id="new-suggestion-notification" style="display: none;">
-    <p><strong>Nouvelle suggestion ajoutée !</strong></p>
+    <p><strong>Nouvelle suggestion ajoutée ! (cliquez sur le bandeau pour masquer)</strong></p>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     <?php if ($new_suggestion): ?>
-        document.getElementById("new-suggestion-notification").style.display = "block";
-        setTimeout(() => {
-            document.getElementById("new-suggestion-notification").style.display = "none";
-        }, 5000);
+        const notification = document.getElementById("new-suggestion-notification");
+        notification.style.display = "block";
+
+
+        notification.addEventListener("click", function() {
+            notification.style.display = "none";
+        });
     <?php else: ?>
         console.log("Pas de nouvelle suggestion.");
     <?php endif; ?>
 });
 </script>
+
 
 
 
