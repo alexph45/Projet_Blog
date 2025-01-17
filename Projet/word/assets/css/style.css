@@ -1,0 +1,2017 @@
+/*Reset CSS */
+@media screen and (min-width: 1700px) {
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+navbar {
+    display:flex;
+    padding: 3% 13% 0px;
+    justify-content: space-between;
+    
+}
+
+.contacte{
+    
+    font-weight: 900;
+    color:black;
+    padding: 15px 50px 15px 50px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    border-radius:3rem;
+    border: 3px solid black;
+
+}
+
+.contacte:hover{
+    
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(44, 44, 44);
+    font-weight: 100;
+    color:white;
+    padding: 15px 50px 15px 50px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    border-radius:3rem;
+
+}
+
+.nav {
+    padding-right: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+    color: #302c2c;
+    font-size: 20px;
+}
+
+.nav:hover {
+
+    text-decoration: underline;
+
+}
+
+
+
+.menu {
+    margin-top: 20px;
+}
+
+.profil {
+    display:flex;
+}
+
+img.entete {
+    padding: 0px 10px 0px 0px;
+    border-radius: 50%;
+    width : 75px;
+    height : 75px;
+}
+
+.nom {
+    padding: 5px 0px 0px;
+    color: #302c2c;
+}
+
+/* Première section */
+
+section1 {
+    display:flex;
+    padding: 7% 13% 7%;
+
+}
+
+section1 #t1 {
+    font-size: 50px;
+    font-weight: 100;
+    color:rgb(49, 48, 48)
+}
+
+section1 #t2 {
+    font-size: 65px;
+    color: #302c2c;
+    
+}
+
+section1 #t3 {
+    font-size: 28px;
+    font-weight: 100;
+    color: grey;    
+    padding:0px 0px 50px;
+}
+
+.link img {
+    padding: 0px 0.5% 0px;
+}
+
+.illustration img {
+    padding: 0px 0px 0px 50%;
+}
+
+.contact{
+    
+    font-weight: 900;
+    color:black;
+    padding: 25px 70px 25px 70px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    margin:60px 2px;
+    border-radius:3rem;
+    border: 3px solid black;
+
+}
+
+
+/* Deuxième section - Projets */
+
+.filtre {
+
+    text-align: center;
+    padding: 0% 0% 3%;
+
+}
+
+.filtre a {
+
+    color: grey;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0% 1% 0%;
+
+}
+
+.projets {
+    columns: 3 auto;
+    text-align: center;
+    margin: 0% 8% 0%
+}
+
+.projet {
+    padding:0% 1% 0%; 
+}
+
+.categorie {
+    text-align: left;
+    padding:4% 4% 10%; 
+}
+
+.infos {
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color:#302c2c;
+}
+
+.projet img {
+    width: 481px;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+/* Troisième section - A propos */
+
+sectionapropos {
+    display:flex;
+    justify-content: center;
+    margin:11% 6% 8%;
+
+}
+
+.apropos {
+    padding: 0% 9% 0% 4%;
+}
+
+.apropos h1 {
+    font-size: 60px;
+    color: #302c2c;
+}
+
+.apropos p {
+    margin-top: 23%;
+    margin-bottom: 4%;
+    font-size: 23px;
+    font-weight: 100;
+    color: grey;
+}
+
+.image {
+    padding: 4% 0% 0% 10%;
+}
+
+.contact:hover{
+    
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(44, 44, 44);
+    font-weight: 100;
+    color:white;
+    padding: 25px 70px 25px 70px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    margin:60px 2px;
+    border-radius:3rem;
+
+}
+
+
+/* Troisième section - Témoignage */
+
+
+
+.banniere{
+    background-image: url("assets/images/section-back.svg");
+    background-color: rgba(0, 0, 0, 0.801);
+    color:white;
+    height: 100px;
+    font-size: 30px;
+    padding: 6%;
+    text-align: center;
+    font-style: italic;
+    font-weight: 100;
+    
+}
+
+.profilauteur {
+    position: relative;
+    top: 50px;
+}
+
+.profilauteur img {
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.auteur {
+    color: black;
+    padding: 3%;
+    font-style: normal;
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.auteur h2 {
+    color:grey;
+    font-size: 18px;
+    font-weight: 100;
+
+}
+
+/* Quatrième section - Blog*/ 
+.title {
+    text-align: center;
+    padding-top: 15%;
+    font-size: 30px;
+    color: #302c2c;
+}
+
+.title p {
+    color: grey;
+    padding-bottom: 2%;
+}
+
+.articles {
+
+    columns: 3 auto;
+    text-align: center;
+    margin: 0% 8% 0%
+
+}
+
+.articles img {
+
+    width:481px;
+    height:334px;
+    padding-bottom: 4%;
+
+}
+
+.article {
+    padding:0% 1% 0%; 
+}
+
+.article h1 {
+    font-size: 25px;
+    text-align: left;
+    padding-bottom: 7%;
+    color: #302c2c;
+}
+
+.article p {
+    color:grey;
+    font-size: 25px;
+    text-align: left;
+}
+
+.article .lire {
+
+    justify-content: left;
+}
+
+.lire {
+
+        color: grey;
+        padding: 15px 70px 15px 70px;
+        text-align: left;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10%;
+        margin-right: 100%;
+        font-size: 16px;
+        border-radius: 3rem;
+        border: 2.5px solid grey;
+    
+}
+
+.lire:hover {
+
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(44, 44, 44);
+    font-weight: 100;
+    color:white;
+    padding: 15px 70px 15px 70px;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    border-radius:3rem;
+
+
+}
+
+.boutonlire {
+    justify-content: left;
+
+}
+
+
+/* Footer */
+
+.footer-basic {
+    margin-top: 5%;
+    padding:1.3% 0;
+    background-color:#ffffff;
+    color:#4b4c4d;
+    background-color: #302c2c;
+  }
+  
+  .footer-basic ul {
+    padding-left:10%;
+    list-style:none;
+    text-align:left;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:0;
+    color: grey;
+  }
+
+
+
+/* Dernière section - Popup */
+
+
+  #popup-overlay {
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom : 0;
+    background:rgba(0, 0, 0, 0.678);
+    z-index:98;
+    display:none;
+
+}
+
+#popup-overlay.open {
+    display:block;
+}
+
+.popup-content {
+    max-width:900px;
+    width:100%;
+    padding:30px;
+    box-sizing:border-box;
+    background:white;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    display: flex;
+}
+
+.popup-content h1 {
+        font-size: 60px;
+        color: #302c2c;
+
+}
+
+.popup-content h2 {
+    font-size: 20px;
+    font-weight: 100;
+    color:#302c2c;  
+    padding-bottom: 4%;
+}
+
+
+.popup-content p {
+    margin: 20px 20px 0px 0px;
+    font-size: 20px;
+    font-weight: 100;
+    color:#302c2c;  
+}
+
+.popup-link {
+    text-decoration: none;
+    color:white;
+    background: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display:inline-block;
+}
+
+.popup-exit {
+    position:absolute;
+    top:0;
+    right:0;
+    text-decoration: none;
+    color: black ;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.information {
+    
+}
+
+form {
+    padding-top: 6%;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 4%;
+    font-weight: 900;
+  }
+  
+  label.light {
+    font-weight: 300;
+    display: inline;
+  }
+
+  input {
+    border: grey 1px solid;
+    border-radius: 2rem;
+    width: 90%;
+    height: 40px;
+  }
+
+  textarea {
+
+    border: grey 1px solid;
+    border-radius: 2rem;
+    width: 90%;
+    height: 40px;
+
+  }
+
+}
+
+
+
+
+@media screen and (max-width: 1700px) {
+
+    *{
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    
+    
+    navbar {
+        display:flex;
+        padding: 3% 13% 0px;
+        justify-content: space-between;
+        
+    }
+    
+    .contacte{
+        
+        font-weight: 900;
+        color:black;
+        padding: 15px 50px 15px 50px;
+        text-align:center;
+        text-decoration:none;
+        display: inline-block;
+        font-size:16px;
+        border-radius:3rem;
+        border: 3px solid black;
+    
+    }
+    
+    .contacte:hover{
+        
+        background-color: rgb(44, 44, 44);
+        border-color: rgb(44, 44, 44);
+        font-weight: 100;
+        color:white;
+        padding: 15px 50px 15px 50px;
+        text-align:center;
+        text-decoration:none;
+        display: inline-block;
+        font-size:16px;
+        border-radius:3rem;
+    
+    }
+    
+    .nav {
+        padding-right: 20px;
+        text-decoration: none;
+        font-weight: bolder;
+        color: #302c2c;
+        font-size: 20px;
+    }
+    
+    .nav:hover {
+    
+        text-decoration: underline;
+    
+    }
+    
+    
+    
+    .menu {
+        margin-top: 20px;
+    }
+    
+    .profil {
+        display:flex;
+    }
+    
+    img.entete {
+        padding: 0px 10px 0px 0px;
+        border-radius: 50%;
+        width : 75px;
+        height : 75px;
+    }
+    
+    .nom {
+        padding: 5px 0px 0px;
+        color: #302c2c;
+    }
+    
+    /* Première section */
+    
+    section1 {
+        display:flex;
+        padding: 7% 13% 7%;
+    
+    }
+    
+    section1 #t1 {
+        font-size: 50px;
+        font-weight: 100;
+        color:rgb(49, 48, 48)
+    }
+    
+    section1 #t2 {
+        font-size: 65px;
+        color: #302c2c;
+        
+    }
+    
+    section1 #t3 {
+        font-size: 28px;
+        font-weight: 100;
+        color: grey;    
+        padding:0px 0px 50px;
+    }
+    
+    .link img {
+        padding: 0px 0.5% 0px;
+    }
+    
+    .illustration img {
+        padding: 0px 0px 0px 50%;
+    }
+    
+    .contact{
+        
+        font-weight: 900;
+        color:black;
+        padding: 25px 70px 25px 70px;
+        text-align:center;
+        text-decoration:none;
+        display: inline-block;
+        font-size:16px;
+        margin:60px 2px;
+        border-radius:3rem;
+        border: 3px solid black;
+    
+    }
+    
+    
+    /* Deuxième section - Projets */
+    
+    .filtre {
+    
+        text-align: center;
+        padding: 0% 0% 3%;
+    
+    }
+    
+    .filtre a {
+    
+        color: grey;
+        text-decoration: none;
+        font-size: 20px;
+        margin: 0% 1% 0%;
+    
+    }
+    
+    .projets {
+        columns: 3 auto;
+        text-align: center;
+        margin: 0% 8% 0%
+    }
+    
+    .projet {
+        padding:0% 1% 0%; 
+    }
+    
+    .categorie {
+        text-align: left;
+        padding:4% 4% 10%; 
+    }
+    
+    .infos {
+        margin-top: 3%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color:#302c2c;
+    }
+    
+    .projet img {
+        width: 401px;
+        height: 100%;
+        border-radius: 1rem;
+    }
+    
+    /* Troisième section - A propos */
+    
+    sectionapropos {
+        display:flex;
+        justify-content: center;
+        margin:11% 6% 8%;
+    
+    }
+    
+    .apropos {
+        padding: 0% 9% 0% 4%;
+    }
+    
+    .apropos h1 {
+        font-size: 60px;
+        color: #302c2c;
+    }
+    
+    .apropos p {
+        margin-top: 23%;
+        margin-bottom: 4%;
+        font-size: 23px;
+        font-weight: 100;
+        color: grey;
+    }
+    
+    .image {
+        padding: 4% 0% 0% 10%;
+    }
+    
+    .contact:hover{
+        
+        background-color: rgb(44, 44, 44);
+        border-color: rgb(44, 44, 44);
+        font-weight: 100;
+        color:white;
+        padding: 25px 70px 25px 70px;
+        text-align:center;
+        text-decoration:none;
+        display: inline-block;
+        font-size:16px;
+        margin:60px 2px;
+        border-radius:3rem;
+    
+    }
+    
+    
+    /* Troisième section - Témoignage */
+    
+    
+    
+    .banniere{
+        background-image: url("assets/images/section-back.svg");
+        background-color: rgba(0, 0, 0, 0.801);
+        color:white;
+        height: 100px;
+        font-size: 30px;
+        padding: 6%;
+        text-align: center;
+        font-style: italic;
+        font-weight: 100;
+        
+    }
+    
+    .profilauteur {
+        position: relative;
+        top: 50px;
+    }
+    
+    .profilauteur img {
+        border-radius: 50%;
+        border: 5px solid white;
+    }
+    
+    .auteur {
+        color: black;
+        padding: 3%;
+        font-style: normal;
+        font-size: 23px;
+        font-weight: 500;
+    }
+    
+    .auteur h2 {
+        color:grey;
+        font-size: 18px;
+        font-weight: 100;
+    
+    }
+    
+    /* Quatrième section - Blog*/ 
+    .title {
+        text-align: center;
+        padding-top: 15%;
+        font-size: 30px;
+        color: #302c2c;
+    }
+    
+    .title p {
+        color: grey;
+        padding-bottom: 2%;
+    }
+    
+    .articles {
+    
+        columns: 3 auto;
+        text-align: center;
+        margin: 0% 8% 0%
+    
+    }
+    
+    .articles img {
+    
+        width:401px;
+        height:334px;
+        padding-bottom: 4%;
+    
+    }
+    
+    .article {
+        padding:0% 1% 0%; 
+    }
+    
+    .article h1 {
+        font-size: 25px;
+        text-align: left;
+        padding-bottom: 7%;
+        color: #302c2c;
+    }
+    
+    .article p {
+        color:grey;
+        font-size: 25px;
+        text-align: left;
+    }
+    
+    .article .lire {
+    
+        justify-content: left;
+    }
+    
+    .lire {
+    
+            color: grey;
+            padding: 15px 70px 15px 70px;
+            text-align: left;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10%;
+            margin-right: 100%;
+            font-size: 16px;
+            border-radius: 3rem;
+            border: 2.5px solid grey;
+        
+    }
+    
+    .lire:hover {
+    
+        background-color: rgb(44, 44, 44);
+        border-color: rgb(44, 44, 44);
+        font-weight: 100;
+        color:white;
+        padding: 15px 70px 15px 70px;
+        text-decoration:none;
+        display: inline-block;
+        font-size:16px;
+        border-radius:3rem;
+    
+    
+    }
+    
+    .boutonlire {
+        justify-content: left;
+    
+    }
+    
+    
+    /* Footer */
+    
+    .footer-basic {
+        margin-top: 5%;
+        padding:1.3% 0;
+        background-color:#ffffff;
+        color:#4b4c4d;
+        background-color: #302c2c;
+      }
+      
+      .footer-basic ul {
+        padding-left:10%;
+        list-style:none;
+        text-align:left;
+        font-size:18px;
+        line-height:1.6;
+        margin-bottom:0;
+        color: grey;
+      }
+    
+    
+    
+    /* Dernière section - Popup */
+    
+    
+      #popup-overlay {
+        position:fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom : 0;
+        background:rgba(0, 0, 0, 0.678);
+        z-index:98;
+        display:none;
+    
+    }
+    
+    #popup-overlay.open {
+        display:block;
+    }
+    
+    .popup-content {
+        max-width:900px;
+        width:100%;
+        padding:30px;
+        box-sizing:border-box;
+        background:white;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        display: flex;
+    }
+    
+    .popup-content h1 {
+            font-size: 60px;
+            color: #302c2c;
+    
+    }
+    
+    .popup-content h2 {
+        font-size: 20px;
+        font-weight: 100;
+        color:#302c2c;  
+        padding-bottom: 4%;
+    }
+    
+    
+    .popup-content p {
+        margin: 20px 20px 0px 0px;
+        font-size: 20px;
+        font-weight: 100;
+        color:#302c2c;  
+    }
+    
+    .popup-link {
+        text-decoration: none;
+        color:white;
+        background: black;
+        padding: 10px 20px;
+        border-radius: 5px;
+        display:inline-block;
+    }
+    
+    .popup-exit {
+        position:absolute;
+        top:0;
+        right:0;
+        text-decoration: none;
+        color: black ;
+        background: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    
+    .information {
+        
+    }
+    
+    form {
+        padding-top: 6%;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+        margin-top: 4%;
+        font-weight: 900;
+      }
+      
+      label.light {
+        font-weight: 300;
+        display: inline;
+      }
+    
+      input {
+        border: grey 1px solid;
+        border-radius: 2rem;
+        width: 90%;
+        height: 40px;
+      }
+    
+      textarea {
+    
+        border: grey 1px solid;
+        border-radius: 2rem;
+        width: 90%;
+        height: 40px;
+    
+      }
+    
+    }
+
+
+
+
+    @media screen and (max-width: 1485px) {
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        
+        
+        navbar {
+            display:flex;
+            padding: 3% 13% 0px;
+            justify-content: space-between;
+            
+        }
+        
+        .contacte{
+            
+            font-weight: 900;
+            color:black;
+            padding: 15px 50px 15px 50px;
+            text-align:center;
+            text-decoration:none;
+            display: inline-block;
+            font-size:16px;
+            border-radius:3rem;
+            border: 3px solid black;
+        
+        }
+        
+        .contacte:hover{
+            
+            background-color: rgb(44, 44, 44);
+            border-color: rgb(44, 44, 44);
+            font-weight: 100;
+            color:white;
+            padding: 15px 50px 15px 50px;
+            text-align:center;
+            text-decoration:none;
+            display: inline-block;
+            font-size:16px;
+            border-radius:3rem;
+        
+        }
+        
+        .nav {
+            padding-right: 20px;
+            text-decoration: none;
+            font-weight: bolder;
+            color: #302c2c;
+            font-size: 20px;
+        }
+        
+        .nav:hover {
+        
+            text-decoration: underline;
+        
+        }
+        
+        
+        
+        .menu {
+            margin-top: 20px;
+        }
+        
+        .profil {
+            display:flex;
+        }
+        
+        img.entete {
+            padding: 0px 10px 0px 0px;
+            border-radius: 50%;
+            width : 75px;
+            height : 75px;
+        }
+        
+        .nom {
+            padding: 5px 0px 0px;
+            color: #302c2c;
+        }
+        
+        /* Première section */
+        
+        section1 {
+            display:flex;
+            padding: 7% 13% 7%;
+        
+        }
+        
+        section1 #t1 {
+            font-size: 50px;
+            font-weight: 100;
+            color:rgb(49, 48, 48)
+        }
+        
+        section1 #t2 {
+            font-size: 65px;
+            color: #302c2c;
+            
+        }
+        
+        section1 #t3 {
+            font-size: 28px;
+            font-weight: 100;
+            color: grey;    
+            padding:0px 0px 50px;
+        }
+        
+        .link img {
+            padding: 0px 0.5% 0px;
+        }
+        
+        .illustration img {
+            padding: 0px 0px 0px 50%;
+        }
+        
+        .contact{
+            
+            font-weight: 900;
+            color:black;
+            padding: 25px 70px 25px 70px;
+            text-align:center;
+            text-decoration:none;
+            display: inline-block;
+            font-size:16px;
+            margin:60px 2px;
+            border-radius:3rem;
+            border: 3px solid black;
+        
+        }
+        
+        
+        /* Deuxième section - Projets */
+        
+        .filtre {
+        
+            text-align: center;
+            padding: 0% 0% 3%;
+        
+        }
+        
+        .filtre a {
+        
+            color: grey;
+            text-decoration: none;
+            font-size: 20px;
+            margin: 0% 1% 0%;
+        
+        }
+        
+        .projets {
+            columns: 3 auto;
+            text-align: center;
+            margin: 0% 8% 0%
+        }
+        
+        .projet {
+            padding:0% 1% 0%; 
+        }
+        
+        .categorie {
+            text-align: left;
+            padding:4% 4% 10%; 
+        }
+        
+        .infos {
+            margin-top: 3%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color:#302c2c;
+        }
+        
+        .projet img {
+            width: 301px;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        
+        /* Troisième section - A propos */
+        
+        sectionapropos {
+            display:flex;
+            justify-content: center;
+            margin:11% 6% 8%;
+        
+        }
+        
+        .apropos {
+            padding: 0% 9% 0% 4%;
+        }
+        
+        .apropos h1 {
+            font-size: 60px;
+            color: #302c2c;
+        }
+        
+        .apropos p {
+            margin-top: 23%;
+            margin-bottom: 4%;
+            font-size: 23px;
+            font-weight: 100;
+            color: grey;
+        }
+        
+        .image {
+            padding: 4% 0% 0% 10%;
+        }
+        
+        .contact:hover{
+            
+            background-color: rgb(44, 44, 44);
+            border-color: rgb(44, 44, 44);
+            font-weight: 100;
+            color:white;
+            padding: 25px 70px 25px 70px;
+            text-align:center;
+            text-decoration:none;
+            display: inline-block;
+            font-size:16px;
+            margin:60px 2px;
+            border-radius:3rem;
+        
+        }
+        
+        
+        /* Troisième section - Témoignage */
+        
+        
+        
+        .banniere{
+            background-image: url("assets/images/section-back.svg");
+            background-color: rgba(0, 0, 0, 0.801);
+            color:white;
+            height: 100px;
+            font-size: 30px;
+            padding: 6%;
+            text-align: center;
+            font-style: italic;
+            font-weight: 100;
+            
+        }
+        
+        .profilauteur {
+            position: relative;
+            top: 10px;
+        }
+        
+        .profilauteur img {
+            border-radius: 50%;
+            border: 5px solid white;
+        }
+        
+        .auteur {
+            color: black;
+            padding: 1%;
+            font-style: normal;
+            font-size: 23px;
+            font-weight: 500;
+        }
+        
+        .auteur h2 {
+            color:grey;
+            font-size: 18px;
+            font-weight: 100;
+        
+        }
+        
+        /* Quatrième section - Blog*/ 
+        .title {
+            text-align: center;
+            padding-top: 15%;
+            font-size: 30px;
+            color: #302c2c;
+        }
+        
+        .title p {
+            color: grey;
+            padding-bottom: 2%;
+        }
+        
+        .articles {
+        
+            columns: 3 auto;
+            text-align: center;
+            margin: 0% 8% 0%
+        
+        }
+        
+        .articles img {
+        
+            width:301px;
+            height:334px;
+            padding-bottom: 4%;
+        
+        }
+        
+        .article {
+            padding:0% 1% 0%; 
+        }
+        
+        .article h1 {
+            font-size: 25px;
+            text-align: left;
+            padding-bottom: 7%;
+            color: #302c2c;
+        }
+        
+        .article p {
+            color:grey;
+            font-size: 25px;
+            text-align: left;
+        }
+        
+        .article .lire {
+        
+            justify-content: left;
+        }
+        
+        .lire {
+        
+                color: grey;
+                padding: 15px 70px 15px 70px;
+                text-align: left;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 10%;
+                margin-right: 100%;
+                font-size: 16px;
+                border-radius: 3rem;
+                border: 2.5px solid grey;
+            
+        }
+        
+        .lire:hover {
+        
+            background-color: rgb(44, 44, 44);
+            border-color: rgb(44, 44, 44);
+            font-weight: 100;
+            color:white;
+            padding: 15px 70px 15px 70px;
+            text-decoration:none;
+            display: inline-block;
+            font-size:16px;
+            border-radius:3rem;
+        
+        
+        }
+        
+        .boutonlire {
+            justify-content: left;
+        
+        }
+        
+        
+        /* Footer */
+        
+        .footer-basic {
+            margin-top: 5%;
+            padding:1.3% 0;
+            background-color:#ffffff;
+            color:#4b4c4d;
+            background-color: #302c2c;
+          }
+          
+          .footer-basic ul {
+            padding-left:10%;
+            list-style:none;
+            text-align:left;
+            font-size:18px;
+            line-height:1.6;
+            margin-bottom:0;
+            color: grey;
+          }
+        
+        
+        
+        /* Dernière section - Popup */
+        
+        
+          #popup-overlay {
+            position:fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom : 0;
+            background:rgba(0, 0, 0, 0.678);
+            z-index:98;
+            display:none;
+        
+        }
+        
+        #popup-overlay.open {
+            display:block;
+        }
+        
+        .popup-content {
+            max-width:900px;
+            width:100%;
+            padding:30px;
+            box-sizing:border-box;
+            background:white;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+            display: flex;
+        }
+        
+        .popup-content h1 {
+                font-size: 60px;
+                color: #302c2c;
+        
+        }
+        
+        .popup-content h2 {
+            font-size: 20px;
+            font-weight: 100;
+            color:#302c2c;  
+            padding-bottom: 4%;
+        }
+        
+        
+        .popup-content p {
+            margin: 20px 20px 0px 0px;
+            font-size: 20px;
+            font-weight: 100;
+            color:#302c2c;  
+        }
+        
+        .popup-link {
+            text-decoration: none;
+            color:white;
+            background: black;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display:inline-block;
+        }
+        
+        .popup-exit {
+            position:absolute;
+            top:0;
+            right:0;
+            text-decoration: none;
+            color: black ;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .information {
+            
+        }
+        
+        form {
+            padding-top: 6%;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            margin-top: 4%;
+            font-weight: 900;
+          }
+          
+          label.light {
+            font-weight: 300;
+            display: inline;
+          }
+        
+          input {
+            border: grey 1px solid;
+            border-radius: 2rem;
+            width: 90%;
+            height: 40px;
+          }
+        
+          textarea {
+        
+            border: grey 1px solid;
+            border-radius: 2rem;
+            width: 90%;
+            height: 40px;
+        
+          }
+        
+        }
+
+
+
+
+        @media screen and (max-width: 1130px) {
+
+            *{
+                margin: 0px;
+                padding: 0px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            
+            
+            
+            navbar {
+                display:flex;
+                padding: 3% 13% 0px;
+                justify-content: space-between;
+                
+            }
+            
+            .contacte{
+                
+                font-weight: 900;
+                color:black;
+                padding: 15px 50px 15px 50px;
+                text-align:center;
+                text-decoration:none;
+                display: inline-block;
+                font-size:16px;
+                border-radius:3rem;
+                border: 3px solid black;
+            
+            }
+            
+            .contacte:hover{
+                
+                background-color: rgb(44, 44, 44);
+                border-color: rgb(44, 44, 44);
+                font-weight: 100;
+                color:white;
+                padding: 15px 50px 15px 50px;
+                text-align:center;
+                text-decoration:none;
+                display: inline-block;
+                font-size:16px;
+                border-radius:3rem;
+            
+            }
+            
+            .nav {
+                padding-right: 20px;
+                text-decoration: none;
+                font-weight: bolder;
+                color: #302c2c;
+                font-size: 20px;
+            }
+            
+            .nav:hover {
+            
+                text-decoration: underline;
+            
+            }
+            
+            
+            
+            .menu {
+                margin-top: 20px;
+            }
+            
+            .profil {
+                display:flex;
+            }
+            
+            img.entete {
+                padding: 0px 10px 0px 0px;
+                border-radius: 50%;
+                width : 75px;
+                height : 75px;
+            }
+            
+            .nom {
+                padding: 5px 0px 0px;
+                color: #302c2c;
+            }
+            
+            /* Première section */
+            
+            section1 {
+                display:flex;
+                padding: 7% 13% 7%;
+            
+            }
+            
+            section1 #t1 {
+                font-size: 50px;
+                font-weight: 100;
+                color:rgb(49, 48, 48)
+            }
+            
+            section1 #t2 {
+                font-size: 65px;
+                color: #302c2c;
+                
+            }
+            
+            section1 #t3 {
+                font-size: 28px;
+                font-weight: 100;
+                color: grey;    
+                padding:0px 0px 50px;
+            }
+            
+            .link img {
+                padding: 0px 0.5% 0px;
+            }
+            
+            .illustration img {
+                padding: 0px 0px 0px 50%;
+            }
+            
+            .contact{
+                
+                font-weight: 900;
+                color:black;
+                padding: 25px 70px 25px 70px;
+                text-align:center;
+                text-decoration:none;
+                display: inline-block;
+                font-size:16px;
+                margin:60px 2px;
+                border-radius:3rem;
+                border: 3px solid black;
+            
+            }
+            
+            
+            /* Deuxième section - Projets */
+            
+            .filtre {
+            
+                text-align: center;
+                padding: 0% 0% 3%;
+            
+            }
+            
+            .filtre a {
+            
+                color: grey;
+                text-decoration: none;
+                font-size: 20px;
+                margin: 0% 1% 0%;
+            
+            }
+            
+            .projets {
+                columns: 3 auto;
+                text-align: center;
+                margin: 0% 8% 0%
+            }
+            
+            .projet {
+                padding:0% 1% 0%; 
+            }
+            
+            .categorie {
+                text-align: left;
+                padding:4% 4% 10%; 
+            }
+            
+            .infos {
+                margin-top: 3%;
+                display: flex;
+                justify-content: space-between;
+                font-size: 11px;
+                color:#302c2c;
+            }
+            
+            .projet img {
+                width: 201px;
+                height: 100%;
+                border-radius: 1rem;
+            }
+            
+            /* Troisième section - A propos */
+            
+            sectionapropos {
+                display:flex;
+                justify-content: center;
+                margin:11% 6% 8%;
+            
+            }
+            
+            .apropos {
+                padding: 0% 9% 0% 4%;
+            }
+            
+            .apropos h1 {
+                font-size: 60px;
+                color: #302c2c;
+            }
+            
+            .apropos p {
+                margin-top: 23%;
+                margin-bottom: 4%;
+                font-size: 23px;
+                font-weight: 100;
+                color: grey;
+            }
+            
+            .image {
+                padding: 4% 0% 0% 10%;
+            }
+            
+            .contact:hover{
+                
+                background-color: rgb(44, 44, 44);
+                border-color: rgb(44, 44, 44);
+                font-weight: 100;
+                color:white;
+                padding: 25px 70px 25px 70px;
+                text-align:center;
+                text-decoration:none;
+                display: inline-block;
+                font-size:16px;
+                margin:60px 2px;
+                border-radius:3rem;
+            
+            }
+            
+            
+            /* Troisième section - Témoignage */
+            
+            
+            
+            .banniere{
+                background-image: url("assets/images/section-back.svg");
+                background-color: rgba(0, 0, 0, 0.801);
+                color:white;
+                height: 200px;
+                font-size: 30px;
+                padding: 6%;
+                text-align: center;
+                font-style: italic;
+                font-weight: 100;
+                
+            }
+            
+            .profilauteur {
+                position: relative;
+                top: 10px;
+            }
+            
+            .profilauteur img {
+                border-radius: 50%;
+                border: 5px solid white;
+            }
+            
+            .auteur {
+                color: black;
+                padding: 1%;
+                font-style: normal;
+                font-size: 23px;
+                font-weight: 500;
+            }
+            
+            .auteur h2 {
+                color:grey;
+                font-size: 18px;
+                font-weight: 100;
+            
+            }
+            
+            /* Quatrième section - Blog*/ 
+            .title {
+                text-align: center;
+                padding-top: 20%;
+                font-size: 30px;
+                color: #302c2c;
+            }
+            
+            .title p {
+                color: grey;
+                padding-bottom: 2%;
+            }
+            
+            .articles {
+            
+                columns: 3 auto;
+                text-align: center;
+                margin: 0% 8% 0%
+            
+            }
+            
+            .articles img {
+            
+                width:201px;
+                height:100%;
+                padding-bottom: 4%;
+            
+            }
+            
+            .article {
+                padding:0% 1% 0%; 
+            }
+            
+            .article h1 {
+                font-size: 25px;
+                text-align: left;
+                padding-bottom: 7%;
+                color: #302c2c;
+            }
+            
+            .article p {
+                color:grey;
+                font-size: 25px;
+                text-align: left;
+            }
+            
+            .article .lire {
+            
+                justify-content: left;
+            }
+            
+            .lire {
+            
+                    color: grey;
+                    padding: 15px 70px 15px 70px;
+                    text-align: left;
+                    text-decoration: none;
+                    display: inline-block;
+                    margin-top: 10%;
+                    margin-right: 100%;
+                    font-size: 16px;
+                    border-radius: 3rem;
+                    border: 2.5px solid grey;
+                
+            }
+            
+            .lire:hover {
+            
+                background-color: rgb(44, 44, 44);
+                border-color: rgb(44, 44, 44);
+                font-weight: 100;
+                color:white;
+                padding: 15px 70px 15px 70px;
+                text-decoration:none;
+                display: inline-block;
+                font-size:16px;
+                border-radius:3rem;
+            
+            
+            }
+            
+            .boutonlire {
+                justify-content: left;
+            
+            }
+            
+            
+            /* Footer */
+            
+            .footer-basic {
+                margin-top: 5%;
+                padding:1.3% 0;
+                background-color:#ffffff;
+                color:#4b4c4d;
+                background-color: #302c2c;
+              }
+              
+              .footer-basic ul {
+                padding-left:10%;
+                list-style:none;
+                text-align:left;
+                font-size:18px;
+                line-height:1.6;
+                margin-bottom:0;
+                color: grey;
+              }
+            
+            
+            
+            /* Dernière section - Popup */
+            
+            
+              #popup-overlay {
+                position:fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom : 0;
+                background:rgba(0, 0, 0, 0.678);
+                z-index:98;
+                display:none;
+            
+            }
+            
+            #popup-overlay.open {
+                display:block;
+            }
+            
+            .popup-content {
+                max-width:900px;
+                width:100%;
+                padding:30px;
+                box-sizing:border-box;
+                background:white;
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%, -50%);
+                display: flex;
+            }
+            
+            .popup-content h1 {
+                    font-size: 60px;
+                    color: #302c2c;
+            
+            }
+            
+            .popup-content h2 {
+                font-size: 20px;
+                font-weight: 100;
+                color:#302c2c;  
+                padding-bottom: 4%;
+            }
+            
+            
+            .popup-content p {
+                margin: 20px 20px 0px 0px;
+                font-size: 20px;
+                font-weight: 100;
+                color:#302c2c;  
+            }
+            
+            .popup-link {
+                text-decoration: none;
+                color:white;
+                background: black;
+                padding: 10px 20px;
+                border-radius: 5px;
+                display:inline-block;
+            }
+            
+            .popup-exit {
+                position:absolute;
+                top:0;
+                right:0;
+                text-decoration: none;
+                color: black ;
+                background: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+            }
+            
+            .information {
+                
+            }
+            
+            form {
+                padding-top: 6%;
+            }
+            
+            label {
+                display: block;
+                margin-bottom: 8px;
+                margin-top: 4%;
+                font-weight: 900;
+              }
+              
+              label.light {
+                font-weight: 300;
+                display: inline;
+              }
+            
+              input {
+                border: grey 1px solid;
+                border-radius: 2rem;
+                width: 90%;
+                height: 40px;
+              }
+            
+              textarea {
+            
+                border: grey 1px solid;
+                border-radius: 2rem;
+                width: 90%;
+                height: 40px;
+            
+              }
+            
+            }
+        
+    /* Style du menu */
+.menu {
+    position: relative;
+}
+
+/* Menu déroulant caché par défaut */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Juste en dessous de "PROJETS" */
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* Style des liens dans le menu déroulant */
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+    
+    
+
+ 
+
+
+
+  
+ 
+  
+
+
+
+
+
+
+
+  
+
