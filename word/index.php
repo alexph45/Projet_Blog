@@ -45,6 +45,10 @@ require_once 'filtres.php';
             <?php endif; ?>
     </div>
 
+
+    <!-- Autres liens -->
+    <a class="nav" href="#apropos">A PROPOS</a>
+
     <!-- Menu déroulant pour BLOG -->
     <div class="nav">
         <a href="#blog" onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
@@ -55,9 +59,6 @@ require_once 'filtres.php';
         </div>
         <?php endif; ?>
     </div>
-
-    <!-- Autres liens -->
-    <a class="nav" href="#apropos">A PROPOS</a>
 
     <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
         <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
