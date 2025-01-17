@@ -17,7 +17,22 @@ require_once 'filtres.php';
         <title>Lewis Nathaniel</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/style.css">
-        
+        <style>
+                #new-suggestion-notification {
+                    background-color: #4CAF50; /* Couleur de fond (verte pour succès) */
+                    color: white;
+                    padding: 15px;
+                    text-align: center;
+                    font-size: 18px;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    z-index: 9999;
+                    display: none; /* Par défaut, cachée */
+                    border-bottom: 2px solid #2e7d32; /* Ajout d'une bordure pour plus de style */
+                }
+        </style>
     </head>
 
     <body>
@@ -33,41 +48,131 @@ require_once 'filtres.php';
             </div>
 
             <div class="menu">
-            <a class="nav" href="#projet" onclick="toggleDropdown(event, 'dropdown-projet')">PROJETS</a>
-                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
-                    <div id="dropdown-projet" class="dropdown-menu">
-                        <a href="ajouter_projet.php">Ajouter un Projet</a>
-                        <a href="suggestion.php">Suggestions de Projet</a>
-                        <a href="modifier_projet.php">Modifier un Projet</a>
-                        <a href="supprimer_projet.php">Supprimer un Projet</a>
-                    </div>
-                <?php endif; ?>
-            
-            <a class="nav" href="#apropos">A PROPOS</a>
 
-            <a class="nav" href="#blog" onclick="toggleDropdown(event, 'dropdown-blog')">BLOG</a>
-                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
-                    <div id="dropdown-blog" class="dropdown-menu">
-                        <a href="ajouter_article.php">Ajouter un Article</a>
-                        <a href="modifier_article.php">Modifier un Article</a>
-                        <a href="supprimer_article.php">Supprimer un Article</a>
+                <!-- Menu déroulant pour Projet -->
+                    <div class="nav">
+                        <a href="#projet" onclick="toggleDropdown(event, 'dropdown-menu-projet')">PROJETS</a>
+                            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
+                                <div id="dropdown-menu-projet" class="dropdown-menu">
+                                    <a href="ajouter_projet.php">Ajouter un Projet</a>
+                                    <a href="suggestion.php">Suggestions de Projet</a>
+                                    <a href="modifier_projet.php">Modifier un Projet</a>
+                                    <a href="supprimer_projet.php">Supprimer un Projet</a>
+                                </div>
+                            <?php endif; ?>
                     </div>
-                <?php endif; ?>
+                <!-- //////////////////////////// -->
 
-            
-            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
-                <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
-            <?php else: ?>
-                <a class="nav" href="connexion.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
-                        <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
-                    </svg>
-                </a>
-            <?php endif; ?>
-            
-            <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
+                <a class="nav" href="#apropos">A PROPOS</a>
+
+                <!-- Menu déroulant pour BLOG -->
+                    <div class="nav">
+                        <a href="#blog" onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
+                            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
+                                <div id="dropdown-menu-blog" class="dropdown-menu">
+                                    <a href="ajouter_article.php">Ajouter un Article</a>
+                                    <a href="modifier_article.php">Modifier un Article</a>
+                                </div>
+                            <?php endif; ?>
+                    </div>
+                <!-- //////////////////////////// -->
+
+                <!-- partie connexion et déconnexion-->
+                    <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
+                        <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
+                    <?php else: ?>
+                        <a class="nav" href="connexion.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+                                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
+                            </svg>
+                        </a>
+                    <?php endif; ?>
+                <!-- //////////////////////////// -->
+
+                <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
         </div>
 
+        <?php
+            if (isset($_SESSION['success'])) {
+                echo '<div id="alert-message" class="alert alert-success">' . htmlspecialchars($_SESSION['success']) . '</div>';
+                // Supprimer le message après affichage pour éviter qu'il reste après rechargement
+                unset($_SESSION['success']);
+            }
+            ?>
+           
+            <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const alertBox = document.getElementById('alert-message');
+                if (alertBox) {
+                    // Faire apparaître l'alerte avec une classe "show"
+                    setTimeout(() => {
+                        alertBox.classList.add('show');
+                    }, 100); // Attendre 100 ms avant d'afficher
+
+                    // Faire disparaître l'alerte après 10 secondes
+                    setTimeout(() => {
+                        alertBox.classList.remove('show'); // Réduit la visibilité
+                        setTimeout(() => {
+                            alertBox.remove(); // Supprime complètement
+                        }, 500); // Temps pour la transition de disparition
+                    }, 5000); // 5 secondes avant disparition
+                }
+            });
+            </script>
+
+                
+        <?php
+
+
+                // Vérifier si l'utilisateur est admin
+                $is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin';
+
+                $new_suggestion = false; // Initialisation
+
+                if ($is_admin) {
+                    // Connexion à la base de données
+                    // $pdo = new PDO("mysql:host=localhost;dbname=ma_base", "username", "password");
+
+                    // Initialiser la dernière vérification si nécessaire
+                    if (!isset($_SESSION['last_check_time'])) {
+                        $_SESSION['last_check_time'] = '1970-01-01 00:00:00'; // Valeur par défaut
+                    }
+
+                    // Récupérer la dernière suggestion
+                    $sql = "SELECT * FROM suggestion ORDER BY date_creation DESC LIMIT 1;";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
+                    $last_suggestion = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                    if ($last_suggestion) {
+                        $last_check_time = date('Y-m-d H:i:s', strtotime($_SESSION['last_check_time']));
+
+
+                        // Comparaison des dates
+                        if ($last_suggestion['date_creation'] > $last_check_time) {
+                            $_SESSION['last_check_time'] = $last_suggestion['date_creation']; // Mettre à jour
+                            $new_suggestion = true;
+                        
+                        }
+                    }
+                }
+?>
+        <div id="new-suggestion-notification" style="display: none;">
+             <p><strong>Nouvelle suggestion ajoutée !</strong></p>
+        </div>
+
+    <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                <?php if ($new_suggestion): ?>
+                    document.getElementById("new-suggestion-notification").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("new-suggestion-notification").style.display = "none";
+                    }, 5000);
+                <?php else: ?>
+                    console.log("Pas de nouvelle suggestion.");
+                <?php endif; ?>
+            });
+    </script>
 
         </navbar>
 
@@ -140,41 +245,47 @@ require_once 'filtres.php';
 
         </section1>
 
-        <sectionprojet>
+        <section class="projet-section">
 
-                    <div class="filtre">
-                <a id="togg4" href="#" data-category="all">Tous</a>
-                <a id="togg1" href="#" data-category="Mobile">Mobile</a>
-                <a id="togg2" href="#" data-category="Web">Web</a>
-                <a id="togg3" href="#" data-category="Interaction">Interaction</a>
+            <!-- Filtre des catégories -->
+            <div class="filtre">
+                <a href="#" data-category="all">Tous</a>
+                <?php foreach ($categories as $category): ?>
+                    <a href="#" data-category="<?= htmlspecialchars($category['nom']); ?>">
+                        <?= htmlspecialchars($category['nom']); ?>
+                    </a>
+                <?php endforeach; ?>
             </div>
 
+            <!-- Section des projets -->
             <div class="projets">
                 <?php foreach ($projets as $projet): ?>
                     <div class="projet" data-categories="<?= htmlspecialchars($projet['categories']); ?>">
+
+                        <!-- Image du projet -->
                         <img src="<?= htmlspecialchars($projet['image_url']); ?>" alt="<?= htmlspecialchars($projet['titre']); ?>">
+
+                        <!-- Détails du projet -->
                         <div class="categorie">
                             <p><?= htmlspecialchars($projet['categories'] ?? 'Pas de catégorie'); ?></p>
+
+                            <!-- Informations supplémentaires -->
                             <div class="infos">
                                 <div class="titre">
                                     <h1><?= htmlspecialchars($projet['titre']); ?></h1>
-                                </div>
-                                <div class="date">
-                                    <h1><?= htmlspecialchars($projet['annee']); ?></h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
 
+                <!-- Bouton suggestion de projet (visible pour les utilisateurs connectés) -->
                 <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'user'): ?>
-                    <a href="suggestion_utilisateur.php">Demander une suggestion de projet</a>
-                    <?php endif; ?>
-
+                    <a href="suggestion_utilisateur.php" class="suggestion-button">Demander une suggestion de projet</a>
+                <?php endif; ?>
             </div>
 
-        
-        </sectionprojet>
+        </section>
 
         <sectionapropos>
 

@@ -4,24 +4,34 @@ function togglePopup() {
 }
 
 function toggleDropdown(event, menuId) {
-    event.preventDefault(); // Empêcher la navigation
-
     const menu = document.getElementById(menuId);
-    const link = event.target.closest('.nav-container'); // Récupère le parent du lien
 
-    // Fermer tous les autres menus avant d'afficher celui-ci
-    document.querySelectorAll('.dropdown-menu').forEach(el => {
-        if (el !== menu) el.style.display = 'none';
+    // Masque les autres menus avant d'afficher celui sélectionné
+    document.querySelectorAll('.dropdown-menu').forEach((dropdown) => {
+        if (dropdown !== menu) {
+            dropdown.style.display = 'none';
+        }
     });
 
+    // Affiche ou masque le menu sélectionné
     if (menu.style.display === 'block') {
         menu.style.display = 'none';
     } else {
         menu.style.display = 'block';
     }
 
-    event.stopPropagation(); // Empêcher la propagation du clic
+    // Empêche le comportement par défaut (comme le défilement)
+    event.preventDefault();
 }
+
+// Ferme tous les menus déroulants si on clique ailleurs
+document.addEventListener('click', function (event) {
+    document.querySelectorAll('.dropdown-menu').forEach((menu) => {
+        if (!menu.contains(event.target) && !event.target.closest('.nav')) {
+            menu.style.display = 'none';
+        }
+    });
+});
 
 // Fermer les menus si on clique ailleurs
 document.addEventListener('click', function(event) {
