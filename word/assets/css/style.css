@@ -251,57 +251,72 @@ section1 #t3 {
 }
 
 
-/* Troisième section - A propos */
-
-sectionapropos {
-    display:flex;
-    justify-content: center;
-    margin:11% 6% 8%;
-
-}
-
-.apropos {
-    padding: 0% 9% 0% 4%;
-}
-
-.apropos h1 {
-    font-size: 60px;
-    color: #302c2c;
-}
-
-.apropos p {
-    margin-top: 23%;
-    margin-bottom: 4%;
-    font-size: 23px;
-    font-weight: 100;
-    color: grey;
+/* Section "À propos" */
+#apropos {
+    display: flex;
+    flex-direction: row; /* Disposition en ligne */
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0; /* Espacement au-dessus et en dessous de la section */
+    padding: 40px 20px; /* Padding interne */
 }
 
 .image {
-    padding: 4% 0% 0% 10%;
+    width: 50%; /* Prendre 50% de l'espace disponible */
+    text-align: center; /* Centrer l'image */
 }
 
-.contact:hover{
-    
-    background-color: rgb(44, 44, 44);
-    border-color: rgb(44, 44, 44);
-    font-weight: 100;
-    color:white;
-    padding: 25px 70px 25px 70px;
-    text-align:center;
-    text-decoration:none;
+.image img {
+    max-width: 100%; /* S'assure que l'image ne dépasse pas de son conteneur */
+    height: auto; /* Conserve le ratio d'aspect */
+}
+
+.apropos {
+    width: 45%; /* Prendre 45% de l'espace disponible */
+    padding: 20px; /* Padding interne */
+}
+
+.apropos h1 {
+    font-size: 36px; /* Taille du titre */
+    color: #302c2c;
+    margin-bottom: 20px; /* Espacement sous le titre */
+    text-align: left; /* Alignement du titre à gauche */
+}
+
+.apropos p {
+    font-size: 20px; /* Taille du texte augmentée */
+    line-height: 1.6; /* Espacement entre les lignes */
+    color: #555; /* Couleur du texte */
+    text-align: justify; /* Justification du texte */
+    margin-top: 20px; /* Espacement au-dessus du texte */
+    margin-bottom: 30px; /* Espacement en dessous du texte */
+}
+
+.contact {
     display: inline-block;
-    font-size:16px;
-    margin:60px 2px;
-    border-radius:3rem;
-
+    padding: 15px 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #302c2c;
+    border: 2px solid #302c2c;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
 }
+
+/* Effet de survol */
+.contact:hover {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+
 
 
 /* Troisième section - Témoignage */
 
 .banniere{
-    background-image: url("assets/images/section-back.svg");
+    background-image: url("../images/section-back.svg");
     background-color: rgba(0, 0, 0, 0.801);
     color:white;
     height: 100px;
@@ -327,7 +342,7 @@ sectionapropos {
     color: black;
     padding: 3%;
     font-style: normal;
-    font-size: 23px;
+    font-size: 15px;
     font-weight: 500;
 }
 
@@ -337,6 +352,12 @@ sectionapropos {
     font-weight: 100;
 
 }
+
+p.avis {
+    color: grey;
+    font-size:15px;
+}
+
 
 /* Quatrième section - Blog*/ 
 .title {
@@ -581,4 +602,19 @@ label {
 
 .dropdown-menu a:hover {
     background-color: #f0f0f0;
+}
+
+#new-suggestion-notification {
+    background-color: #4CAF50; /* Couleur de fond (verte pour succès) */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none; /* Par défaut, cachée */
+    border-bottom: 2px solid #2e7d32; /* Ajout d'une bordure pour plus de style */
 }

@@ -8,31 +8,13 @@ session_start(); // Démarre la session
 
 // Vérifier si l'utilisateur est connecté 
 
-
-// Requête pour récupérer les projets et leurs catégories
-require_once 'filtres.php';
 ?>
 <html>
     <head>
         <title>Lewis Nathaniel</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/style.css">
-        <style>
-                #new-suggestion-notification {
-                    background-color: #4CAF50; /* Couleur de fond (verte pour succès) */
-                    color: white;
-                    padding: 15px;
-                    text-align: center;
-                    font-size: 18px;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    z-index: 9999;
-                    display: none; /* Par défaut, cachée */
-                    border-bottom: 2px solid #2e7d32; /* Ajout d'une bordure pour plus de style */
-                }
-        </style>
+       
     </head>
 
     <body>
@@ -67,7 +49,7 @@ require_once 'filtres.php';
 
                 <!-- Menu déroulant pour BLOG -->
                     <div class="nav">
-                        <a href="#blog" onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
+                        <a href="#" onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
                             <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
                                 <div id="dropdown-menu-blog" class="dropdown-menu">
                                     <a href="ajouter_article.php">Ajouter un Article</a>
@@ -92,87 +74,6 @@ require_once 'filtres.php';
                 <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
         </div>
 
-        <?php
-            if (isset($_SESSION['success'])) {
-                echo '<div id="alert-message" class="alert alert-success">' . htmlspecialchars($_SESSION['success']) . '</div>';
-                // Supprimer le message après affichage pour éviter qu'il reste après rechargement
-                unset($_SESSION['success']);
-            }
-            ?>
-           
-            <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const alertBox = document.getElementById('alert-message');
-                if (alertBox) {
-                    // Faire apparaître l'alerte avec une classe "show"
-                    setTimeout(() => {
-                        alertBox.classList.add('show');
-                    }, 100); // Attendre 100 ms avant d'afficher
-
-                    // Faire disparaître l'alerte après 10 secondes
-                    setTimeout(() => {
-                        alertBox.classList.remove('show'); // Réduit la visibilité
-                        setTimeout(() => {
-                            alertBox.remove(); // Supprime complètement
-                        }, 500); // Temps pour la transition de disparition
-                    }, 5000); // 5 secondes avant disparition
-                }
-            });
-            </script>
-
-                
-        <?php
-
-
-                // Vérifier si l'utilisateur est admin
-                $is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin';
-
-                $new_suggestion = false; // Initialisation
-
-                if ($is_admin) {
-                    // Connexion à la base de données
-                    // $pdo = new PDO("mysql:host=localhost;dbname=ma_base", "username", "password");
-
-                    // Initialiser la dernière vérification si nécessaire
-                    if (!isset($_SESSION['last_check_time'])) {
-                        $_SESSION['last_check_time'] = '1970-01-01 00:00:00'; // Valeur par défaut
-                    }
-
-                    // Récupérer la dernière suggestion
-                    $sql = "SELECT * FROM suggestion ORDER BY date_creation DESC LIMIT 1;";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute();
-                    $last_suggestion = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                    if ($last_suggestion) {
-                        $last_check_time = date('Y-m-d H:i:s', strtotime($_SESSION['last_check_time']));
-
-
-                        // Comparaison des dates
-                        if ($last_suggestion['date_creation'] > $last_check_time) {
-                            $_SESSION['last_check_time'] = $last_suggestion['date_creation']; // Mettre à jour
-                            $new_suggestion = true;
-                        
-                        }
-                    }
-                }
-?>
-        <div id="new-suggestion-notification" style="display: none;">
-             <p><strong>Nouvelle suggestion ajoutée !</strong></p>
-        </div>
-
-    <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                <?php if ($new_suggestion): ?>
-                    document.getElementById("new-suggestion-notification").style.display = "block";
-                    setTimeout(() => {
-                        document.getElementById("new-suggestion-notification").style.display = "none";
-                    }, 5000);
-                <?php else: ?>
-                    console.log("Pas de nouvelle suggestion.");
-                <?php endif; ?>
-            });
-    </script>
 
         </navbar>
 
@@ -287,7 +188,63 @@ require_once 'filtres.php';
 
         </section>
 
-        <sectionapropos>
+        <?php
+
+
+// Vérifier si l'utilisateur est admin
+$is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin';
+
+$new_suggestion = false; // Initialisation
+
+if ($is_admin) {
+    // Connexion à la base de données
+    // $pdo = new PDO("mysql:host=localhost;dbname=ma_base", "username", "password");
+
+    // Initialiser la dernière vérification si nécessaire
+    if (!isset($_SESSION['last_check_time'])) {
+        $_SESSION['last_check_time'] = '1970-01-01 00:00:00'; // Valeur par défaut
+    }
+
+    // Récupérer la dernière suggestion
+    $sql = "SELECT * FROM suggestion ORDER BY date_creation DESC LIMIT 1;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $last_suggestion = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($last_suggestion) {
+        $last_check_time = date('Y-m-d H:i:s', strtotime($_SESSION['last_check_time']));
+
+
+        // Comparaison des dates
+        if ($last_suggestion['date_creation'] > $last_check_time) {
+            $_SESSION['last_check_time'] = $last_suggestion['date_creation']; // Mettre à jour
+            $new_suggestion = true;
+         
+        }
+    }
+}
+?>
+<div id="new-suggestion-notification" style="display: none;">
+    <p><strong>Nouvelle suggestion ajoutée ! (cliquez sur le bandeau pour masquer)</strong></p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    <?php if ($new_suggestion): ?>
+        const notification = document.getElementById("new-suggestion-notification");
+        notification.style.display = "block";
+
+
+        notification.addEventListener("click", function() {
+            notification.style.display = "none";
+        });
+    <?php else: ?>
+        console.log("Pas de nouvelle suggestion.");
+    <?php endif; ?>
+});
+</script>
+
+        <section id="apropos">
 
             <div class="image">
                 <img src="assets/images/undraw_Designer_by46.svg" width="685px" height="500px">
@@ -311,46 +268,68 @@ require_once 'filtres.php';
 
                 </div>
 
-        </sectionapropos>
+        </section id="apropos">
+
+
+                        <?php try {
+                            $host = 'localhost';
+                            $dbname = 'blog';
+                            $user = 'root'; // Définition explicite de l'utilisateur
+                            $password = ''; 
+                    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $password);
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    // Récupérer les témoignages validés
+                    $sql = "SELECT nom_auteur, entreprise_auteur, texte, note, chemin_image FROM temoignages WHERE statut = 'valide' ORDER BY date_creation DESC";
+                    $stmt = $pdo->query($sql);
+                    $temoignages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                } catch (PDOException $e) {
+                    die("Erreur : " . $e->getMessage());
+                }
+                ?>
 
         <sectiontemoignage>
+            <ul>
+                <?php if (!empty($temoignages)): ?>
+                    <?php foreach ($temoignages as $index => $temoignage): ?>
+                        <li class="carousel-item <?= $index ?>" aria-hidden="false">
+                            <div class="banniere">
+                                <p><?= htmlspecialchars($temoignage['texte']) ?></p>
 
-            <div class="banniere">
+                                <div class="profilauteur">
+                                    <img src="<?= htmlspecialchars($temoignage['chemin_image'] ?: 'assets/images/default-profile.jpg') ?>" width="125px" height="125px" alt="Photo de l'auteur">
+                                </div>
 
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque eu enim eget luctus. Sed augue felis, 
-                    facilisis et elementum vitae, aliquam sit amet ante. Sed iaculis eros sem, elementum consequat est consequat eu. Quisque 
-                    aliquet a ipsum nec tincidunt. Nulla vitae rhoncus leo. Praesent dui sapien, bibendum quis tempus dictum.</p>
-                
-                <div class="profilauteur">
-                    <img src="assets/images/lena.jpg" width="125px" height="125px">
-                </div>
+                                <div class="auteur">
+                                    <h1><?= htmlspecialchars($temoignage['nom_auteur']) ?></h1>
+                                    <h2><?= htmlspecialchars($temoignage['entreprise_auteur'] ?: '-') ?></h2>
 
-                <div class="auteur">
-                    <h1> Lena M. Brooks </h1>
-                    <h2>Marketing House</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                      </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-half" viewBox="0 0 16 16">
-                        <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
-                      </svg>
-                </div>
+                                    <?php for ($i = 0; $i < (int) $temoignage['note']; $i++): ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                        </svg>
+                                    <?php endfor; ?>
 
-            </div>
-        
+                                    <?php if (isset($_SESSION['user_id'])): // Vérifie si l'utilisateur est connecté ?>
+                                        <a href="soumettre-temoignage.php"><p class="avis">Écrire un avis</p></a>
+                                    <?php endif; ?>
 
-            <div class="auteurtemoignage">
-
-
-            </div>
-
-
-
+                                    <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                                        <a href="admin-temoignages.php"><p class="avis">Gérer les avis</p></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Aucun témoignage disponible pour le moment.</p>
+                    
+                    <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                        <a href="admin-temoignages.php"><p class="avis">Gérer les avis</p></a>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </ul>
         </sectiontemoignage>
 
 
@@ -432,7 +411,7 @@ require_once 'filtres.php';
                 
             </footer>
         </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="assets/js/java.js"></script>
     </body>
 </html>
