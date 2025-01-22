@@ -282,12 +282,19 @@ document.addEventListener('click', function (event) {
                                 </svg>
                             <?php endfor; ?>
                             <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
+                            <br>
+                            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
+            <a href="traiter-temoignage.php"><p class="avis">Gérer les avis</p></a>
+            <?php endif; ?>
                         </div>
                     </div>
                 </li>
             <?php endforeach; ?>
         <?php else: ?>
             <p>Aucun témoignage disponible pour le moment.</p>
+            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
+            <a href="traiter-temoignage.php"><p class="avis">Gérer les avis</p></a>
+            <?php endif; ?>
         <?php endif; ?>
     </ul>
 </sectiontemoignage>
