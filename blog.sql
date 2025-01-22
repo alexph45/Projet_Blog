@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 15 jan. 2025 à 16:52
+-- Généré le : mer. 22 jan. 2025 à 14:07
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -195,6 +195,33 @@ INSERT INTO `suggestion` (`id_suggestion`, `titre`, `description`, `annee`, `ima
 (155, 'singe intectuelle', 'un singe peut reflechire mais il peut ausssi ne pas reflechire... à mediter', 2005, 'uploads/1736950609_singe4.jpg', '2025-01-15 00:00:00'),
 (152, 'dmd2', 'dmd2', 2025, 'uploads/1736947744_singe4.jpg', '2025-01-15 00:00:00'),
 (153, 'demande 3', 'test1', 2024, 'uploads/1736947955_singe2.jpg', '2025-01-15 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `temoignages`
+--
+
+DROP TABLE IF EXISTS `temoignages`;
+CREATE TABLE IF NOT EXISTS `temoignages` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nom_auteur` varchar(255) NOT NULL,
+  `entreprise_auteur` varchar(255) DEFAULT NULL,
+  `texte` text NOT NULL,
+  `note` tinyint(1) DEFAULT NULL,
+  `chemin_image` varchar(255) DEFAULT NULL,
+  `statut` enum('en_attente','valide','rejete') DEFAULT 'en_attente',
+  `date_creation` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `temoignages`
+--
+
+INSERT INTO `temoignages` (`id`, `nom_auteur`, `entreprise_auteur`, `texte`, `note`, `chemin_image`, `statut`, `date_creation`) VALUES
+(2, 'Lennaik Desir', 'Mcdonald', 'super site', 5, 'uploads/1737127870_Capture d\'écran 2024-12-19 095802.png', 'valide', '2025-01-16 23:00:00'),
+(5, 'Jamal Hamad', 'Saint Paul', 'ce site est vraiment incroyable', 5, 'uploads/1737550700_morgan-charriere-veut-se-faire-connaitre-ufc-on-espnplus-98-photo___ID_2024-04-06-10-34-45_6992.jpg', 'valide', '2025-01-21 23:00:00');
 
 -- --------------------------------------------------------
 
