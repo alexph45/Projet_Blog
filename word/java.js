@@ -29,6 +29,8 @@ $(document).ready(function () {
     carouselInterval = setInterval(() => goToNextSlide(), 5000);
 });
 
+
+
 function togglePopup() {
    let popup = document.querySelector("#popup-overlay");
    popup.classList.toggle("open")
