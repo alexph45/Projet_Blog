@@ -76,3 +76,20 @@ body {
 .suggestion-list a:hover {
     text-decoration: underline;
 }
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .suggestion-image {
+        width: 100%;
+        max-width: none;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+}

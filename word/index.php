@@ -11,7 +11,6 @@ session_start(); // Démarre la session
 ?>
 <html>
     <head>
-        <title>Lewis Nathaniel</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/style.css">
        
@@ -26,35 +25,41 @@ session_start(); // Démarre la session
                 <div class="nom">
                     <h3> Lewis <br>Nathaniel</h3>
                     <p>UI UX Designer</p>
+ 
                 </div>   
             </div>
 
             <div class="menu">
 
                 <!-- Menu déroulant pour Projet -->
-                    <div class="nav">
-                        <a href="#projet" onclick="toggleDropdown(event, 'dropdown-menu-projet')">PROJETS</a>
-                            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
-                                <div id="dropdown-menu-projet" class="dropdown-menu">
-                                    <a href="ajouter_projet.php">Ajouter un Projet</a>
-                                    <a href="suggestion.php">Suggestions de Projet</a>
-                                    <a href="modifier_projet.php">Modifier un Projet</a>
-                                    <a href="supprimer_projet.php">Supprimer un Projet</a>
-                                </div>
-                            <?php endif; ?>
-                    </div>
+                <div class="nav">
+                    <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin')): ?>
+                        <a onclick="toggleDropdown(event, 'dropdown-menu-projet')">PROJETS</a>
+                        <div id="dropdown-menu-projet" class="dropdown-menu">
+                            <a href="ajouter_projet.php">Ajouter un Projet</a>
+                            <a href="suggestion.php">Suggestions de Projet</a>
+                            <a href="modifier_projet.php">Modifier un Projet</a>
+                            <a href="supprimer_projet.php">Supprimer un Projet</a>
+                        </div>
+                    <?php else: ?>
+                        <a class="nav" href="#projets">PROJETS</a>
+                    <?php endif; ?>
+                </div>
                 <!-- //////////////////////////// -->
+
 
                 <a class="nav" href="#apropos">A PROPOS</a>
 
                 <!-- Menu déroulant pour BLOG -->
                     <div class="nav">
-                        <a href="#" onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
                             <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
+                                <a onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
                                 <div id="dropdown-menu-blog" class="dropdown-menu">
                                     <a href="ajouter_article.php">Ajouter un Article</a>
                                     <a href="modifier_article.php">Modifier un Article</a>
                                 </div>
+                            <?php else: ?>
+                                <a class="nav" href="#blog">BLOG</a>
                             <?php endif; ?>
                     </div>
                 <!-- //////////////////////////// -->
@@ -146,7 +151,7 @@ session_start(); // Démarre la session
 
         </section1>
 
-        <section class="projet-section">
+        <section class="projet-section" id="projets">
 
             <!-- Filtre des catégories -->
             <div class="filtre">
@@ -323,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         </li>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p>Aucun témoignage disponible pour le moment.</p>
+                    <p>Aucun témoignage disponible pour le moment.</p>0
                     
                     <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
                         <a href="admin-temoignages.php"><p class="avis">Gérer les avis</p></a>
@@ -333,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </sectiontemoignage>
 
 
-        <sectionblog>
+        <sectionblog id="blog">
 
             <div class="title">
 
@@ -398,7 +403,6 @@ document.addEventListener("DOMContentLoaded", function() {
         </sectionblog>
 
         
-
 
 
 
