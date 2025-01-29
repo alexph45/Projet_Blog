@@ -1,47 +1,41 @@
-/*Reset CSS */
-
-*{
+/* Reset CSS */
+* {
     margin: 0px;
     padding: 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/* Navbar */
 navbar {
-    display:flex;
-    padding: 3% 13% 0px;
+    display: flex;
+    padding: 3% 10%; /* Ajustement du padding pour être plus flexible */
     justify-content: space-between;
+    flex-wrap: wrap; /* Assurer que le contenu se réorganise pour les petits écrans */
+    align-items: center; /* Centrer verticalement */
 }
 
-.contacte{
-   
+.contacte {
     font-weight: 900;
-    color:black;
-    padding: 15px 50px 15px 50px;
-    text-align:center;
-    text-decoration:none;
+    color: black;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
-    font-size:16px;
-    border-radius:3rem;
+    font-size: 16px;
+    border-radius: 3rem;
     border: 3px solid black;
-
+    margin-top: 10px;
 }
 
-.contacte:hover{
+.contacte:hover {
     background-color: rgb(44, 44, 44);
     border-color: rgb(44, 44, 44);
     font-weight: 100;
-    color:white;
-    padding: 15px 50px 15px 50px;
-    text-align:center;
-    text-decoration:none;
-    display: inline-block;
-    font-size:16px;
-    border-radius:3rem;
-
+    color: white;
 }
 
 .nav {
-    position: relative; /* Positionnement relatif pour chaque lien */
+    position: relative;
     padding-right: 20px;
     text-decoration: none;
     font-weight: bolder;
@@ -50,27 +44,26 @@ navbar {
 }
 
 .nav:hover {
-
     text-decoration: underline;
-
 }
 
-
-
 .menu {
-    display: flex; /* Alignement horizontal des liens */
-    gap: 20px; /* Espacement entre les éléments du menu */
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start; /* Assurer que les éléments ne se dispersent pas */
 }
 
 .profil {
-    display:flex;
+    display: flex;
+    align-items: center;
 }
 
 img.entete {
     padding: 0px 10px 0px 0px;
     border-radius: 50%;
-    width : 75px;
-    height : 75px;
+    width: 75px;
+    height: 75px;
+    object-fit: cover; /* Assurer que l'image reste dans ses proportions */
 }
 
 .nom {
@@ -79,61 +72,210 @@ img.entete {
 }
 
 /* Première section */
-
 section1 {
-    display:flex;
-    padding: 7% 13% 7%;
-
+    display: flex;
+    padding: 7% 13%;
+    justify-content: space-between; /* Éviter que les éléments ne se chevauchent */
+    width: 100%;
 }
 
 section1 #t1 {
     font-size: 50px;
     font-weight: 100;
-    color:rgb(49, 48, 48)
+    color: rgb(49, 48, 48);
 }
 
 section1 #t2 {
     font-size: 65px;
     color: #302c2c;
-   
 }
 
+/* Responsive Design */
+
+/* Mobile : écran inférieur à 768px */
+@media (max-width: 768px) {
+    navbar {
+        flex-direction: column; /* Alignement vertical pour mobile */
+        padding: 5%;
+        align-items: center; /* Centrer le contenu */
+    }
+
+    .contacte {
+        font-size: 14px; /* Réduction de la taille de police sur mobile */
+        padding: 12px 40px; /* Moins d'espace autour du bouton */
+    }
+
+    .nav {
+        font-size: 16px; /* Réduction de la taille de la police pour la navigation */
+        padding-right: 10px;
+    }
+
+    .menu {
+        flex-direction: column; /* Les éléments du menu s'empilent sur mobile */
+        gap: 10px;
+        align-items: center; /* Centrer les éléments du menu */
+    }
+
+    .profil {
+        flex-direction: column; /* Profil en colonne sur mobile */
+        align-items: center;
+    }
+
+    img.entete {
+        width: 50px; /* Réduction de la taille de l'image sur mobile */
+        height: 50px;
+    }
+
+    section1 {
+        flex-direction: column; /* Aligner le texte en colonne sur mobile */
+        padding: 10% 5%;
+        align-items: center; /* Centrer le contenu */
+    }
+
+    section1 #t1 {
+        font-size: 30px; /* Taille du texte réduite sur mobile */
+        text-align: center; /* Centrer le titre */
+    }
+
+    section1 #t2 {
+        font-size: 40px; /* Taille du texte réduite sur mobile */
+        text-align: center; /* Centrer le sous-titre */
+    }
+}
+
+/* Tablette : écran entre 768px et 1024px */
+@media (max-width: 1024px) {
+    navbar {
+        flex-direction: row;
+        padding: 5%;
+        justify-content: space-between;
+        align-items: center; /* Centrer verticalement */
+    }
+
+    .contacte {
+        font-size: 15px;
+        padding: 13px 45px;
+    }
+
+    .nav {
+        font-size: 18px;
+        padding-right: 15px;
+    }
+
+    .menu {
+        gap: 15px;
+    }
+
+    .profil {
+        align-items: center;
+    }
+
+    img.entete {
+        width: 60px; /* Ajustement pour les tablettes */
+        height: 60px;
+    }
+
+    section1 {
+        flex-direction: column;
+        padding: 8% 5%;
+        align-items: center; /* Centrer le contenu */
+    }
+
+    section1 #t1 {
+        font-size: 40px;
+        text-align: center; /* Centrer le texte */
+    }
+
+    section1 #t2 {
+        font-size: 55px;
+        text-align: center; /* Centrer le texte */
+    }
+}
+
+/* Ordinateur de bureau : écran supérieur à 1024px */
+@media (min-width: 1025px) {
+    navbar {
+        flex-direction: row;
+        padding: 3% 13%;
+        justify-content: space-between;
+        align-items: center; /* Centrer verticalement */
+    }
+
+    .contacte {
+        font-size: 16px;
+        padding: 15px 50px;
+    }
+
+    .nav {
+        font-size: 20px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+
+    .profil {
+        align-items: center;
+    }
+
+    img.entete {
+        width: 75px;
+        height: 75px;
+    }
+
+    section1 {
+        flex-direction: row;
+        padding: 7% 13%;
+        justify-content: space-between; /* Bien espacer les éléments */
+    }
+
+    section1 #t1 {
+        font-size: 50px;
+    }
+
+    section1 #t2 {
+        font-size: 65px;
+    }
+}
+
+
+/* Section T3 */
 section1 #t3 {
     font-size: 28px;
     font-weight: 100;
-    color: grey;    
-    padding:0px 0px 50px;
+    color: grey;
+    padding: 0px 0px 50px;
 }
 
+/* Style des liens d'illustration */
 .link img {
     padding: 0px 0.5% 0px;
 }
 
+/* Illustration image */
 .illustration img {
     padding: 0px 0px 0px 50%;
 }
 
-.contact{
-   
+/* Bouton de contact */
+.contact {
     font-weight: 900;
-    color:black;
-    padding: 25px 70px 25px 70px;
-    text-align:center;
-    text-decoration:none;
+    color: black;
+    padding: 25px 70px;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
-    font-size:16px;
-    margin:60px 2px;
-    border-radius:3rem;
+    font-size: 16px;
+    margin: 60px 2px;
+    border-radius: 3rem;
     border: 3px solid black;
-
 }
-
 
 /* Style global pour la section des projets */
 .projet-section {
     padding: 20px;
-    background-color: #fff; /* Fond léger pour toute la section */
-    box-sizing: border-box; /* Assure que le padding ne dépasse pas les bords */
+    background-color: #fff;
+    box-sizing: border-box;
 }
 
 /* Filtre des catégories */
@@ -156,24 +298,133 @@ section1 #t3 {
 /* Conteneur principal des projets */
 .projets {
     display: flex;
-    flex-wrap: wrap; /* Permet d'aller à la ligne si les éléments débordent */
-    justify-content: center; /* Centre horizontalement les projets */
-    gap: 20px; /* Espace entre les projets */
-    margin: 20px auto; /* Ajoute de l'espace autour du conteneur */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px auto;
 }
 
 /* Style individuel pour chaque projet */
 .projets .projet {
-    flex: 0 1 370px; /* Taille fixe pour chaque projet (370px de large) */
+    flex: 0 1 370px; /* Taille fixe pour chaque projet */
     display: flex;
-    flex-direction: column; /* Empile l'image et les infos */
-    align-items: center; /* Centre le contenu horizontalement */
-    text-align: center; /* Centre les textes (titre, catégorie, etc.) */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère autour des projets */
-    padding: 10px; /* Espacement interne autour des éléments */
-    background-color: #fff; /* Fond blanc pour chaque projet */
-    border-radius: 5px; /* Coins arrondis */
-    transition: transform 0.3s ease; /* Transition pour l'effet de survol */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+/* Responsive Design */
+
+/* Mobile : écran inférieur à 768px */
+@media (max-width: 768px) {
+
+    /* Ajustement du texte dans la section T3 */
+    section1 #t3 {
+        font-size: 20px; /* Réduction de la taille de texte sur mobile */
+        padding: 0px 0px 30px; /* Moins d'espace en bas */
+    }
+
+    /* Réduire le padding des images de liens */
+    .link img {
+        padding: 0px 0.3% 0px;
+    }
+
+    /* Illustration image ajustée */
+    .illustration img {
+        padding: 0px 0px 0px 30%; /* Moins de padding à gauche */
+    }
+
+    /* Réduction du bouton contact */
+    .contact {
+        font-size: 14px; /* Taille du texte réduite */
+        padding: 20px 50px; /* Moins de padding */
+        margin: 40px 2px; /* Moins d'espace autour du bouton */
+    }
+
+    /* Style pour les projets */
+    .projets {
+        gap: 10px; /* Moins d'espace entre les projets */
+        margin: 10px auto;
+    }
+
+    .projets .projet {
+        flex: 0 1 100%; /* Les projets prennent toute la largeur sur mobile */
+        padding: 15px; /* Plus d'espace autour des projets */
+    }
+}
+
+/* Tablette : écran entre 768px et 1024px */
+@media (max-width: 1024px) {
+
+    /* Ajustement du texte dans la section T3 */
+    section1 #t3 {
+        font-size: 24px; /* Taille du texte légèrement réduite */
+        padding: 0px 0px 40px;
+    }
+
+    /* Ajustement du padding des images de liens */
+    .link img {
+        padding: 0px 0.4% 0px;
+    }
+
+    /* Illustration image ajustée */
+    .illustration img {
+        padding: 0px 0px 0px 40%;
+    }
+
+    /* Ajustement du bouton contact */
+    .contact {
+        font-size: 15px;
+        padding: 22px 60px;
+        margin: 50px 2px;
+    }
+
+    /* Projets ajustés sur tablette */
+    .projets {
+        gap: 15px; /* Un peu plus d'espace entre les projets */
+    }
+
+    .projets .projet {
+        flex: 0 1 48%; /* Les projets prennent presque la moitié de la largeur */
+    }
+}
+
+/* Ordinateur de bureau : écran supérieur à 1024px */
+@media (min-width: 1025px) {
+
+    /* Pas de changement majeur pour les grands écrans */
+    section1 #t3 {
+        font-size: 28px;
+        padding: 0px 0px 50px;
+    }
+
+    .link img {
+        padding: 0px 0.5% 0px;
+    }
+
+    .illustration img {
+        padding: 0px 0px 0px 50%;
+    }
+
+    .contact {
+        font-size: 16px;
+        padding: 25px 70px;
+        margin: 60px 2px;
+    }
+
+    .projets {
+        gap: 20px;
+    }
+
+    .projets .projet {
+        flex: 0 1 370px; /* Taille fixe pour chaque projet sur grands écrans */
+        padding: 10px;
+    }
 }
 
 /* Effet de survol sur chaque projet */
@@ -184,7 +435,7 @@ section1 #t3 {
 /* Assurez-vous que toutes les images des projets aient la même taille */
 .projets .projet img {
     width: 370px; /* Largeur fixe */
-    height: 300px; /* Hauteur fixe *
+    height: 300px; /* Hauteur fixe */
     object-fit: cover; /* Ajuste l'image pour la remplir sans déformer */
     display: block; /* Supprime les espaces blancs autour des images */
     border-radius: 5px; /* Coins arrondis sur l'image */
@@ -236,10 +487,9 @@ section1 #t3 {
     background-color: #b3b3b3; /* Couleur encore plus foncée au clic */
 }
 
-
 .categorie {
     text-align: left;
-    padding:4% 4% 10%;
+    padding: 4% 4% 10%;
 }
 
 .infos {
@@ -247,9 +497,8 @@ section1 #t3 {
     display: flex;
     justify-content: space-between;
     font-size: 11px;
-    color:#302c2c;
+    color: #302c2c;
 }
-
 
 /* Section "À propos" */
 #apropos {
@@ -266,11 +515,146 @@ section1 #t3 {
     text-align: center; /* Centrer l'image */
 }
 
+/* Responsive Design */
+
+/* Mobile : écran inférieur à 768px */
+@media (max-width: 768px) {
+
+    /* Projets */
+    .projets .projet img {
+        width: 100%; /* Images prennent 100% de la largeur */
+        height: auto; /* Hauteur automatique pour garder les proportions */
+    }
+
+    .projets .projet .categorie p {
+        font-size: 12px; /* Texte plus petit */
+    }
+
+    .projets .projet .infos h1 {
+        font-size: 14px; /* Réduction de la taille du titre */
+    }
+
+    /* Bouton suggestion */
+    .suggestion-button {
+        font-size: 14px; /* Réduction de la taille du texte du bouton */
+        padding: 8px 16px; /* Moins de padding sur mobile */
+    }
+
+    .categorie {
+        padding: 4% 2% 8%; /* Réduction des espaces de padding */
+    }
+
+    .infos {
+        flex-direction: column; /* Empile les éléments en colonne sur mobile */
+        font-size: 10px; /* Texte plus petit */
+    }
+
+    /* Section "À propos" */
+    #apropos {
+        flex-direction: column; /* Empile les éléments de la section */
+        padding: 20px 10px; /* Moins de padding */
+        margin: 20px 0; /* Moins d'espacement autour */
+    }
+
+    .image {
+        width: 80%; /* Image prend 80% de la largeur sur mobile */
+    }
+}
+
+/* Tablette : écran entre 768px et 1024px */
+@media (max-width: 1024px) {
+
+    /* Projets */
+    .projets .projet img {
+        width: 100%; /* Les images prennent toute la largeur sur tablette */
+        height: auto; /* Conserver les proportions */
+    }
+
+    .projets .projet .categorie p {
+        font-size: 13px; /* Texte un peu plus grand */
+    }
+
+    .projets .projet .infos h1 {
+        font-size: 15px; /* Taille du titre augmentée */
+    }
+
+    /* Bouton suggestion */
+    .suggestion-button {
+        font-size: 15px; /* Taille du texte ajustée */
+        padding: 10px 18px; /* Padding ajusté pour une taille intermédiaire */
+    }
+
+    .categorie {
+        padding: 4% 3% 9%; /* Ajustement des espaces */
+    }
+
+    .infos {
+        font-size: 12px; /* Taille du texte augmentée */
+    }
+
+    /* Section "À propos" */
+    #apropos {
+        flex-direction: row; /* Reviens en ligne sur tablette */
+        padding: 30px 15px; /* Moins de padding */
+    }
+
+    .image {
+        width: 60%; /* Image prend 60% de la largeur */
+    }
+}
+
+/* Ordinateur de bureau : écran supérieur à 1024px */
+@media (min-width: 1025px) {
+
+    /* Projets */
+    .projets .projet img {
+        width: 370px; /* Largeur fixe */
+        height: 300px; /* Hauteur fixe */
+    }
+
+    .projets .projet .categorie p {
+        font-size: 14px;
+    }
+
+    .projets .projet .infos h1 {
+        font-size: 16px;
+    }
+
+    /* Bouton suggestion */
+    .suggestion-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .categorie {
+        padding: 4% 4% 10%;
+    }
+
+    .infos {
+        font-size: 11px;
+    }
+
+    /* Section "À propos" */
+    #apropos {
+        flex-direction: row; /* Disposition en ligne */
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .image {
+        width: 50%; /* Image prend 50% de la largeur */
+    }
+}
+
+
+/* Section "Image" */
 .image img {
     max-width: 100%; /* S'assure que l'image ne dépasse pas de son conteneur */
     height: auto; /* Conserve le ratio d'aspect */
 }
 
+/* Section "À propos" */
 .apropos {
     width: 45%; /* Prendre 45% de l'espace disponible */
     padding: 20px; /* Padding interne */
@@ -292,6 +676,7 @@ section1 #t3 {
     margin-bottom: 30px; /* Espacement en dessous du texte */
 }
 
+/* Style du bouton de contact */
 .contact {
     display: inline-block;
     padding: 15px 50px;
@@ -305,27 +690,23 @@ section1 #t3 {
     text-align: center;
 }
 
-/* Effet de survol */
+/* Effet de survol du bouton de contact */
 .contact:hover {
     background-color: rgb(44, 44, 44);
     color: white;
 }
 
-
-
-/* Troisième section - Témoignage */
-
-.banniere{
+/* Section "Témoignage" */
+.banniere {
     background-image: url("../images/section-back.svg");
     background-color: rgba(0, 0, 0, 0.801);
-    color:white;
+    color: white;
     height: 100px;
     font-size: 30px;
     padding: 6%;
     text-align: center;
     font-style: italic;
     font-weight: 100;
-   
 }
 
 .profilauteur {
@@ -347,19 +728,17 @@ section1 #t3 {
 }
 
 .auteur h2 {
-    color:grey;
+    color: grey;
     font-size: 18px;
     font-weight: 100;
-
 }
 
 p.avis {
     color: grey;
-    font-size:15px;
+    font-size: 15px;
 }
 
-
-/* Quatrième section - Blog*/
+/* Section "Blog" */
 .title {
     text-align: center;
     padding-top: 15%;
@@ -373,23 +752,19 @@ p.avis {
 }
 
 .articles {
-
     columns: 3 auto;
     text-align: center;
-    margin: 0% 8% 0%
-
+    margin: 0% 8% 0%;
 }
 
 .articles img {
-
-    width:481px;
-    height:334px;
+    width: 100%; /* Prend toute la largeur de son conteneur */
+    height: auto; /* Garder le ratio d'aspect */
     padding-bottom: 4%;
-
 }
 
 .article {
-    padding:0% 1% 0%;
+    padding: 0% 1% 0%;
 }
 
 .article h1 {
@@ -400,94 +775,378 @@ p.avis {
 }
 
 .article p {
-    color:grey;
+    color: grey;
     font-size: 25px;
     text-align: left;
 }
 
 .article .lire {
-
     justify-content: left;
 }
 
 .lire {
-
-        color: grey;
-        padding: 15px 70px 15px 70px;
-        text-align: left;
-        text-decoration: none;
-        display: inline-block;
-        margin-top: 10%;
-        margin-right: 100%;
-        font-size: 16px;
-        border-radius: 3rem;
-        border: 2.5px solid grey;
-   
+    color: grey;
+    padding: 15px 70px 15px 70px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10%;
+    margin-right: 100%;
+    font-size: 16px;
+    border-radius: 3rem;
+    border: 2.5px solid grey;
 }
 
 .lire:hover {
-
     background-color: rgb(44, 44, 44);
     border-color: rgb(44, 44, 44);
     font-weight: 100;
-    color:white;
+    color: white;
     padding: 15px 70px 15px 70px;
-    text-decoration:none;
+    text-decoration: none;
     display: inline-block;
-    font-size:16px;
-    border-radius:3rem;
-
-
+    font-size: 16px;
+    border-radius: 3rem;
 }
 
+/* Responsive Design */
+
+/* Mobile : écran inférieur à 768px */
+@media (max-width: 768px) {
+
+    /* Section "À propos" */
+    .apropos {
+        width: 100%; /* Prendre toute la largeur */
+        padding: 10px; /* Réduire le padding */
+    }
+
+    .apropos h1 {
+        font-size: 28px; /* Réduire la taille du titre */
+    }
+
+    .apropos p {
+        font-size: 18px; /* Réduire la taille du texte */
+    }
+
+    /* Contact */
+    .contact {
+        width: 100%; /* Largeur du bouton de contact à 100% */
+        padding: 12px 40px; /* Réduire le padding */
+    }
+
+    /* Témoignage */
+    .banniere {
+        padding: 4%; /* Réduire le padding */
+        font-size: 24px; /* Réduire la taille du texte */
+    }
+
+    .profilauteur img {
+        width: 50px; /* Réduire la taille de l'image du profil */
+        height: 50px;
+    }
+
+    .auteur {
+        font-size: 14px; /* Réduire la taille du texte */
+    }
+
+    .auteur h2 {
+        font-size: 16px; /* Réduire la taille du texte */
+    }
+
+    /* Blog */
+    .articles {
+        columns: 1; /* Passer à une seule colonne */
+        margin: 0% 2%; /* Réduire l'espace */
+    }
+
+    .articles img {
+        width: 100%; /* Les images prennent 100% de la largeur */
+        height: auto; /* Conserver les proportions */
+    }
+
+    .article h1 {
+        font-size: 20px; /* Réduire la taille du titre */
+    }
+
+    .article p {
+        font-size: 18px; /* Réduire la taille du texte */
+    }
+
+    .lire {
+        font-size: 14px; /* Réduire la taille du bouton */
+        padding: 12px 40px; /* Réduire le padding */
+        margin-top: 5%; /* Réduire l'espace au-dessus */
+    }
+}
+
+/* Tablette : écran entre 768px et 1024px */
+@media (max-width: 1024px) {
+
+    /* Section "À propos" */
+    .apropos {
+        width: 60%; /* Largeur ajustée */
+        padding: 15px;
+    }
+
+    .apropos h1 {
+        font-size: 32px; /* Ajustement de la taille du titre */
+    }
+
+    .apropos p {
+        font-size: 19px; /* Ajustement de la taille du texte */
+    }
+
+    /* Blog */
+    .articles {
+        columns: 2 auto; /* Passer à deux colonnes */
+    }
+
+    .articles img {
+        width: 100%; /* Largeur de l'image ajustée */
+        height: auto; /* Conserver les proportions */
+    }
+
+    .lire {
+        font-size: 15px; /* Ajustement de la taille du bouton */
+        padding: 13px 50px; /* Ajustement du padding */
+    }
+}
+
+/* Ordinateur de bureau : écran supérieur à 1024px */
+@media (min-width: 1025px) {
+
+    /* Section "À propos" */
+    .apropos {
+        width: 45%; /* Retour à la largeur d'origine */
+    }
+
+    .apropos h1 {
+        font-size: 36px;
+    }
+
+    .apropos p {
+        font-size: 20px;
+    }
+
+    /* Blog */
+    .articles {
+        columns: 3 auto; /* Trois colonnes */
+    }
+
+    .articles img {
+        width: 481px;
+        height: 334px;
+    }
+
+    .lire {
+        font-size: 16px;
+        padding: 15px 70px;
+    }
+}
+
+
+/* Style des images des articles */
+.articles img {
+    width: 481px; /* Largeur fixe */
+    height: 334px; /* Hauteur fixe */
+    padding-bottom: 4%; /* Espacement sous l'image */
+}
+
+/* Style général de l'article */
+.article {
+    padding: 0% 1% 0%;
+}
+
+/* Style du titre de l'article */
+.article h1 {
+    font-size: 25px; /* Taille du titre */
+    text-align: left;
+    padding-bottom: 7%;
+    color: #302c2c;
+}
+
+/* Style du texte de l'article */
+.article p {
+    color: grey;
+    font-size: 25px; /* Taille du texte */
+    text-align: left;
+}
+
+/* Style du bouton "lire" */
+.article .lire {
+    justify-content: left;
+}
+
+.lire {
+    color: grey;
+    padding: 15px 70px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10%;
+    margin-right: 100%;
+    font-size: 16px;
+    border-radius: 3rem;
+    border: 2.5px solid grey;
+}
+
+/* Effet au survol du bouton "lire" */
+.lire:hover {
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(44, 44, 44);
+    font-weight: 100;
+    color: white;
+    padding: 15px 70px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 3rem;
+}
+
+/* Style du conteneur bouton lire */
 .boutonlire {
     justify-content: left;
-
 }
 
+/* Style des dates */
 .dates {
-    position:absolute;
+    position: absolute;
     background: rgb(59, 59, 59);
     color: #fff;
     padding: 30px 35px;
     border-radius: 5px;
     font-size: 14px;
     text-align: center;
-    margin-left:1%;
-  }
+    margin-left: 1%;
+}
 
-  span {
+span {
     font-size: 18px;
     display: block;
-  }
+}
+
+/* Responsive Design */
+
+/* Mobile : écran inférieur à 768px */
+@media (max-width: 768px) {
+
+    /* Articles */
+    .articles img {
+        width: 100%; /* Les images prennent toute la largeur */
+        height: auto; /* Garder le ratio d'aspect */
+    }
+
+    .article h1 {
+        font-size: 20px; /* Réduire la taille du titre */
+    }
+
+    .article p {
+        font-size: 18px; /* Réduire la taille du texte */
+    }
+
+    .lire {
+        font-size: 14px; /* Réduire la taille du bouton */
+        padding: 12px 40px; /* Réduire le padding */
+        margin-top: 5%; /* Réduire l'espace au-dessus */
+    }
+
+    .dates {
+        font-size: 12px; /* Réduire la taille du texte des dates */
+        padding: 20px 25px; /* Réduire le padding */
+    }
+
+    span {
+        font-size: 16px; /* Réduire la taille du texte dans span */
+    }
+}
+
+/* Tablette : écran entre 768px et 1024px */
+@media (max-width: 1024px) {
+
+    /* Articles */
+    .articles img {
+        width: 100%; /* Les images prennent toute la largeur */
+        height: auto; /* Garder le ratio d'aspect */
+    }
+
+    .article h1 {
+        font-size: 22px; /* Ajuster la taille du titre */
+    }
+
+    .article p {
+        font-size: 22px; /* Ajuster la taille du texte */
+    }
+
+    .lire {
+        font-size: 15px; /* Ajuster la taille du bouton */
+        padding: 13px 50px; /* Ajuster le padding */
+    }
+
+    .dates {
+        font-size: 13px; /* Ajuster la taille du texte des dates */
+        padding: 25px 30px; /* Ajuster le padding */
+    }
+
+    span {
+        font-size: 17px; /* Ajuster la taille du texte dans span */
+    }
+}
+
+/* Ordinateur de bureau : écran supérieur à 1024px */
+@media (min-width: 1025px) {
+
+    /* Articles */
+    .articles img {
+        width: 481px; /* Largeur fixe */
+        height: 334px; /* Hauteur fixe */
+    }
+
+    .article h1 {
+        font-size: 25px; /* Taille du titre */
+    }
+
+    .article p {
+        font-size: 25px; /* Taille du texte */
+    }
+
+    .lire {
+        font-size: 16px; /* Taille du bouton */
+        padding: 15px 70px; /* Padding d'origine */
+    }
+
+    .dates {
+        font-size: 14px; /* Taille du texte des dates */
+        padding: 30px 35px; /* Padding d'origine */
+    }
+
+    span {
+        font-size: 18px; /* Taille du texte dans span */
+    }
+}
+
 
 
 /* Footer */
 
+/* Footer */
 .footer-basic {
     margin-top: 5%;
-    padding:1.3% 0;
-    background-color:#ffffff;
-    color:#4b4c4d;
+    padding: 1.3% 0;
     background-color: #302c2c;
-  }
- 
-  .footer-basic ul {
-    padding-left:10%;
-    list-style:none;
-    text-align:left;
-    font-size:18px;
-    line-height:1.6;
-    margin-bottom:0;
+    color: #4b4c4d;
+}
+
+.footer-basic ul {
+    padding-left: 10%;
+    list-style: none;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
     color: grey;
-  }
+}
 
-
-
-/* Dernière section - Popup */
-
-
-  #popup-overlay {
+#popup-overlay {
     position:fixed;
     top: 0;
     left: 0;
@@ -589,8 +1248,135 @@ label {
 
   }
 
-     
-    /* Style du menu */
+
+/* Responsive Design */
+
+/* Mobile : écran inférieur à 768px */
+@media (max-width: 768px) {
+
+    /* Footer */
+    .footer-basic ul {
+        padding-left: 5%;
+        font-size: 16px; /* Réduire la taille du texte */
+    }
+
+    /* Popup */
+    .popup-content h1 {
+        font-size: 30px; /* Réduire la taille du titre */
+    }
+
+    .popup-content h2 {
+        font-size: 16px; /* Réduire la taille du sous-titre */
+    }
+
+    .popup-content p {
+        font-size: 16px; /* Réduire la taille du texte */
+    }
+
+    .popup-link {
+        font-size: 14px; /* Réduire la taille du bouton */
+        padding: 8px 15px; /* Réduire le padding */
+    }
+
+    .popup-exit {
+        padding: 3px 8px; /* Réduire le padding */
+        font-size: 12px; /* Réduire la taille du texte */
+    }
+}
+
+/* Tablette : écran entre 768px et 1024px */
+@media (max-width: 1024px) {
+
+    /* Footer */
+    .footer-basic ul {
+        padding-left: 8%;
+        font-size: 17px; /* Ajuster la taille du texte */
+    }
+
+    /* Popup */
+    .popup-content h1 {
+        font-size: 40px; /* Ajuster la taille du titre */
+    }
+
+    .popup-content h2 {
+        font-size: 18px; /* Ajuster la taille du sous-titre */
+    }
+
+    .popup-content p {
+        font-size: 18px; /* Ajuster la taille du texte */
+    }
+
+    .popup-link {
+        font-size: 15px; /* Ajuster la taille du bouton */
+        padding: 9px 18px; /* Ajuster le padding */
+    }
+
+    .popup-exit {
+        padding: 4px 10px; /* Ajuster le padding */
+        font-size: 13px; /* Ajuster la taille du texte */
+    }
+}
+
+/* Ordinateur de bureau : écran supérieur à 1024px */
+@media (min-width: 1025px) {
+
+    /* Footer */
+    .footer-basic ul {
+        padding-left: 10%;
+        font-size: 18px; /* Taille du texte d'origine */
+    }
+
+    /* Popup */
+    .popup-content h1 {
+        font-size: 60px; /* Taille du titre d'origine */
+    }
+
+    .popup-content h2 {
+        font-size: 20px; /* Taille du sous-titre d'origine */
+    }
+
+    .popup-content p {
+        font-size: 20px; /* Taille du texte d'origine */
+    }
+
+    .popup-link {
+        font-size: 16px; /* Taille du bouton d'origine */
+        padding: 10px 20px; /* Padding d'origine */
+    }
+
+    .popup-exit {
+        padding: 5px 10px; /* Padding d'origine */
+        font-size: 14px; /* Taille du texte d'origine */
+    }
+}
+
+
+/* Formulaire */
+form {
+    padding-top: 6%;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 4%;
+    font-weight: 900;
+}
+
+label.light {
+    font-weight: 300;
+    display: inline;
+}
+
+input, textarea {
+    border: grey 1px solid;
+    border-radius: 2rem;
+    width: 90%;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+/* Menu déroulant */
 .menu {
     position: relative;
 }
@@ -620,6 +1406,7 @@ label {
     background-color: #f0f0f0;
 }
 
+/* Notification de nouvelle suggestion */
 #new-suggestion-notification {
     background-color: #4CAF50; /* Couleur de fond (verte pour succès) */
     color: white;
@@ -633,4 +1420,96 @@ label {
     z-index: 9999;
     display: none; /* Par défaut, cachée */
     border-bottom: 2px solid #2e7d32; /* Ajout d'une bordure pour plus de style */
+}
+
+/* Responsive Design */
+
+/* Mobile : écran inférieur à 768px */
+@media (max-width: 768px) {
+
+    form {
+        padding-top: 8%; /* Augmenter l'espacement pour plus d'espace sur mobile */
+    }
+
+    label {
+        font-size: 16px; /* Réduire la taille de la police pour les petits écrans */
+    }
+
+    input, textarea {
+        width: 90%; /* Réduire la largeur pour s'adapter à l'écran */
+        height: 35px; /* Réduire la hauteur des champs de saisie */
+    }
+
+    .dropdown-menu {
+        width: 100%; /* S'assurer que le menu déroulant prend toute la largeur sur mobile */
+    }
+
+    .dropdown-menu a {
+        padding: 12px; /* Augmenter le padding des éléments du menu */
+    }
+
+    #new-suggestion-notification {
+        font-size: 16px; /* Réduire la taille du texte de notification */
+        padding: 10px; /* Réduire le padding de la notification */
+    }
+}
+
+/* Tablette : écran entre 768px et 1024px */
+@media (max-width: 1024px) {
+
+    form {
+        padding-top: 7%; /* Ajuster l'espacement sur les tablettes */
+    }
+
+    label {
+        font-size: 17px; /* Ajuster la taille de la police pour une tablette */
+    }
+
+    input, textarea {
+        width: 85%; /* Réduire légèrement la largeur des champs sur tablette */
+        height: 38px; /* Ajuster la hauteur des champs */
+    }
+
+    .dropdown-menu {
+        width: 80%; /* Réduire la largeur du menu déroulant sur tablette */
+    }
+
+    .dropdown-menu a {
+        padding: 12px; /* Ajuster le padding des éléments du menu */
+    }
+
+    #new-suggestion-notification {
+        font-size: 17px; /* Ajuster la taille du texte de notification */
+        padding: 12px; /* Ajuster le padding de la notification */
+    }
+}
+
+/* Ordinateur de bureau : écran supérieur à 1024px */
+@media (min-width: 1025px) {
+
+    form {
+        padding-top: 6%; /* Espacement d'origine */
+    }
+
+    label {
+        font-size: 18px; /* Taille de la police pour les grands écrans */
+    }
+
+    input, textarea {
+        width: 90%; /* Largeur des champs d'entrée sur grands écrans */
+        height: 40px; /* Hauteur d'origine des champs */
+    }
+
+    .dropdown-menu {
+        width: auto; /* Menu déroulant à taille normale */
+    }
+
+    .dropdown-menu a {
+        padding: 10px; /* Padding des éléments du menu d'origine */
+    }
+
+    #new-suggestion-notification {
+        font-size: 18px; /* Taille du texte de notification sur grands écrans */
+        padding: 15px; /* Padding normal pour la notification */
+    }
 }
