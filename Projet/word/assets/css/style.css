@@ -1,0 +1,620 @@
+/*Reset CSS */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+navbar {
+    display:flex;
+    padding: 3% 13% 0px;
+    justify-content: space-between;
+}
+
+.contacte{
+    
+    font-weight: 900;
+    color:black;
+    padding: 15px 50px 15px 50px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    border-radius:3rem;
+    border: 3px solid black;
+
+}
+
+.contacte:hover{
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(44, 44, 44);
+    font-weight: 100;
+    color:white;
+    padding: 15px 50px 15px 50px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    border-radius:3rem;
+
+}
+
+.nav {
+    position: relative; /* Positionnement relatif pour chaque lien */
+    padding-right: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+    color: #302c2c;
+    font-size: 20px;
+}
+
+.nav:hover {
+
+    text-decoration: underline;
+
+}
+
+
+
+.menu {
+    display: flex; /* Alignement horizontal des liens */
+    gap: 20px; /* Espacement entre les éléments du menu */
+}
+
+.profil {
+    display:flex;
+}
+
+img.entete {
+    padding: 0px 10px 0px 0px;
+    border-radius: 50%;
+    width : 75px;
+    height : 75px;
+}
+
+.nom {
+    padding: 5px 0px 0px;
+    color: #302c2c;
+}
+
+/* Première section */
+
+section1 {
+    display:flex;
+    padding: 7% 13% 7%;
+
+}
+
+section1 #t1 {
+    font-size: 50px;
+    font-weight: 100;
+    color:rgb(49, 48, 48)
+}
+
+section1 #t2 {
+    font-size: 65px;
+    color: #302c2c;
+    
+}
+
+section1 #t3 {
+    font-size: 28px;
+    font-weight: 100;
+    color: grey;    
+    padding:0px 0px 50px;
+}
+
+.link img {
+    padding: 0px 0.5% 0px;
+}
+
+.illustration img {
+    padding: 0px 0px 0px 50%;
+}
+
+.contact{
+    
+    font-weight: 900;
+    color:black;
+    padding: 25px 70px 25px 70px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    margin:60px 2px;
+    border-radius:3rem;
+    border: 3px solid black;
+
+}
+
+
+/* Style global pour la section des projets */
+.projet-section {
+    padding: 20px;
+    background-color: #fff; /* Fond léger pour toute la section */
+    box-sizing: border-box; /* Assure que le padding ne dépasse pas les bords */
+}
+
+/* Filtre des catégories */
+.filtre {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filtre a {
+    margin-right: 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.filtre a:hover {
+    color: #0036e7;
+}
+
+/* Conteneur principal des projets */
+.projets {
+    display: flex;
+    flex-wrap: wrap; /* Permet d'aller à la ligne si les éléments débordent */
+    justify-content: center; /* Centre horizontalement les projets */
+    gap: 20px; /* Espace entre les projets */
+    margin: 20px auto; /* Ajoute de l'espace autour du conteneur */
+}
+
+/* Style individuel pour chaque projet */
+.projets .projet {
+    flex: 0 1 370px; /* Taille fixe pour chaque projet (370px de large) */
+    display: flex;
+    flex-direction: column; /* Empile l'image et les infos */
+    align-items: center; /* Centre le contenu horizontalement */
+    text-align: center; /* Centre les textes (titre, catégorie, etc.) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère autour des projets */
+    padding: 10px; /* Espacement interne autour des éléments */
+    background-color: #fff; /* Fond blanc pour chaque projet */
+    border-radius: 5px; /* Coins arrondis */
+    transition: transform 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+/* Effet de survol sur chaque projet */
+.projets .projet:hover {
+    transform: translateY(-5px); /* Léger déplacement vers le haut au survol */
+}
+
+/* Assurez-vous que toutes les images des projets aient la même taille */
+.projets .projet img {
+    width: 370px; /* Largeur fixe */
+    height: 300px; /* Hauteur fixe *
+    object-fit: cover; /* Ajuste l'image pour la remplir sans déformer */
+    display: block; /* Supprime les espaces blancs autour des images */
+    border-radius: 5px; /* Coins arrondis sur l'image */
+}
+
+/* Informations supplémentaires sous les images */
+.projets .projet .categorie {
+    margin-top: 10px; /* Espace entre l'image et les textes */
+}
+
+.projets .projet .categorie p {
+    font-size: 14px;
+    color: #555; /* Gris pour le texte des catégories */
+    margin: 5px 0;
+}
+
+.projets .projet .infos h1 {
+    font-size: 16px;
+    color: #333; /* Titre plus foncé */
+    margin: 5px 0;
+}
+
+/*//////////////*/
+/* Style du bouton "Demander une suggestion" */
+
+/* Style du bouton suggestion dans les projets */
+.suggestion-button {
+    display: inline-block;
+    padding: 10px 20px; /* Taille confortable pour le bouton */
+    background-color: #c5c5c5; /* Couleur de fond verte */
+    color: rgb(0, 0, 0); /* Texte blanc */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 16px; /* Taille du texte */
+    transition: background-color 0.3s ease; /* Transition pour le changement de couleur */
+    margin-top: 20px; /* Espacement au-dessus du bouton */
+    width: 100%; /* Largeur maximale pour le bouton */
+    box-sizing: border-box; /* Assure que padding et bordure sont inclus dans la largeur */
+}
+
+/* Effet de survol du bouton */
+.suggestion-button:hover {
+    background-color: #b3b3b3; /* Couleur plus foncée au survol */
+}
+
+/* Effet au clic sur le bouton */
+.suggestion-button:active {
+    background-color: #b3b3b3; /* Couleur encore plus foncée au clic */
+}
+
+
+.categorie {
+    text-align: left;
+    padding:4% 4% 10%; 
+}
+
+.infos {
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color:#302c2c;
+}
+
+
+/* Section "À propos" */
+#apropos {
+    display: flex;
+    flex-direction: row; /* Disposition en ligne */
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0; /* Espacement au-dessus et en dessous de la section */
+    padding: 40px 20px; /* Padding interne */
+}
+
+.image {
+    width: 50%; /* Prendre 50% de l'espace disponible */
+    text-align: center; /* Centrer l'image */
+}
+
+.image img {
+    max-width: 100%; /* S'assure que l'image ne dépasse pas de son conteneur */
+    height: auto; /* Conserve le ratio d'aspect */
+}
+
+.apropos {
+    width: 45%; /* Prendre 45% de l'espace disponible */
+    padding: 20px; /* Padding interne */
+}
+
+.apropos h1 {
+    font-size: 36px; /* Taille du titre */
+    color: #302c2c;
+    margin-bottom: 20px; /* Espacement sous le titre */
+    text-align: left; /* Alignement du titre à gauche */
+}
+
+.apropos p {
+    font-size: 20px; /* Taille du texte augmentée */
+    line-height: 1.6; /* Espacement entre les lignes */
+    color: #555; /* Couleur du texte */
+    text-align: justify; /* Justification du texte */
+    margin-top: 20px; /* Espacement au-dessus du texte */
+    margin-bottom: 30px; /* Espacement en dessous du texte */
+}
+
+.contact {
+    display: inline-block;
+    padding: 15px 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #302c2c;
+    border: 2px solid #302c2c;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Effet de survol */
+.contact:hover {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+
+
+
+/* Troisième section - Témoignage */
+
+.banniere{
+    background-image: url("../images/section-back.svg");
+    background-color: rgba(0, 0, 0, 0.801);
+    color:white;
+    height: 100px;
+    font-size: 30px;
+    padding: 6%;
+    text-align: center;
+    font-style: italic;
+    font-weight: 100;
+    
+}
+
+.profilauteur {
+    position: relative;
+    top: 50px;
+}
+
+.profilauteur img {
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.auteur {
+    color: black;
+    padding: 3%;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.auteur h2 {
+    color:grey;
+    font-size: 18px;
+    font-weight: 100;
+
+}
+
+p.avis {
+    color: grey;
+    font-size:15px;
+}
+
+
+/* Quatrième section - Blog*/ 
+.title {
+    text-align: center;
+    padding-top: 15%;
+    font-size: 30px;
+    color: #302c2c;
+}
+
+.title p {
+    color: grey;
+    padding-bottom: 2%;
+}
+
+.articles {
+
+    columns: 3 auto;
+    text-align: center;
+    margin: 0% 8% 0%
+
+}
+
+.articles img {
+
+    width:481px;
+    height:334px;
+    padding-bottom: 4%;
+
+}
+
+.article {
+    padding:0% 1% 0%; 
+}
+
+.article h1 {
+    font-size: 25px;
+    text-align: left;
+    padding-bottom: 7%;
+    color: #302c2c;
+}
+
+.article p {
+    color:grey;
+    font-size: 25px;
+    text-align: left;
+}
+
+.article .lire {
+
+    justify-content: left;
+}
+
+.lire {
+
+        color: grey;
+        padding: 15px 70px 15px 70px;
+        text-align: left;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 10%;
+        margin-right: 100%;
+        font-size: 16px;
+        border-radius: 3rem;
+        border: 2.5px solid grey;
+    
+}
+
+.lire:hover {
+
+    background-color: rgb(44, 44, 44);
+    border-color: rgb(44, 44, 44);
+    font-weight: 100;
+    color:white;
+    padding: 15px 70px 15px 70px;
+    text-decoration:none;
+    display: inline-block;
+    font-size:16px;
+    border-radius:3rem;
+
+
+}
+
+.boutonlire {
+    justify-content: left;
+
+}
+
+
+/* Footer */
+
+.footer-basic {
+    margin-top: 5%;
+    padding:1.3% 0;
+    background-color:#ffffff;
+    color:#4b4c4d;
+    background-color: #302c2c;
+  }
+  
+  .footer-basic ul {
+    padding-left:10%;
+    list-style:none;
+    text-align:left;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:0;
+    color: grey;
+  }
+
+
+
+/* Dernière section - Popup */
+
+
+  #popup-overlay {
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom : 0;
+    background:rgba(0, 0, 0, 0.678);
+    z-index:98;
+    display:none;
+
+}
+
+#popup-overlay.open {
+    display:block;
+}
+
+.popup-content {
+    max-width:900px;
+    width:100%;
+    padding:30px;
+    box-sizing:border-box;
+    background:white;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    display: flex;
+}
+
+.popup-content h1 {
+        font-size: 60px;
+        color: #302c2c;
+
+}
+
+.popup-content h2 {
+    font-size: 20px;
+    font-weight: 100;
+    color:#302c2c;  
+    padding-bottom: 4%;
+}
+
+
+.popup-content p {
+    margin: 20px 20px 0px 0px;
+    font-size: 20px;
+    font-weight: 100;
+    color:#302c2c;  
+}
+
+.popup-link {
+    text-decoration: none;
+    color:white;
+    background: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display:inline-block;
+}
+
+.popup-exit {
+    position:absolute;
+    top:0;
+    right:0;
+    text-decoration: none;
+    color: black ;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+form {
+    padding-top: 6%;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 4%;
+    font-weight: 900;
+  }
+  
+  label.light {
+    font-weight: 300;
+    display: inline;
+  }
+
+  input {
+    border: grey 1px solid;
+    border-radius: 2rem;
+    width: 90%;
+    height: 40px;
+  }
+
+  textarea {
+
+    border: grey 1px solid;
+    border-radius: 2rem;
+    width: 90%;
+    height: 40px;
+
+  }
+
+     
+    /* Style du menu */
+.menu {
+    position: relative;
+}
+
+/* Menu déroulant caché par défaut */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Juste en dessous de "PROJETS" */
+    left: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* Style des liens dans le menu déroulant */
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+#new-suggestion-notification {
+    background-color: #4CAF50; /* Couleur de fond (verte pour succès) */
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    display: none; /* Par défaut, cachée */
+    border-bottom: 2px solid #2e7d32; /* Ajout d'une bordure pour plus de style */
+}
