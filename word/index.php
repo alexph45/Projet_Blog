@@ -8,108 +8,74 @@ session_start(); // Démarre la session
 
 // Vérifier si l'utilisateur est connecté 
 
-
-// Requête pour récupérer les projets et leurs catégories
-require_once 'filtres.php';
 ?>
 <html>
     <head>
         <title>Lewis Nathaniel</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/style.css">
-        
+       
     </head>
 
     <body>
 
-    <navbar>
-    <div class="profil">
-        <img class="entete" src="assets/images/lewis.png">
-        <div class="nom">
-            <h3>Lewis <br>Nathaniel</h3>
-            <p>UI UX Designer</p>
+        <navbar>
+
+            <div class="profil">
+                <img class="entete" src="assets/images/lewis.png">
+                <div class="nom">
+                    <h3> Lewis <br>Nathaniel</h3>
+                    <p>UI UX Designer</p>
+                </div>   
+            </div>
+
+            <div class="menu">
+
+                <!-- Menu déroulant pour Projet -->
+                    <div class="nav">
+                        <a href="#projet" onclick="toggleDropdown(event, 'dropdown-menu-projet')">PROJETS</a>
+                            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
+                                <div id="dropdown-menu-projet" class="dropdown-menu">
+                                    <a href="ajouter_projet.php">Ajouter un Projet</a>
+                                    <a href="suggestion.php">Suggestions de Projet</a>
+                                    <a href="modifier_projet.php">Modifier un Projet</a>
+                                    <a href="supprimer_projet.php">Supprimer un Projet</a>
+                                </div>
+                            <?php endif; ?>
+                    </div>
+                <!-- //////////////////////////// -->
+
+                <a class="nav" href="#apropos">A PROPOS</a>
+
+                <!-- Menu déroulant pour BLOG -->
+                    <div class="nav">
+                        <a href="#" onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
+                            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
+                                <div id="dropdown-menu-blog" class="dropdown-menu">
+                                    <a href="ajouter_article.php">Ajouter un Article</a>
+                                    <a href="modifier_article.php">Modifier un Article</a>
+                                </div>
+                            <?php endif; ?>
+                    </div>
+                <!-- //////////////////////////// -->
+
+                <!-- partie connexion et déconnexion-->
+                    <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
+                        <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
+                    <?php else: ?>
+                        <a class="nav" href="connexion.php">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+                                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
+                            </svg>
+                        </a>
+                    <?php endif; ?>
+                <!-- //////////////////////////// -->
+
+                <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
         </div>
-    </div>
-
-    <div class="menu">
-    <!-- Menu déroulant pour PROJETS -->
-    <div class="nav">
-        <a href="#projet" onclick="toggleDropdown(event, 'dropdown-menu-projet')">PROJETS</a>
-        <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
-        <div id="dropdown-menu-projet" class="dropdown-menu">
-            <a href="ajouter_projet.php">Ajouter un Projet</a>
-            <a href="suggestion.php">Suggestions de Projet</a>
-            <a href="modifier_projet.php">Modifier un Projet</a>
-            <a href="supprimer_projet.php">Supprimer un Projet</a>
-        </div>
-            <?php endif; ?>
-    </div>
 
 
-    <!-- Autres liens -->
-    <a class="nav" href="#apropos">A PROPOS</a>
-
-    <!-- Menu déroulant pour BLOG -->
-    <div class="nav">
-        <a href="#blog" onclick="toggleDropdown(event, 'dropdown-menu-blog')">BLOG</a>
-        <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
-        <div id="dropdown-menu-blog" class="dropdown-menu">
-            <a href="ajouter_article.php">Ajouter un Article</a>
-            <a href="modifier_article.php">Modifier un Article</a>
-        </div>
-        <?php endif; ?>
-    </div>
-
-    <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'user')): ?>
-        <a class="nav" href="deconnexion.php">DÉCONNEXION</a>
-    <?php else: ?>
-        <a class="nav" href="connexion.php">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
-                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 1 1 1 1v2a1 1 0 1 1-1 1h-4a1 1 0 1 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
-            </svg>
-        </a>
-    <?php endif; ?>
-
-    <a class="contacte" onclick="togglePopup()" href="#">CONTACT</a>
-</div>
-
-
-    <script>
-       function toggleDropdown(event, menuId) {
-    const menu = document.getElementById(menuId);
-
-    // Masque les autres menus avant d'afficher celui sélectionné
-    document.querySelectorAll('.dropdown-menu').forEach((dropdown) => {
-        if (dropdown !== menu) {
-            dropdown.style.display = 'none';
-        }
-    });
-
-    // Affiche ou masque le menu sélectionné
-    if (menu.style.display === 'block') {
-        menu.style.display = 'none';
-    } else {
-        menu.style.display = 'block';
-    }
-
-    // Empêche le comportement par défaut (comme le défilement)
-    event.preventDefault();
-}
-
-// Ferme tous les menus déroulants si on clique ailleurs
-document.addEventListener('click', function (event) {
-    document.querySelectorAll('.dropdown-menu').forEach((menu) => {
-        if (!menu.contains(event.target) && !event.target.closest('.nav')) {
-            menu.style.display = 'none';
-        }
-    });
-});
-
-    </script>
-</navbar>
-
-
-
+        </navbar>
 
 
         <section1>
@@ -180,43 +146,105 @@ document.addEventListener('click', function (event) {
 
         </section1>
 
-        <sectionprojet>
+        <section class="projet-section">
 
-                    <div class="filtre">
-                <a id="togg4" href="#" data-category="all">Tous</a>
-                <a id="togg1" href="#" data-category="Mobile">Mobile</a>
-                <a id="togg2" href="#" data-category="Web">Web</a>
-                <a id="togg3" href="#" data-category="Interaction">Interaction</a>
+            <!-- Filtre des catégories -->
+            <div class="filtre">
+                <a href="#" data-category="all">Tous</a>
+                <?php foreach ($categories as $category): ?>
+                    <a href="#" data-category="<?= htmlspecialchars($category['nom']); ?>">
+                        <?= htmlspecialchars($category['nom']); ?>
+                    </a>
+                <?php endforeach; ?>
             </div>
 
+            <!-- Section des projets -->
             <div class="projets">
                 <?php foreach ($projets as $projet): ?>
                     <div class="projet" data-categories="<?= htmlspecialchars($projet['categories']); ?>">
+
+                        <!-- Image du projet -->
                         <img src="<?= htmlspecialchars($projet['image_url']); ?>" alt="<?= htmlspecialchars($projet['titre']); ?>">
+
+                        <!-- Détails du projet -->
                         <div class="categorie">
                             <p><?= htmlspecialchars($projet['categories'] ?? 'Pas de catégorie'); ?></p>
+
+                            <!-- Informations supplémentaires -->
                             <div class="infos">
                                 <div class="titre">
                                     <h1><?= htmlspecialchars($projet['titre']); ?></h1>
-                                </div>
-                                <div class="date">
-                                    <h1><?= htmlspecialchars($projet['annee']); ?></h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
 
+                <!-- Bouton suggestion de projet (visible pour les utilisateurs connectés) -->
                 <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'user'): ?>
-                    <a href="suggestion_utilisateur.php">Demander une suggestion de projet</a>
-                    <?php endif; ?>
-
+                    <a href="suggestion_utilisateur.php" class="suggestion-button">Demander une suggestion de projet</a>
+                <?php endif; ?>
             </div>
 
-        
-        </sectionprojet>
+        </section>
 
-        <sectionapropos>
+        <?php
+
+
+// Vérifier si l'utilisateur est admin
+$is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin';
+
+$new_suggestion = false; // Initialisation
+
+if ($is_admin) {
+    // Connexion à la base de données
+    // $pdo = new PDO("mysql:host=localhost;dbname=ma_base", "username", "password");
+
+    // Initialiser la dernière vérification si nécessaire
+    if (!isset($_SESSION['last_check_time'])) {
+        $_SESSION['last_check_time'] = '1970-01-01 00:00:00'; // Valeur par défaut
+    }
+
+    // Récupérer la dernière suggestion
+    $sql = "SELECT * FROM suggestion ORDER BY date_creation DESC LIMIT 1;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $last_suggestion = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($last_suggestion) {
+        $last_check_time = date('Y-m-d H:i:s', strtotime($_SESSION['last_check_time']));
+
+
+        // Comparaison des dates
+        if ($last_suggestion['date_creation'] > $last_check_time) {
+            $_SESSION['last_check_time'] = $last_suggestion['date_creation']; // Mettre à jour
+            $new_suggestion = true;
+         
+        }
+    }
+}
+?>
+<div id="new-suggestion-notification" style="display: none;">
+    <p><strong>Nouvelle suggestion ajoutée ! (cliquez sur le bandeau pour masquer)</strong></p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    <?php if ($new_suggestion): ?>
+        const notification = document.getElementById("new-suggestion-notification");
+        notification.style.display = "block";
+
+
+        notification.addEventListener("click", function() {
+            notification.style.display = "none";
+        });
+    <?php else: ?>
+        console.log("Pas de nouvelle suggestion.");
+    <?php endif; ?>
+});
+</script>
+
+        <section id="apropos">
 
             <div class="image">
                 <img src="assets/images/undraw_Designer_by46.svg" width="685px" height="500px">
@@ -240,64 +268,69 @@ document.addEventListener('click', function (event) {
 
                 </div>
 
-        </sectionapropos>
+        </section id="apropos">
 
-        <?php try {
-            $host = 'localhost';
-            $dbname = 'blog';
-            $user = 'root'; // Définition explicite de l'utilisateur
-            $password = ''; 
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Récupérer les témoignages validés
-    $sql = "SELECT nom_auteur, entreprise_auteur, texte, note, chemin_image FROM temoignages WHERE statut = 'valide' ORDER BY date_creation DESC";
-    $stmt = $pdo->query($sql);
-    $temoignages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        <?php try {
+                            $host = 'localhost';
+                            $dbname = 'blog';
+                            $user = 'root'; // Définition explicite de l'utilisateur
+                            $password = ''; 
+                    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $password);
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-} catch (PDOException $e) {
-    die("Erreur : " . $e->getMessage());
-}
-?>
+                    // Récupérer les témoignages validés
+                    $sql = "SELECT nom_auteur, entreprise_auteur, texte, note, chemin_image FROM temoignages WHERE statut = 'valide' ORDER BY date_creation DESC";
+                    $stmt = $pdo->query($sql);
+                    $temoignages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-<sectiontemoignage>
-    <ul>
-        <?php if (!empty($temoignages)): ?>
-            <?php foreach ($temoignages as $index => $temoignage): ?>
-                <li class="carousel-item item-<?= $index ?>" aria-hidden="false">
-                    <div class="banniere">
-                        <p><?= htmlspecialchars($temoignage['texte']) ?></p>
+                } catch (PDOException $e) {
+                    die("Erreur : " . $e->getMessage());
+                }
+                ?>
 
-                        <div class="profilauteur">
-                            <img src="<?= htmlspecialchars($temoignage['chemin_image'] ?: 'assets/images/default-profile.jpg') ?>" width="125px" height="125px" alt="Photo de l'auteur">
-                        </div>
+        <sectiontemoignage>
+            <ul>
+                <?php if (!empty($temoignages)): ?>
+                    <?php foreach ($temoignages as $index => $temoignage): ?>
+                        <li class="carousel-item <?= $index ?>" aria-hidden="false">
+                            <div class="banniere">
+                                <p><?= htmlspecialchars($temoignage['texte']) ?></p>
 
-                        <div class="auteur">
-                            <h1><?= htmlspecialchars($temoignage['nom_auteur']) ?></h1>
-                            <h2><?= htmlspecialchars($temoignage['entreprise_auteur'] ?: '-') ?></h2>
+                                <div class="profilauteur">
+                                    <img src="<?= htmlspecialchars($temoignage['chemin_image'] ?: 'assets/images/default-profile.jpg') ?>" width="125px" height="125px" alt="Photo de l'auteur">
+                                </div>
 
-                            <?php for ($i = 0; $i < (int) $temoignage['note']; $i++): ?>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                </svg>
-                            <?php endfor; ?>
-                            <a href="soumettre-temoignage.php"><p class="avis">Ecrire un avis</p></a>
-                            <br>
-                            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
-            <a href="traiter-temoignage.php"><p class="avis">Gérer les avis</p></a>
-            <?php endif; ?>
-                        </div>
-                    </div>
-                </li>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p>Aucun témoignage disponible pour le moment.</p>
-            <?php if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' )): ?>
-            <a href="traiter-temoignage.php"><p class="avis">Gérer les avis</p></a>
-            <?php endif; ?>
-        <?php endif; ?>
-    </ul>
-</sectiontemoignage>
+                                <div class="auteur">
+                                    <h1><?= htmlspecialchars($temoignage['nom_auteur']) ?></h1>
+                                    <h2><?= htmlspecialchars($temoignage['entreprise_auteur'] ?: '-') ?></h2>
+
+                                    <?php for ($i = 0; $i < (int) $temoignage['note']; $i++): ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                        </svg>
+                                    <?php endfor; ?>
+
+                                    <?php if (isset($_SESSION['user_id'])): // Vérifie si l'utilisateur est connecté ?>
+                                        <a href="soumettre-temoignage.php"><p class="avis">Écrire un avis</p></a>
+                                    <?php endif; ?>
+
+                                    <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                                        <a href="admin-temoignages.php"><p class="avis">Gérer les avis</p></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Aucun témoignage disponible pour le moment.</p>
+                    
+                    <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'): ?>
+                        <a href="admin-temoignages.php"><p class="avis">Gérer les avis</p></a>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </ul>
+        </sectiontemoignage>
 
 
         <sectionblog>
@@ -378,38 +411,7 @@ document.addEventListener('click', function (event) {
                 
             </footer>
         </div>
-
-
-      
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const filterLinks = document.querySelectorAll('.filtre a');
-        const projects = document.querySelectorAll('.projet');
-        
-        filterLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const category = link.getAttribute('data-category');
-                
-                projects.forEach(project => {
-                    const projectCategories = project.getAttribute('data-categories').split(' / ');
-                    
-                    if (category === 'all' || projectCategories.includes(category)) {
-                        project.style.display = 'block';
-                    } else {
-                        project.style.display = 'none';
-                    }
-                });
-            });
-        });
-    });
-</script>
-
-
-    
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-           integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-           crossorigin="anonymous"></script>
-    <script src="java.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/java.js"></script>
     </body>
 </html>

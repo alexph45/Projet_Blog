@@ -36,6 +36,8 @@ if (isset($_GET['id'])) {
         $annee = (int) $_POST['annee'];
         $image_url = $projet['image_url']; // Garder l'image actuelle
 
+        
+
         // Vérifier si une nouvelle image a été téléchargée
         if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
             $upload_dir = 'uploads/';
