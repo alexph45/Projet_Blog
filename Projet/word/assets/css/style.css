@@ -1,5 +1,5 @@
 /* Reset CSS */
-* {
+*{
     margin: 0px;
     padding: 0px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -8,10 +8,8 @@
 /* Navbar */
 navbar {
     display: flex;
-    padding: 3% 10%; /* Ajustement du padding pour être plus flexible */
+    padding: 3% 13% 0px;
     justify-content: space-between;
-    flex-wrap: wrap; /* Assurer que le contenu se réorganise pour les petits écrans */
-    align-items: center; /* Centrer verticalement */
 }
 
 .contacte {
@@ -24,7 +22,6 @@ navbar {
     font-size: 16px;
     border-radius: 3rem;
     border: 3px solid black;
-    margin-top: 10px;
 }
 
 .contacte:hover {
@@ -35,7 +32,7 @@ navbar {
 }
 
 .nav {
-    position: relative;
+    position: relative; /* Positionnement relatif pour chaque lien */
     padding-right: 20px;
     text-decoration: none;
     font-weight: bolder;
@@ -48,14 +45,12 @@ navbar {
 }
 
 .menu {
-    display: flex;
-    gap: 20px;
-    justify-content: flex-start; /* Assurer que les éléments ne se dispersent pas */
+    display: flex; /* Alignement horizontal des liens */
+    gap: 20px; /* Espacement entre les éléments du menu */
 }
 
 .profil {
     display: flex;
-    align-items: center;
 }
 
 img.entete {
@@ -63,7 +58,6 @@ img.entete {
     border-radius: 50%;
     width: 75px;
     height: 75px;
-    object-fit: cover; /* Assurer que l'image reste dans ses proportions */
 }
 
 .nom {
@@ -75,8 +69,6 @@ img.entete {
 section1 {
     display: flex;
     padding: 7% 13%;
-    justify-content: space-between; /* Éviter que les éléments ne se chevauchent */
-    width: 100%;
 }
 
 section1 #t1 {
@@ -94,10 +86,10 @@ section1 #t2 {
 
 /* Mobile : écran inférieur à 768px */
 @media (max-width: 768px) {
+
     navbar {
         flex-direction: column; /* Alignement vertical pour mobile */
         padding: 5%;
-        align-items: center; /* Centrer le contenu */
     }
 
     .contacte {
@@ -113,7 +105,6 @@ section1 #t2 {
     .menu {
         flex-direction: column; /* Les éléments du menu s'empilent sur mobile */
         gap: 10px;
-        align-items: center; /* Centrer les éléments du menu */
     }
 
     .profil {
@@ -129,27 +120,23 @@ section1 #t2 {
     section1 {
         flex-direction: column; /* Aligner le texte en colonne sur mobile */
         padding: 10% 5%;
-        align-items: center; /* Centrer le contenu */
     }
 
     section1 #t1 {
         font-size: 30px; /* Taille du texte réduite sur mobile */
-        text-align: center; /* Centrer le titre */
     }
 
     section1 #t2 {
         font-size: 40px; /* Taille du texte réduite sur mobile */
-        text-align: center; /* Centrer le sous-titre */
     }
 }
 
 /* Tablette : écran entre 768px et 1024px */
 @media (max-width: 1024px) {
+
     navbar {
         flex-direction: row;
         padding: 5%;
-        justify-content: space-between;
-        align-items: center; /* Centrer verticalement */
     }
 
     .contacte {
@@ -178,17 +165,14 @@ section1 #t2 {
     section1 {
         flex-direction: column;
         padding: 8% 5%;
-        align-items: center; /* Centrer le contenu */
     }
 
     section1 #t1 {
         font-size: 40px;
-        text-align: center; /* Centrer le texte */
     }
 
     section1 #t2 {
         font-size: 55px;
-        text-align: center; /* Centrer le texte */
     }
 }
 
@@ -197,8 +181,6 @@ section1 #t2 {
     navbar {
         flex-direction: row;
         padding: 3% 13%;
-        justify-content: space-between;
-        align-items: center; /* Centrer verticalement */
     }
 
     .contacte {
@@ -226,7 +208,6 @@ section1 #t2 {
     section1 {
         flex-direction: row;
         padding: 7% 13%;
-        justify-content: space-between; /* Bien espacer les éléments */
     }
 
     section1 #t1 {
