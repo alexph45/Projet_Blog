@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="boutonlire">
                     <a class="lire" href="#">LIRE</a>
                     </div>
-                </div>
+                </div><br><br>
 
                 <div class="article">
                     <div class="dates">
@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     iaculis eros sem, elementum consequat.</p>
 
                     <a class="lire" href="#">LIRE</a>
-                </div>
+                </div><br><br>
 
                 <div class="article">
                     <div class="dates">
